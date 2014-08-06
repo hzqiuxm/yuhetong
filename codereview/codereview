@@ -1,0 +1,41 @@
+phabricator is a code review/tracking/poll/calendar tools.
+
+created by facebook
+
+please visit this url: http://pha.hzdiv.qizhitech.com/
+test
+
+Please visit Quick Start: http://www.phabricator.com/docs/phabricator/article/Arcanist_Quick_Start.html
+
+First, install dependencise:
+    Install PHP
+    Install Git
+
+Then install Arcanist itself:
+    mkdir somewhere/
+    cd somewhere/
+    $ git clone git://github.com/facebook/libphutil.git
+    $ git clone git://github.com/facebook/arcanist.git
+
+Add arc to your path
+
+Create a .arcconfig file in your project's working copy:
+
+    $ cat .arcconfig
+    {
+        "project_id" : "Chopper",
+        "conduit_uri" : "http://pha.hzdiv.qizhitech.com/"
+    }
+
+Install Arcanist Credentials
+
+    $ arc install-certificate
+
+Send Changes For Review
+
+    $ arc diff
+
+More arc help, please use command help
+
+    $ arc help
+.
