@@ -1,11 +1,12 @@
 from flask.ext.sqlalchemy import SQLAlchemy
 import config
-import yht
+from . import app
 
-yht.app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URI
-db = SQLAlchemy(yht)
+app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URI
+db = SQLAlchemy(app)
 
 class User(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     email = db.Column(db.String(120), unique=True)
