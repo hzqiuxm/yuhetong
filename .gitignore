@@ -3,3 +3,5 @@
 /test
 alembic.ini
 /migration
+.gitignore
+yunapp/run.py
