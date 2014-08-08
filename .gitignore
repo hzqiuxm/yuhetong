@@ -3,6 +3,5 @@
 /test
 alembic.ini
 /migration
-/yunapp/run.py
+/yunapp
 
-## add by wenwu
