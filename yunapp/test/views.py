@@ -12,7 +12,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 test = Blueprint('test', __name__)
 test.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
+#ni kan bu jian w
 @test.route('/')
 def hello_world():
     return render_template('index.html')
