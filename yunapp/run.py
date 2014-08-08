@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @author: wenwu
 
-from src import app
+from yunapp import app
 app.debug = True
 app.run(host='0.0.0.0', port=5001)
