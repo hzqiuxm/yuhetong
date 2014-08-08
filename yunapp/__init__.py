@@ -1,17 +1,9 @@
 # -*- coding: utf-8 -*-
 # @author: wenwu
 
-from flask import Flask, render_template
+from flask import Flask
+from test.views import test as mod_test
 app = Flask('yunhetong')
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+app.register_blueprint(mod_test,url_prefix='/test')
 
-
-@app.route('/test/<path:filename>')
-def template_load(filename=None):
-    if not filename:
-        return render_template('index.html')
-    else:
-        return render_template(filename+'.html')
