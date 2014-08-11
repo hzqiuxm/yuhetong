@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_template, jsonify
-import flask.ext.login.LoginManager as LoginManager
+from flask import Blueprint, render_template, jsonify, current_app
+from flask.ext.login import LoginManager
 from models import User
+from yunapps import app
 login_manager = LoginManager()
+login_manager.init_app(app)
 
 user = Blueprint('user', __name__)
-login_manager.init_app(user)
-
 
 @login_manager.user_loader
 def load_user(userid):
