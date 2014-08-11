@@ -5,4 +5,4 @@ user = Blueprint('user', __name__, url_prefix='/user')
 
 @user.route('/')
 def index():
-    pass
+    render_template('/user/user_index.html')

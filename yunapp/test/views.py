@@ -24,7 +24,10 @@ def file_upload():
         if file and allowed_file(file.filename):
             filename = file.filename
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-    return '{"fid":"000","fname":'+filename+'}'
+            return {"fid":"000","fname":'+filename+'}
+        else:
+            return {"fid":"000","errMsg":'error'}
+
 
 @test.route('/<path:filename>')
 def template_load(filename=None):

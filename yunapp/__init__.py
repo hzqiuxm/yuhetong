@@ -7,3 +7,4 @@ app = Flask('yunhetong')
 
 app.register_blueprint(mod_test, url_prefix='/test')
 
+
