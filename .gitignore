@@ -5,3 +5,5 @@ alembic.ini
 /migration
 /yunapp/run.py
 config.py
+/.idea
+.gitignore

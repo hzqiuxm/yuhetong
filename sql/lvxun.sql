@@ -89,7 +89,7 @@ CREATE TABLE `lxcontract` (
 DROP TABLE IF EXISTS `lxfile`;
 CREATE TABLE `lxfile` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `fid` int(10) unsigned NOT NULL  COMMENT 'file id',
+  `fid` int(10) unsigned NOT NULL  COMMENT 'file uuid',
   `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '文件类型',
   `name` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '文件名称',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
