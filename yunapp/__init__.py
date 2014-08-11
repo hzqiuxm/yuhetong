@@ -5,5 +5,5 @@ from flask import Flask
 from test.views import test as mod_test
 app = Flask('yunhetong')
 
-app.register_blueprint(mod_test,url_prefix='/test')
+app.register_blueprint(mod_test, url_prefix='/test')
 
