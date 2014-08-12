@@ -67,7 +67,7 @@ def namecheck():
     return jsonify(return_dict)
 
 
-@user.route('/login', methods=['POST'])
+@user.route('/login', methods = ['POST'])
 def login():
     return_dict = {'success': True, 'errorMsg': 'no'}
     return jsonify(return_dict)
