@@ -177,7 +177,7 @@ class Base(object):
         if flush: engine.session.flush()
 
 class User(Base):
-    cols = ['id', 'uid', 'type', 'userName','realName', 'passwd', 'email',
+    cols = ['id', 'type', 'userName','realName', 'passwd', 'email',
             'phone', 'parentUserId', 'companyId', 'createTime', 'modifyTime',
             'signId', 'status',]
 

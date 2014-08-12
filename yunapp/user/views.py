@@ -35,6 +35,7 @@ def profile(uid):
 
 @user.route('/register', methods=['POST'])
 def register():
+
     username = request.values['username']
     realName = request.values['realName']
     type = request.values['type']
@@ -55,6 +56,15 @@ def register():
              signId=0)
     return_dict = {'success': True, 'uid': 'uid'}
     return jsonify(return_dict)
+
+    with engine.with_session() as ss:
+        new_user = model.User(type=1, userName='test', realName='testreal',
+                              passwd='pass', email='xudabin@yunhetong.net',
+                              status=0 )
+        ss.add(new_user)
+        return_dict = {'success': True, 'uid':'uid'}
+        return jsonify(return_dict)
+
 
 
 @user.route('/namecheck')
