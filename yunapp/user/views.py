@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, jsonify, current_app
 from flask.ext.login import LoginManager
 from models import User
-from yunapps import app
+from yunapp.yunapps import app
 login_manager = LoginManager()
 login_manager.init_app(app)
 
