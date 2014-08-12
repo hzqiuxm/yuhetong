@@ -1,8 +1,7 @@
 #-*- coding:utf-8 -*-
 # __author__ = 'micheal'
 
-import sqlalchemy as sa
-from sqlalchemy import MetaData
+from sqlalchemy import MetaData, Table, Column, ForeignKey, Integer, String, TIMESTAMP
 
 _metadata = None
 
@@ -10,12 +9,12 @@ if not _metadata:
     _metadata = MetaData()
 
 
-t_lxuser = sa.Table('lxuser', _metadata,
-    sa.Column('id', sa.types.Integer, primary_key=True),
-    sa.Column('bound_task_id', sa.types.Integer),
-    sa.Column('expression_def', sa.types.String(2048)),
-    sa.Column('expression', sa.types.String(2048)),
-    sa.Column('gmt_create', sa.types.TIMESTAMP),
-    sa.Column('gmt_modify', sa.types.TIMESTAMP),
+t_lxuser = Table('lxuser', _metadata,
+    Column('id', Integer, primary_key=True),
+    Column('bound_task_id', Integer),
+    Column('expression_def', String(2048)),
+    Column('expression', String(2048)),
+    Column('gmt_create', TIMESTAMP),
+    Column('gmt_modify', TIMESTAMP),
     mysql_engine='InnoDB',
 )

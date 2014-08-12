@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, jsonify, current_app
 from flask.ext.login import LoginManager
 from models import User
 from yunapp.yunapps import app
+from yunapp.orm import engine
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -21,8 +22,10 @@ def profile(uid):
 
 @user.route('/register', methods=['POST'])
 def register():
-    return_dict = {'success': True, 'uid':'uid'}
-    return jsonify(return_dict)
+    with engine.with_session() as ss:
+        print(ss)
+        return_dict = {'success': True, 'uid':'uid'}
+        return jsonify(return_dict)
 
 
 @user.route('/namecheck')

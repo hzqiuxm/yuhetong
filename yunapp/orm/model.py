@@ -11,7 +11,7 @@ from yunapp.orm  import db, engine
 
 logger = logging.getLogger("ORM.MODEL")
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URI
-db = SQLAlchemy(app)
+
 
 class Base(object):
     def __init__(self, **kargs):

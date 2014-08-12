@@ -18,17 +18,17 @@ Date: 2014-08-10 16:18:49
 -- ----------------------------
 DROP TABLE IF EXISTS `lxuser`;
 CREATE TABLE `lxuser` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `uid` int(10) unsigned NOT NULL  COMMENT 'user id',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '用户类型',
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
+  `uid` int(16) unsigned NOT NULL  COMMENT 'user id 10000000 八位数字，取数据库最大值＋1',
+  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '用户类型 先设置1',
   `userName` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '用户名',
   `realName` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '真实姓名',
   `passwd` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
   `email` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '用户邮箱',
   `phone` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '用户联系电话',
-  `parentUserId` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '主账户id,
+  `parentUserId` int(16)  NOT NULL default 0 COMMENT '主账户id,
   子账户具有的属性，有该属性表示是子账户',
-  `companyId` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '对应的公司id',
+  `companyId` int(16)  NOT NULL default 0 COMMENT '对应的公司id',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '用户创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `signId` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '用户签名Id',
@@ -41,13 +41,13 @@ CREATE TABLE `lxuser` (
 -- ----------------------------
 DROP TABLE IF EXISTS `lxcompany`;
 CREATE TABLE `lxcompany` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `cid` int(10) unsigned NOT NULL  COMMENT '公司 id',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '公司类型',
-  `name` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '公司名称',
-  `field1` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '公司认证信息字段',
-  `field2` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '公司证信息字段',
-  `field3` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '公司证信息字段',
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
+  `cid` int(16) unsigned NOT NULL  COMMENT '公司 id 10000000 八位数字，取数据库最大值＋1',
+  `type` varchar(10) COLLATE utf8_bin COMMENT '公司类型 先设置1',
+  `name` varchar(80) COLLATE utf8_bin COMMENT '公司名称',
+  `field1` varchar(80) COLLATE utf8_bin COMMENT '公司认证信息字段',
+  `field2` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
+  `field3` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '文件状态',
