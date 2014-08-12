@@ -19,8 +19,7 @@ Date: 2014-08-10 16:18:49
 DROP TABLE IF EXISTS `lxuser`;
 CREATE TABLE `lxuser` (
   `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `uid` int(16) unsigned NOT NULL  COMMENT 'user id 10000000 八位数字，取数据库最大值＋1',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '用户类型 先设置1',
+  `type` tinyint NOT NULL COMMENT '用户类型 先设置1',
   `userName` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '用户名',
   `realName` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '真实姓名',
   `passwd` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
@@ -31,8 +30,8 @@ CREATE TABLE `lxuser` (
   `companyId` int(16)  NOT NULL default 0 COMMENT '对应的公司id',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '用户创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `signId` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '用户签名Id',
-  `status` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '用户状态',
+  `signId` int(16) DEFAULT NULL COMMENT '用户签名Id',
+  `status` tinyint  DEFAULT NULL COMMENT '用户状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户表';
 
@@ -42,15 +41,14 @@ CREATE TABLE `lxuser` (
 DROP TABLE IF EXISTS `lxcompany`;
 CREATE TABLE `lxcompany` (
   `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `cid` int(16) unsigned NOT NULL  COMMENT '公司 id 10000000 八位数字，取数据库最大值＋1',
-  `type` varchar(10) COLLATE utf8_bin COMMENT '公司类型 先设置1',
+  `type` tinyint   COMMENT '公司类型 先设置1',
   `name` varchar(80) COLLATE utf8_bin COMMENT '公司名称',
   `field1` varchar(80) COLLATE utf8_bin COMMENT '公司认证信息字段',
   `field2` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
   `field3` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '文件状态',
+  `status` tinyint  DEFAULT NULL COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='公司表';
 
@@ -60,8 +58,7 @@ CREATE TABLE `lxcompany` (
 DROP TABLE IF EXISTS `lxcontract`;
 CREATE TABLE `lxcontract` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `cid` int(10) unsigned NOT NULL  COMMENT 'user id',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '合同类型',
+  `type` tinyint  NOT NULL COMMENT '合同类型',
   `name` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '合同名称',
   `readPermUsers` varchar(1024) COLLATE utf8_bin NOT NULL COMMENT
     '具有读权限的用户列表，json格式',
@@ -79,7 +76,7 @@ CREATE TABLE `lxcontract` (
   `fixedFid` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '合同确定稿版本对应的fid',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '合同状态',
+  `status` tinyint  DEFAULT NULL COMMENT '合同状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='合同表';
 
@@ -89,11 +86,11 @@ CREATE TABLE `lxcontract` (
 DROP TABLE IF EXISTS `lxfile`;
 CREATE TABLE `lxfile` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `fid` int(10) unsigned NOT NULL  COMMENT 'file uuid',
+  `fid` varchar(32)  NOT NULL  COMMENT 'file uuid.hex',
   `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '文件类型',
   `name` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '文件名称',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '文件状态',
+  `status` tinyint DEFAULT NULL COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';

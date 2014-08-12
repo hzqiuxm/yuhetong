@@ -4,7 +4,6 @@ import datetime
 import json
 import logging
 from sqlalchemy import orm, sql, and_, or_
-from flask.ext.sqlalchemy import SQLAlchemy
 from yunapp import config
 from yunapp.yunapps import app
 from yunapp.orm  import db, engine
@@ -176,3 +175,10 @@ class Base(object):
         '''
         engine.session.add(self)
         if flush: engine.session.flush()
+
+class User(Base):
+    cols = ['id', 'uid', 'type', 'userName','realName', 'passwd', 'email',
+            'phone', 'parentUserId', 'companyId', 'createTime', 'modifyTime',
+            'signId', 'status',]
+
+orm.mapper(User, db.t_lxuser)

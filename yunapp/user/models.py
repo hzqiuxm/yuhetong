@@ -17,7 +17,6 @@ Base.query = db_session.query_property()
 class User(Base):
     __tablename__ = 'lxuser'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    uid = Column(Integer, unique=True)
     username = Column(String(80), unique=True)
     realName = Column(String(80), unique=True)
     type = Column(String(10), unique=True)

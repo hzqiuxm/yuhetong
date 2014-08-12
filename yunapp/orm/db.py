@@ -1,7 +1,9 @@
 #-*- coding:utf-8 -*-
 # __author__ = 'micheal'
 
-from sqlalchemy import MetaData, Table, Column, ForeignKey, Integer, String, TIMESTAMP
+from sqlalchemy import MetaData, Table, Column, ForeignKey
+from sqlalchemy.dialects.mysql import BIGINT, TIMESTAMP, TEXT, TINYINT, \
+    VARCHAR, INTEGER
 
 _metadata = None
 
@@ -10,11 +12,19 @@ if not _metadata:
 
 
 t_lxuser = Table('lxuser', _metadata,
-    Column('id', Integer, primary_key=True),
-    Column('bound_task_id', Integer),
-    Column('expression_def', String(2048)),
-    Column('expression', String(2048)),
-    Column('gmt_create', TIMESTAMP),
-    Column('gmt_modify', TIMESTAMP),
+    Column('id', INTEGER, primary_key=True),
+    Column('uid', INTEGER),
+    Column('type', TINYINT(10)),
+    Column('userName', VARCHAR(64)),
+    Column('realName', VARCHAR(64)),
+    Column('passwd', VARCHAR(64)),
+    Column('email', VARCHAR(64)),
+    Column('phone', VARCHAR(32)),
+    Column('parentUserId', INTEGER),
+    Column('companyId', INTEGER),
+    Column('signId', INTEGER),
+    Column('status', TINYINT),
+    Column('createTime', TIMESTAMP),
+    Column('modifyTime', TIMESTAMP),
     mysql_engine='InnoDB',
 )
