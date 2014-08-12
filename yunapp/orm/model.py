@@ -176,9 +176,13 @@ class Base(object):
         engine.session.add(self)
         if flush: engine.session.flush()
 
-class User(Base):
+class LxUser(Base):
     cols = ['id', 'type', 'userName','realName', 'passwd', 'email',
             'phone', 'parentUserId', 'companyId', 'createTime', 'modifyTime',
             'signId', 'status',]
 
-orm.mapper(User, db.t_lxuser)
+class LxFile(Base):
+    cols = ['id', 'fuuid', 'type', 'name', 'createTime', 'modifyTime', 'status',]
+
+orm.mapper(LxUser, db.t_lxuser)
+orm.mapper(LxFile, db.t_lxfile)

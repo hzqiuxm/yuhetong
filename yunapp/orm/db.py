@@ -27,3 +27,14 @@ t_lxuser = Table('lxuser', _metadata,
     Column('modifyTime', TIMESTAMP),
     mysql_engine='InnoDB',
 )
+
+t_lxfile = Table('lxfile', _metadata,
+    Column('id', INTEGER, primary_key=True),
+    Column('fuuid', VARCHAR(32)),
+    Column('type', TINYINT),
+    Column('name', VARCHAR(64)),
+    Column('status', TINYINT),
+    Column('createTime', TIMESTAMP),
+    Column('modifyTime', TIMESTAMP),
+    mysql_engine='InnoDB',
+)
