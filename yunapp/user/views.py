@@ -24,7 +24,9 @@ def profile(uid):
 @user.route('/register', methods=['POST', 'GET'])
 def register():
     with engine.with_session() as ss:
-        new_user = model.User()
+        new_user = model.User(type=1, userName='test', realName='testreal',
+                              passwd='pass', email='xudabin@yunhetong.net',
+                              status=0 )
         ss.add(new_user)
         return_dict = {'success': True, 'uid':'uid'}
         return jsonify(return_dict)

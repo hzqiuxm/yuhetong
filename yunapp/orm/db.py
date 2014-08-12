@@ -13,7 +13,6 @@ if not _metadata:
 
 t_lxuser = Table('lxuser', _metadata,
     Column('id', INTEGER, primary_key=True),
-    Column('uid', INTEGER),
     Column('type', TINYINT(10)),
     Column('userName', VARCHAR(64)),
     Column('realName', VARCHAR(64)),
