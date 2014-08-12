@@ -85,10 +85,10 @@ CREATE TABLE `lxcontract` (
 -- ----------------------------
 DROP TABLE IF EXISTS `lxfile`;
 CREATE TABLE `lxfile` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  `fid` varchar(32)  NOT NULL  COMMENT 'file uuid.hex',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '文件类型',
-  `name` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '文件名称',
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
+  `fuuid` varchar(32)  NOT NULL  COMMENT 'file uuid.hex',
+  `type` tinyint NOT NULL COMMENT '文件类型',
+  `name` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '文件名称',
   `createTime` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `modifyTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` tinyint DEFAULT NULL COMMENT '文件状态',
