@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from models import User
 from yunapp.yunapps import app
+from yunapp.orm import model
 
 from yunapp import config
 import hashlib, time
@@ -33,9 +34,9 @@ def profile(uid):
     return_dict = {'success': True, 'uid': uid}
     return jsonify(return_dict)
 
+
 @user.route('/register', methods=['POST'])
 def register():
-
     username = request.values['username']
     realName = request.values['realName']
     type = request.values['type']
@@ -45,26 +46,19 @@ def register():
     parentUserId = request.values['parentUserId']
     companyId = request.values['companyId']
 
-    u = User(username=username,
-             realName=realName,
-             type=type,
-             passwd=passwd,
-             email=email,
-             phone=phone,
-             parentUserId=parentUserId,
-             companyId=companyId,
-             signId=0)
-    return_dict = {'success': True, 'uid': 'uid'}
-    return jsonify(return_dict)
-
     with engine.with_session() as ss:
-        new_user = model.User(type=1, userName='test', realName='testreal',
-                              passwd='pass', email='xudabin@yunhetong.net',
-                              status=0 )
+        new_user = model.User(username=username,
+                              realName=realName,
+                              type=type,
+                              passwd=passwd,
+                              email=email,
+                              phone=phone,
+                              parentUserId=parentUserId,
+                              companyId=companyId,
+                              signId=0)
         ss.add(new_user)
-        return_dict = {'success': True, 'uid':'uid'}
+        return_dict = {'success': True, 'uid': new_user.id}
         return jsonify(return_dict)
-
 
 
 @user.route('/namecheck')

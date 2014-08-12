@@ -107,14 +107,14 @@ var Login = function() {
                     //                        alert(data);
                     //                    }, "Json");
                     $.ajax({
-                        url: "http://192.168.1.55:5002/user/login?time=" + (new Date()).getTime(),
+                        url: "user/login?time=" + (new Date()).getTime(),
                         type: "POST",
                         data: $(".login-form").serialize(),      //这个表示将表单的内容序列化
                         dataType: "Json",
                         success: function(msg){        //data参数表示服务器传回来的数据
                             var al = $(".login-form .alert-danger");
                             var obj = eval('(' + msg + ')');
-                            console.log( obj ); 
+                            console.log( msg ); 
                             NProgress.start(); //这就是个显示进度条的
                             if (obj.success == false) {
                                 al.text(msg.items.state);
