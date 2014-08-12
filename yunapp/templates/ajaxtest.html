@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>大文哥的测试页面</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+	<a onclick="atest()" href="#">Ajax测试</a>
+	<div id="resultdiv"></div>
+</body>
+	<script type="text/javascript">
+	function atest(){
+	$.ajax({
+		url: 'HTTP://192.168.1.55:5002/user/register',
+		type: 'POST',
+		dataType: 'Json',
+		data: {test: 'aaa'}
+	})
+	.success(function(data) {
+		$("#resultdiv").text(JSON.stringify(data));
+		console.log("success");
+	})
+	.fail(function() {
+		//console.log("error");
+	})
+	.always(function(data) {
+		console.log("complete");
+	});
+		
+	}
+
+</script>
+</html>
