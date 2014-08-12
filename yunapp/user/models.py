@@ -23,15 +23,16 @@ class User(Base):
     passwd = Column(String(50), unique=True)
     email = Column(String(64), unique=True)
     phone = Column(String(20))
-    parentUserId = Column(String(64), unique=True)
-    companyId = Column(String(10), unique=True)
+    parentUserId = Column(Integer, unique=True)
+    companyId = Column(Integer, unique=True)
     createTime = Column(DateTime, unique=True, default='0000-00-00 00:00:00')
     modifyTime = Column(DateTime, unique=True, default=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     signId = Column(String(10))
     status = Column(String(10))
 
-    def __init__(self, username, realName, type, passwd, email, phone, parentUserId,
-                 companyId, signId):
+    def __init__(self, username, realName, type, passwd, email, phone,
+                 companyId, signId, parentUserId =0 ,createTime = '0000-00-00 00:00:00',
+                 modifyTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) ):
         self.username = username
         self.realName = realName
         self.type = type
@@ -39,6 +40,8 @@ class User(Base):
         self.email = email
         self.phone = phone
         self.parentUserId = parentUserId
+        self.createTime = createTime
+        self.modifyTime = modifyTime
         self.companyId = companyId
         self.signId = signId
 
