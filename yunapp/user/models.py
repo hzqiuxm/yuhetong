@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # @author: seanwu
+# 这个文件是SeanWu写的，现在已经不需要了，请无视他
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
