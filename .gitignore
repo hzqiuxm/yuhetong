@@ -1,0 +1,9 @@
+*.pyc
+/venv
+/test
+alembic.ini
+/migration
+/yunapp/run.py
+/yunapp/config.py
+config.py
+/.idea
