@@ -4,5 +4,5 @@
 alembic.ini
 /migration
 /yunapp/run.py
-#/yunapp/config.py
+/yunapp/config.py
 /.idea
