@@ -1,10 +1,10 @@
 DEBUG = False
 SECRET_KEY = 'mysecretkey'
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
-DATABASE_URI = 'mysql://root:Hello1234@127.0.0.1/wenwu_test'
+DATABASE_URI = 'mysql://root:Hello1234@127.0.0.1/seanwuTest'
 
 
-DB_NAME = 'wenwu_test'
+DB_NAME = 'seanwuTest'
 DB_USER = 'root'
 DB_HOST = '127.0.0.1'
 DB_PASSWD = 'Hello1234'
