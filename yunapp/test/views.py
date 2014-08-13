@@ -34,9 +34,9 @@ def template_load(filename=None):
     if not filename:
         return render_template('index.html')
     else:
-        print globals().keys()
-        # return render_template(filename)
-        return 'xx'
+        # print globals().keys()
+        return render_template(filename)
+
 
 def allowed_file(filename):
     return '.' in filename and \
