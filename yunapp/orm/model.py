@@ -182,7 +182,8 @@ class LxUser(Base):
             'signId', 'status',]
 
 class LxFile(Base):
-    cols = ['id', 'fuuid', 'type', 'name', 'createTime', 'modifyTime', 'status',]
+    cols = ['id', 'fuuid', 'type', 'name', 'createTime', 'modifyTime',
+            'status', 'extension' , 'fpath']
 
 orm.mapper(LxUser, db.t_lxuser)
 orm.mapper(LxFile, db.t_lxfile)
