@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 import datetime
 import json
@@ -6,7 +6,8 @@ import logging
 from sqlalchemy import orm, sql, and_, or_
 from yunapp import config
 from yunapp.yunapps import app
-from yunapp.orm  import db, engine
+from yunapp.orm import db, engine
+from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login 里面 用户类的一些基本方法，我们的User类要继承他
 
 logger = logging.getLogger("ORM.MODEL")
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URI
@@ -18,7 +19,8 @@ class Base(object):
 
     def __repr__(self):
         return '%s(%s)' % (self.__class__.__name__,
-            ' '.join(['%s:%r' %(k, getattr(self, k)) for k in sorted(self.__dict__.keys()) if not k.startswith('_')]), )
+                           ' '.join(['%s:%r' % (k, getattr(self, k)) for k in sorted(self.__dict__.keys()) if
+                                     not k.startswith('_')]), )
 
     @classmethod
     def create(cls, **kwargs):
@@ -33,9 +35,9 @@ class Base(object):
 
         return cls.create(**l)
 
-    def format_obj(self,target):
+    def format_obj(self, target):
         if isinstance(target, datetime.datetime):
-            return datetime.datetime.strftime(target,'%Y-%m-%d %H:%M:%S')
+            return datetime.datetime.strftime(target, '%Y-%m-%d %H:%M:%S')
         elif isinstance(target, long):
             return int(target)
         elif isinstance(target, dict):
@@ -49,16 +51,16 @@ class Base(object):
         if keys is not None:
             """Explicit declare the keys of the object data to serializeable format"""
             for key in keys:
-                one[key] = self.format_obj(getattr(self,key,None))
+                one[key] = self.format_obj(getattr(self, key, None))
         else:
             for key in self._sa_class_manager.iterkeys():
                 if self.check_col(key):
-                    one[key] = self.format_obj(getattr(self,key,None))
+                    one[key] = self.format_obj(getattr(self, key, None))
         return one
 
     def update(self, attrs):
         self.validate(attrs)
-        for k,v in attrs.iteritems():
+        for k, v in attrs.iteritems():
             # if validate ensures keys in attrs are all in self.cols...
             if k in self.cols and getattr(self, k) != v:
                 setattr(self, k, v)
@@ -77,8 +79,10 @@ class Base(object):
 
     def load_options(self):
         if getattr(self, '_opts', None) is None:
-            if not self.options: self._opts = {}
-            else: self._opts = json.loads(self.options)
+            if not self.options:
+                self._opts = {}
+            else:
+                self._opts = json.loads(self.options)
 
     def get_option(self, name):
         if getattr(self, '_opts', None) is None: self.load_options()
@@ -134,7 +138,7 @@ class Base(object):
         if filter_clause is not None: q = q.filter(filter_clause)
         if kwargs:
             order_by = kwargs.pop('_order_by', None)
-            #if order_by is not None: q = q.order_by(order_by)#deprecated by sa
+            # if order_by is not None: q = q.order_by(order_by)#deprecated by sa
             if order_by is not None:
                 if isinstance(order_by, list):
                     q = q.order_by(*order_by)
@@ -152,7 +156,7 @@ class Base(object):
 
     @classmethod
     def load_all(cls):
-        return dict([(x.id,x) for x in cls.load_by()])
+        return dict([(x.id, x) for x in cls.load_by()])
 
     def reload(self):
         '''
@@ -164,7 +168,7 @@ class Base(object):
         '''
         update attributes of self,用在一次设置多个属性的调用场合
         '''
-        for k,v in kargs.iteritems():
+        for k, v in kargs.iteritems():
             setattr(self, k, v)
 
     def save(self, flush=False):
@@ -176,14 +180,22 @@ class Base(object):
         engine.session.add(self)
         if flush: engine.session.flush()
 
-class LxUser(Base):
-    cols = ['id', 'type', 'userName','realName', 'passwd', 'email',
+
+class LxUser(Base, UserMixin):
+    cols = ['id', 'type', 'userName', 'realName', 'passwd', 'email',
             'phone', 'parentUserId', 'companyId', 'createTime', 'modifyTime',
-            'signId', 'status',]
+            'signId', 'status', ]
+
+    def get_id(self):
+        return self.id
+
+    def is_active(self):
+        return True
+
 
 class LxFile(Base):
-    cols = ['id', 'fuuid', 'type', 'name', 'createTime', 'modifyTime',
-            'status', 'extension' , 'fpath']
+    cols = ['id', 'fuuid', 'type', 'name', 'createTime', 'modifyTime', 'status', ]
+
 
 orm.mapper(LxUser, db.t_lxuser)
 orm.mapper(LxFile, db.t_lxfile)

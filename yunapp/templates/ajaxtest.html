@@ -15,7 +15,7 @@
 			<ul>
 				<li>
 					网址：
-					<input type="text" name="iurl" id="iurl" />  (url格式：192.168.1.55:5002/user/login；不用加http://)
+					<input type="text" name="iurl" id="iurl" style="width:300px;" />  (url格式：192.168.1.55:5002/user/login；不用加http://)
 				</li>
 				<li>
 					<ul id="par">
@@ -41,14 +41,14 @@
 			</ul>
 		</form>
 	</div>
-	<a onclick="atest()" href="#">Ajax测试</a>
+	<a onclick="atest()" href="javascript:void(0)">Ajax测试</a>
 
 	<div id="resultdiv"></div>
 	<div id="errordiv"></div>
 </body>
 	<script type="text/javascript">
     function addparm(){
-    	var an ='<li>键 : <input type="text" name="key2"  /> 值 ：<input type="text" name="value2" /></li>'
+    	var an ='<li>键 : <input type="text"  /> 值 ：<input type="text" /></li>'
     	document.getElementById("par").innerHTML+=an;
 
     }

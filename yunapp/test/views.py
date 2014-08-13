@@ -17,6 +17,7 @@ UPLOAD_FOLDER = '/home/seanwu/uploads/'
 def hello_world():
     return render_template('index.html')
 
+
 @test.route('/file/upload', methods=['POST'])
 def file_upload():
     if request.method == 'POST':
@@ -24,9 +25,9 @@ def file_upload():
         if file and allowed_file(file.filename):
             filename = file.filename
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            return {"fid":"000","fname":'+filename+'}
+            return {"fid": "000", "fname": '+filename+'}
         else:
-            return {"fid":"000","errMsg":'error'}
+            return {"fid": "000", "errMsg": 'error'}
 
 
 @test.route('/<path:filename>')
@@ -36,6 +37,7 @@ def template_load(filename=None):
     else:
         print globals().keys()
         return render_template(filename)
+
 
 def allowed_file(filename):
     return '.' in filename and \
