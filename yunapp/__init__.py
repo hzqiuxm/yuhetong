@@ -9,7 +9,8 @@ from yunapps import app
 import jinja2
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,
-    jinja2.FileSystemLoader('/home/wenwu/yunhetong/yunapp/templates'),
+    jinja2.FileSystemLoader( app.root_path +
+    '/yunapp/templates'),
 ])
 app.jinja_loader = my_loader
 
