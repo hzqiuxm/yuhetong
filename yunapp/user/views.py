@@ -68,15 +68,15 @@ def namecheck():
 @user.route('/login', methods=['POST'])
 def login():
     userName = request.values['username']
-    passwd = hashlib.md5(request.values['passwd']).hexdigest()
+    passwd = hashlib.md5(request.values['password']).hexdigest()
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(userName=userName, passwd=passwd).first()
 
     if luser:
-        return_dict = {'success': True, 'errorMsg': '登陆成功' + str(luser.id)}
+        return_dict = {'success': True, 'errmsg': '登陆成功' + str(luser.id)}
         login_user(luser)
     else:
-        return_dict = {'success': False, 'errorMsg': '用户名或密码错误'}
+        return_dict = {'success': False, 'errmsg': '用户名或密码错误'}
     return jsonify(return_dict)
 
 
