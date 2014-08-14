@@ -7,4 +7,4 @@ alembic.ini
 /yunapp/config.py
 /.idea
 /yunapp/log
-#/yunapp/log_config.ini
+/yunapp/log_config.ini
