@@ -3,8 +3,8 @@
 /test
 alembic.ini
 /migration
-#/yunapp/run.py
-#/yunapp/config.py
+/yunapp/run.py
+/yunapp/config.py
 /.idea
 /yunapp/log
 #/yunapp/log_config.ini
