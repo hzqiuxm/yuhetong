@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
-import os, uuid
-from flask import Blueprint, render_template, jsonify, request, config
+import os, uuid, logging
+from flask import Blueprint, render_template, jsonify, request, send_file
 import constants
 from yunapp.orm import model
 from yunapp.orm import engine
+from yunapp.logutils import StructedMsg
+
 mod_file = Blueprint('file', __name__)
+logger = logging.getLogger('yunapp')
 
 @mod_file.route('/upload', methods=['POST'])
 def upload():
     """ Upload file
     upload from user and store on server
     """
-    file_upload = request.files['userfile']
-    print file_upload
+    file_upload = request.files['user_file']
     file_name = request.args.get('user_file_name')
     if not file_name:
-        file_name = 'empty'
+        file_name = 'empty_name'
     if file_upload and allowed_file(file_upload.filename):
         file_extention = file_upload.filename.rsplit('.', 1)[1]
-        print file_extention
         file_type = get_file_type(file_extention)
 
         fuuid = generate_file_uuid()
@@ -31,15 +32,55 @@ def upload():
                                     fpath = file_path,
                                     extension = file_extention)
             ss.add(new_file)
-        return jsonify({'fid':new_file.id})
+        return jsonify({'fid':new_file.id, 'fname': file_name})
     else:
         return jsonify({'fid':'','errMsg': constants.ERROR_CODE[
             'NOT_ALLOWED_FILE']})
 
-@mod_file.route('/get_url/<fuuid>', methods=['GET'])
-def get_url(fuuid):
+@mod_file.route('/get_static_file/<fuuid>', methods=['GET'])
+def get_static_file(fuuid):
     """ Get static file url from database
     """
+    if has_perm('user', 'fuuid'):
+        with engine.with_session() as ss:
+            static_file = ss.query(model.LxFile).filter_by(fuuid =
+                                                           fuuid).first()
+            return send_file(static_file.fpath, mimetype='image/' +
+                                                         static_file.extension)
+    else:
+        return jsonify({'fuuid':fuuid,'errMsg': constants.ERROR_CODE[
+            'NO_PERM_FOR_FILE']})
+
+
+# TODO(wenwu) get_contract should in contract model
+@mod_file.route('/get_contract/<cid>', methods=['GET'])
+def get_contract(cid):
+    """ Get static file url from database
+    """
+    if has_contract_perm('user', 'fuuid'):
+        with engine.with_session() as ss:
+            pass
+    else:
+        return jsonify({'cid':cid,'errMsg': constants.ERROR_CODE[
+            'NO_PERM_FOR_CONTRACT']})
+
+def has_contract_perm(user_id, fuuid):
+    return True
+# TODO_END
+
+# TODO(wenwu) test code for logging
+@mod_file.route('/testlog', methods=['GET'])
+def test_log():
+    logger.info(StructedMsg("hello", model=__name__))
+    return jsonify({'fid':'xxx'})
+
+@mod_file.route('/testlogbusiness', methods=['GET'])
+def test_business_log():
+    import logging
+    logger = logging.getLogger('business')
+    logger.info('business')
+    return jsonify({'fid':'xxx'})
+# TODO_END
 
 def is_contract():
     """ Check file is contract or not
@@ -80,3 +121,8 @@ def get_file_type(file_extention):
     else:
         file_type = 3
     return file_type
+
+# TODO(wenwu) check perm
+def has_perm(user_id, fuuid):
+    return True
+# TODO_END

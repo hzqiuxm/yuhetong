@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 # @author: wenwu
 
-
 from test.views import test as mod_test
 from user.views import user as mod_user
 from file.views import mod_file
 from yunapps import app
-from yunapp import utils
+from yunapp import utils, logutils
 import jinja2
+
+logutils.init_log()
+
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,
     jinja2.FileSystemLoader( app.root_path +

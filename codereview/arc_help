@@ -730,7 +730,6 @@ COMMAND REFERENCE
               Show tasks that or open or closed, default is open.
 
 
-      todo summary [options]
         Quickly create a task for yourself.
 
           --cc cc, -C cc

@@ -6,3 +6,5 @@ alembic.ini
 /yunapp/run.py
 /yunapp/config.py
 /.idea
+/yunapp/log
+#/yunapp/log_config.ini
