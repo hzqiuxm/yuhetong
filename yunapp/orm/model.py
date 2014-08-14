@@ -182,9 +182,9 @@ class Base(object):
 
 
 class LxUser(Base, UserMixin):
-    cols = ['id', 'type', 'userName', 'realName', 'passwd', 'email',
-            'phone', 'parentUserId', 'companyId', 'createTime', 'modifyTime',
-            'signId', 'status', ]
+    cols = ['id', 'type', 'username', 'real_name', 'passwd', 'email',
+            'phone', 'parent_user_id', 'company', 'create_time',
+            'modify_time', 'sign_id', 'status', ]
 
     def get_id(self):
         return self.id
@@ -194,8 +194,15 @@ class LxUser(Base, UserMixin):
 
 
 class LxFile(Base):
-    cols = ['id', 'fuuid', 'type', 'name', 'createTime', 'modifyTime', 'status', ]
+    cols = ['id', 'fuuid', 'type', 'name', 'create_time', 'modify_time',
+            'status', ]
 
+class LxCompany(Base):
+    cols = ['id', 'type', 'name', 'field1', 'field2', 'create_time',
+            'modify_time', 'status', ]
 
-orm.mapper(LxUser, db.t_lxuser)
-orm.mapper(LxFile, db.t_lxfile)
+company_mapper = orm.mapper(LxCompany, db.t_lxcompany)
+user_mapper = orm.mapper(LxUser, db.t_lxuser, properties={
+    'company': orm.relation(company_mapper)
+})
+file_mapper = orm.mapper(LxFile, db.t_lxfile)

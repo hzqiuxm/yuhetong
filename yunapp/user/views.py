@@ -27,8 +27,8 @@ def profile(uid):
 
 @user.route('/register', methods=['POST'])
 def register():
-    userName = request.values['username']
-    realName = request.values['realName']
+    username = request.values['username']
+    realname = request.values['realname']
     type = request.values['type']
     passwd = hashlib.md5(request.values['passwd']).hexdigest()
     print passwd
@@ -36,17 +36,18 @@ def register():
     phone = request.values['phone']
     # parentUserId = request.values['parentUserId']
     # companyId = request.values['companyId']
-    companyId = 1
-    parentUserId = 0
+    parent_user_id = 0
     with engine.with_session() as ss:
-        new_user = model.LxUser(userName=userName,
-                                realName=realName,
+        new_company = model.LxCompany()
+        ss.add(new_company)
+        new_user = model.LxUser(username=username,
+                                real_name=realname,
                                 type=type,
                                 passwd=passwd,
                                 email=email,
                                 phone=phone,
-                                parentUserId=parentUserId,
-                                companyId=companyId,
+                                parent_user_id=parent_user_id,
+                                company=new_company,
                                 signId=0)
         ss.add(new_user)
     return_dict = {'success': True, 'uid': new_user.id}
@@ -55,9 +56,9 @@ def register():
 
 @user.route('/namecheck', methods=['POST'])
 def namecheck():
-    userName = request.values['username']
+    username = request.values['username']
     with engine.with_session() as ss:
-        luser = ss.query(model.LxUser).filter_by(userName=userName).first()
+        luser = ss.query(model.LxUser).filter_by(username=username).first()
     if luser:
         return_dict = {'success': False, 'errorMsg': '用户名已经存在'}
     else:
@@ -67,10 +68,10 @@ def namecheck():
 
 @user.route('/login', methods=['POST'])
 def login():
-    userName = request.values['username']
+    username = request.values['username']
     passwd = hashlib.md5(request.values['password']).hexdigest()
     with engine.with_session() as ss:
-        luser = ss.query(model.LxUser).filter_by(userName=userName, passwd=passwd).first()
+        luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
 
     if luser:
         return_dict = {'success': True, 'errmsg': '登陆成功' + str(luser.id)}
