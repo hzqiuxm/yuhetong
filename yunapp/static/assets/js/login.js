@@ -107,14 +107,14 @@ var Login = function() {
                     //                        alert(data);
                     //                    }, "Json");
                     $.ajax({
-                        url: "http://192.168.1.55:5002/user/login?time=" + (new Date()).getTime(),
+                        url: "user/login?time=" + (new Date()).getTime(),
                         type: "POST",
                         data: $(".login-form").serialize(),      //这个表示将表单的内容序列化
                         dataType: "Json",
                         success: function(msg){        //data参数表示服务器传回来的数据
                             var al = $(".login-form .alert-danger");
                             var obj = eval('(' + msg + ')');
-                            console.log( obj ); 
+                            console.log( msg ); 
                             NProgress.start(); //这就是个显示进度条的
                             if (obj.success == false) {
                                 al.text(msg.items.state);
@@ -133,8 +133,7 @@ var Login = function() {
                             // this;  调用本次AJAX请求时传递的options参数
                         }
                     });
-                    
-                    
+                                        
                     return false;
                 }
             })
@@ -166,8 +165,55 @@ var Login = function() {
 			})
 		}
 	};
+	 var h = function(){
+        if ($.validator) {
+            $(".register-form").validate({
+                invalidHandler: function(i, h){
+                    NProgress.start(); //这就是个显示进度条的
+                    $(".register-form .alert-danger").show();
+                    NProgress.done()
+                },
+                submitHandler: function(h){
+                    //                    $.post("login?time=" + (new Date()).getTime(), $(".login-form").serialize(), function(data){
+                    //                        alert(data);
+                    //                    }, "Json");
+					alert($(".register-form").serialize());
+                    $.ajax({
+                        url: "user/register?time=" + (new Date()).getTime(),
+                        type: "POST",
+                        data: $(".register-form").serialize(),      //这个表示将表单的内容序列化
+                        dataType: "Json",
+                        success: function(msg){        //data参数表示服务器传回来的数据
+                            var al = $(".register-form .alert-danger");
+                            var obj = eval('(' + msg + ')');
+                            console.log( msg ); 
+                            NProgress.start(); //这就是个显示进度条的
+                            if (obj.success == false) {
+                                al.text(msg.items.state);
+                            }
+                            else if (obj.success == true){
+                                al.text(msg.items[0].uName + " 欢迎回来！");
+                            }
+							al.show();
+                            NProgress.done();
+                            window.location.href='test/index';
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown){
+                            // 通常 textStatus 和 errorThrown 之中
+ 							 	alert(textStatus + errorThrown);
+                            //alert(textStatus + errorThrown);// 只有一个会包含信息
+                            // this;  调用本次AJAX请求时传递的options参数
+                        }
+                    });
+                                        
+                    return false;
+                }
+            })
+        }
+    };
 	return {
 		init: function() {
+			h();
 			b();
 			c();
 			g();
