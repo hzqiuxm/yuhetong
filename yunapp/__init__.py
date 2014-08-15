@@ -7,6 +7,7 @@ from file.views import mod_file
 from yunapps import app
 from yunapp import utils, logutils
 import jinja2
+from flask import render_template
 
 logutils.init_log()
 
@@ -26,3 +27,7 @@ app.register_blueprint(mod_file, url_prefix='/file')
 @app.route("/sitemap.html", methods=['GET'])
 def site_map():
     return utils.show_site_map(app.url_map.iter_rules())
+
+@app.route("/index.html", methods=['GET'])
+def index():
+    return render_template("/index.html")
