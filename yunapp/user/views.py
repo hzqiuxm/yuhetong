@@ -35,6 +35,7 @@ def register():
     username = request.values['username']
     #realname = request.values['realname']
     #type = request.values['type']
+    type=1
     passwd = hashlib.md5(request.values['password']).hexdigest()
     print passwd
     email = request.values['email']
@@ -47,7 +48,7 @@ def register():
         ss.add(new_company)
         new_user = model.LxUser(username=username,
                                 # real_name=realname,
-                                # type=type,
+                                type=type,
                                 passwd=passwd,
                                 email=email,
                                 # phone=phone,
@@ -113,7 +114,7 @@ def test():
 
 
 def sent_mail(username, uemail):
-    msg = MIMEText(hashlib.md5(username).hexdigest())
+    msg ='<a href=\'http://192.168.1.55:8092/user/active/'+ MIMEText(hashlib.md5(username).hexdigest()+'\'>激活链接</a>')
     msg['Subject'] = "这是一分激活邮件"
     msg['From'] = "seanwu@yunhetong.net"
     msg['To'] = uemail
