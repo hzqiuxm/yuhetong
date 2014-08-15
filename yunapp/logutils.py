@@ -5,7 +5,6 @@ from yunapps import app
 
 def init_log():
     logging.config.fileConfig(app.root_path + '/log_config.ini')
-    # print logging.Logger.manager.loggerDict
 
 
 class Encoder(json.JSONEncoder):

@@ -126,3 +126,7 @@ def get_file_type(file_extention):
 def has_perm(user_id, fuuid):
     return True
 # TODO_END
+
+@mod_file.route('/file_html')
+def file_list():
+    return render_template('file.html')

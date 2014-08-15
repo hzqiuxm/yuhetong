@@ -18,7 +18,6 @@ def show_site_map(rules, prefix=None):
     if prefix is None:
         prefix = ''
     for url, method, name in links:
-        print prefix+url
         s.append('<tr><td>[%s]</td><td><a href="%s" target="_blank">%s</a>'\
             '</td><td>%s</td></tr>' % (method, prefix+url, cgi.escape(url), name))
 

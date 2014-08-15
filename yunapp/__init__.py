@@ -8,7 +8,7 @@ from yunapps import app
 from yunapp import utils, logutils
 import jinja2
 
-#logutils.init_log()
+logutils.init_log()
 
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,

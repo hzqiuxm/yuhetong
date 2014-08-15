@@ -1,0 +1,1 @@
+from yunapp import app as application
