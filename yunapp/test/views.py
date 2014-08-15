@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_template
-
+from flask import Blueprint, render_template, send_file, jsonify
 import os
 from flask import Flask, request, redirect, url_for
-
+from yunapp.yunapps import app
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -28,7 +27,6 @@ def file_upload():
             return {"fid": "000", "fname": '+filename+'}
         else:
             return {"fid": "000", "errMsg": 'error'}
-
 
 @test.route('/<path:filename>')
 def template_load(filename=None):
