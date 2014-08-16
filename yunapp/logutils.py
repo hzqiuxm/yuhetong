@@ -6,6 +6,9 @@ from yunapps import app
 def init_log():
     logging.config.fileConfig(app.root_path + '/log_config.ini')
 
+    app.logger.setLevel(logging.DEBUG)
+    app.logger.addHandler('console')
+
 
 class Encoder(json.JSONEncoder):
     def default(self, o):
