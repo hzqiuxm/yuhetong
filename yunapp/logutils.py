@@ -2,8 +2,10 @@
 import logging.config, json
 from yunapps import app
 
+
 def init_log():
     logging.config.fileConfig(app.root_path + '/log_config.ini')
+
 
 class Encoder(json.JSONEncoder):
     def default(self, o):
@@ -12,6 +14,7 @@ class Encoder(json.JSONEncoder):
         elif isinstance(o, unicode):
             return o.encode('unicode_escape').decode('ascii')
         return super(Encoder, self).default(o)
+
 
 class StructedMsg(object):
     def __init__(self, message, **kwargs):

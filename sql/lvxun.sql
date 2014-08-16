@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS `lxuser`;
 CREATE TABLE `lxuser` (
   `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
   `type` tinyint NOT NULL COMMENT '用户类型 先设置1',
-  `username` varchar(80) COLLATE utf8_bin NOT NULL COMMENT '用户名',
+  `username` varchar(80) COLLATE utf8_bin NOT NULL UNIQUE COMMENT '用户名',
   `real_name` varchar(80) COLLATE utf8_bin COMMENT '真实姓名',
   `passwd` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
   `email` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '用户邮箱',

@@ -190,16 +190,21 @@ class LxUser(Base, UserMixin):
         return self.id
 
     def is_active(self):
-        return True
+        if self.status > 1:
+            return True
+        else:
+            return False
 
 
 class LxFile(Base):
     cols = ['id', 'fuuid', 'type', 'name', 'create_time', 'modify_time',
             'status', ]
 
+
 class LxCompany(Base):
     cols = ['id', 'type', 'name', 'field1', 'field2', 'create_time',
             'modify_time', 'status', ]
+
 
 company_mapper = orm.mapper(LxCompany, db.t_lxcompany)
 user_mapper = orm.mapper(LxUser, db.t_lxuser, properties={
