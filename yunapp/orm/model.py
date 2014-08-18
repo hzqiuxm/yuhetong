@@ -190,10 +190,17 @@ class LxUser(Base, UserMixin):
         return self.id
 
     def is_active(self):
-        if self.status > 1:
-            return True
-        else:
-            return False
+        # if self.status > 1:
+        #     return True
+        # else:
+        #     return False
+        return True
+
+    def is_authenticated(self):
+        return True
+
+    def is_anonymous(self):
+        return False
 
 
 class LxFile(Base):

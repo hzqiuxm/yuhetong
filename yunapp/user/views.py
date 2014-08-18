@@ -5,10 +5,8 @@ from flask.ext.login import LoginManager, login_required, current_user, login_us
 from yunapp.yunapps import app
 from yunapp.orm import model, engine
 from yunapp import config
-import hashlib, time
-# 下面这两句是发邮件的
-import smtplib
-from email.mime.text import MIMEText
+import hashlib, time, re
+from yunapp import utils
 
 user = Blueprint('user', __name__)
 
@@ -19,8 +17,8 @@ login_manager.init_app(app)
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
 def load_user(user_id):
     with engine.with_session() as ss:
-        current_user = ss.query(model.LxUser).filter_by(id=user_id).first()
-    return current_user
+        c_user = ss.query(model.LxUser).filter_by(id=user_id).first()
+    return c_user
 
 
 @user.route('/<int:uid>', methods=['GET'])
@@ -32,43 +30,65 @@ def profile(uid):
 
 @user.route('/register', methods=['POST'])
 def register():
-    username = request.values['username']
-    # realname = request.values['realname']
-    # type = request.values['type']
-    type = 1
-    passwd = hashlib.md5(request.values['password']).hexdigest()
-    email = request.values['email']
-    # phone = request.values['phone']
-    # parentUserId = request.values['parentUserId']
-    # companyId = request.values['companyId']
-    parent_user_id = 0
+    if not verify_parameter(request.values):
+        return jsonify({'success': False, 'errmsg': '错误'})
+    else:
+        args = verify_parameter(request.values)
     with engine.with_session() as ss:
         new_company = model.LxCompany()
         ss.add(new_company)
-        new_user = model.LxUser(username=username,
-                                # real_name=realname,
-                                type=type,
-                                passwd=passwd,
-                                email=email,
-                                # phone=phone,
-                                parent_user_id=parent_user_id,
-                                company=new_company,
-                                signId=0)
+        new_user = model.LxUser(username=args['username'],
+                                # real_name=args['realname'],
+                                type=args['type'],
+                                passwd=args['passwd'],
+                                email=args['email'],
+                                # phone=args['phone'],
+                                parent_user_id=args['parent_user_id'],
+                                # company=args['new_company'],
+                                signId=args['signId'])
         ss.add(new_user)
-    sent_mail(username, new_user.email)
-    return_dict = {'success': True, 'uid': new_user.id}
+    e_content = get_email_content(args['username'])
+    if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=new_user.email, e_subject='这是一封激活邮件'):
+        return_dict = {'success': True, 'uid': new_user.id}
+    else:
+        return_dict = {'success': False, 'errmsg': '激活邮箱发送失败'}
     return jsonify(return_dict)
 
 
-@user.route('/active/<activecode>')
+def get_email_content(username):
+    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + hashlib.md5(
+        username+config.MD5_XXXX).hexdigest() + '\">' + 'http://192.168.1.55:8092/user/active/' + hashlib.md5(
+        username+config.MD5_XXXX).hexdigest() + '</a>'
+    return e_content
+
+
+def verify_parameter(args):
+    re_args = {}
+    pattern = re.compile(r'^[\w\d]+[\d\w\_\.]+@([\d\w]+)\.([\d\w]+)(?:\.[\d\w]+)?$')
+    if not ('username' in args.keys() and 'password' in args.keys() and 'email' in args.keys()):
+        return False
+    match = pattern.match(args['email'])
+    if not match:
+        return False
+    for k in args.keys():
+        re_args[k] = args[k]
+    re_args['type'] = 'test'
+    re_args['parent_user_id'] = 0
+    re_args['signId'] = 0
+    re_args['passwd'] = hashlib.md5(request.values['password']).hexdigest()
+    return re_args
+
+
+@user.route('/active/<activecode>', methods=['POST'])
 @login_required
 def user_active(activecode):
     if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == activecode:
         with engine.with_session() as ss:
             current_user.status = 2
-        return 'True'
+        return_dict = {'success': True, 'errorMsg': '用户已经成功激活'}
     else:
-        return 'False'
+        return_dict = {'success': False, 'errorMsg': '激活失败'}
+    return jsonify(return_dict)
 
 
 @user.route('/namecheck', methods=['POST'])
@@ -89,7 +109,6 @@ def login():
     passwd = hashlib.md5(request.values['password']).hexdigest()
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
-
     if luser:
         return_dict = {'success': True, 'errmsg': '登陆成功' + str(luser.id)}
         login_user(luser)
@@ -112,17 +131,3 @@ def test():
     return jsonify(return_dict)
 
 
-def sent_mail(username, uemail):
-    # msg = MIMEText(
-    # '<a href=\'http://192.168.1.55:8092/user/active/' + hashlib.md5(username).hexdigest() + '\'>' + hashlib.md5(
-    #         username + config.MD5_XXXX).hexdigest() + '</a>')
-
-    # msg = MIMEText('192.168.1.55:8092/user/active/' + hashlib.md5(username).hexdigest())
-    msg = MIMEText('http://www.baidu.com')
-    msg['Subject'] = '这是一封激活邮件'
-    msg['From'] = 'seanwu@yunhetong.net'
-    msg['To'] = uemail
-    s = smtplib.SMTP('smtp.mailgun.org', 587)
-    s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
-    s.sendmail(msg['From'], msg['To'], msg.as_string())
-    s.quit()
