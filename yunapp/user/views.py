@@ -7,6 +7,7 @@ from yunapp.orm import model, engine
 from yunapp import config
 import hashlib, time, re
 from yunapp import utils
+from yunapp.user import constants
 
 user = Blueprint('user', __name__)
 
@@ -105,8 +106,11 @@ def namecheck():
 
 @user.route('/login', methods=['POST'])
 def login():
-    username = request.values['username']
-    passwd = hashlib.md5(request.values['password']).hexdigest()
+    username = request.values.get('username', '')
+    passwd = request.values.get('password', '')
+    if not username or not passwd:
+        return jsonify({{'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']}})
+    passwd = hashlib.md5(passwd).hexdigest()
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
     if luser:
