@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
-## Common function  or comman constans
+# # Common function  or comman constans
 import cgi
+# 下面这三句是发邮件的
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.header import Header
+import hashlib,time
 
 def show_site_map(rules, prefix=None):
     links = []
@@ -18,8 +24,37 @@ def show_site_map(rules, prefix=None):
     if prefix is None:
         prefix = ''
     for url, method, name in links:
-        s.append('<tr><td>[%s]</td><td><a href="%s" target="_blank">%s</a>'\
-            '</td><td>%s</td></tr>' % (method, prefix+url, cgi.escape(url), name))
+        s.append('<tr><td>[%s]</td><td><a href="%s" target="_blank">%s</a>' \
+                 '</td><td>%s</td></tr>' % (method, prefix + url, cgi.escape(url), name))
 
     s.append('</table>')
     return ''.join(s)
+
+
+def sent_mail(e_content, e_from,e_to,e_subject):
+    """
+    :author:seanwu
+    :param content: 邮件内容
+    :param e_from: 发件人
+    :param e_to: 收件人
+    :param e_subject:邮件主题
+    :return:True/False
+    """
+    msg = MIMEMultipart('alternative')
+    # msg = MIMEText('http://www.baidu.com')
+    subject = '激活邮件'
+    msg["Accept-Language"] = "zh-CN"
+    msg["Accept-Charset"] = "ISO-8859-1,utf-8"
+    msg['Subject'] = Header(e_subject, 'utf-8')
+    msg['From'] = e_from
+    msg['To'] = e_to
+    # part2 = MIMEText(text, _subtype='plain', _charset='utf-8')
+    part1 = MIMEText(e_content, _subtype='html', _charset='utf-8')
+    # msg.attach(part2)
+    msg.attach(part1)
+    s = smtplib.SMTP('smtp.mailgun.org', 587)
+    s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
+    s.sendmail(msg['From'], msg['To'], msg.as_string())
+    s.quit()
+    print 'True'
+    return True

@@ -195,6 +195,12 @@ class LxUser(Base, UserMixin):
         else:
             return False
 
+    def is_authenticated(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
 
 class LxFile(Base):
     cols = ['id', 'fuuid', 'type', 'name', 'create_time', 'modify_time',
