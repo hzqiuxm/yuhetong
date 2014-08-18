@@ -11,7 +11,6 @@ from flask import render_template
 
 logutils.init_log()
 
-
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,
     jinja2.FileSystemLoader( app.root_path +

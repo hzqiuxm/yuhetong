@@ -1,35 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>大文哥的测试页面</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF8" />
+	<title>研发部的测试页面</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF8"/>
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<style type="text/css">
+    ul,li{text-decoration: none; list-style: none; margin: 0; padding: 0;}
+    li{margin: 3px 1px 3px 0px;}
+    </style>
 </head>
 <body>
-	<a onclick="atest()" href="#">Ajax测试</a>
+	<div>
+		<form>
+			<ul>
+				<li>
+					网址：
+					<input type="text" name="iurl" id="iurl" style="width:300px;" />  (url格式：192.168.1.55:5002/user/login；不用加http://)
+				</li>
+				<li>
+					<ul id="par">
+						参数  <a href="javascript:void(0);" onclick="addparm()">添加参数</a>
+						<li>
+							键 ：
+							<input type="text" name="key1" />
+							值 ：
+							<input type="text" name="valuel" />
+						</li>
+						<li>
+							键 ：
+							<input type="text" name="key2"  />
+							值 ：
+							<input type="text" name="value2" />
+						</li>
+					</ul>
+				</li>
+				<li>
+					提交方法：
+					<input type="text" name="method" id="method" />
+				</li>
+			</ul>
+		</form>
+	</div>
+	<a onclick="atest()" href="javascript:void(0)">Ajax测试</a>
+    <br/>
+    <a onclick="testlogin()" href="javascript:void(0)">登录test用户</a>
+
 	<div id="resultdiv"></div>
+	<div id="errordiv"></div>
 </body>
 	<script type="text/javascript">
-     var registerdata={}
-	function atest(){
-	$.ajax({
-		url: 'HTTP://192.168.1.55:5002/user/register',
-		type: 'POST',
-		dataType: 'Json',
-		data: {test: 'aaa'}
-	})
-	.success(function(data) {
-		$("#resultdiv").text(JSON.stringify(data));
-		console.log("success");
-	})
-	.fail(function() {
-		//console.log("error");
-	})
-	.always(function(data) {
-		console.log("complete");
-	});
-		
-	}
+    function addparm(){
+    	var an ='<li>键 : <input type="text"  /> 值 ：<input type="text" /></li>'
+    	document.getElementById("par").innerHTML+=an;
 
-</script>
-</html>
+    }
+    function getdataobj(){
+    	var par =$('#par').find('li input');
+    	var dataobj={}
+    	for(var i=0;i<par.length;i+=2){
+    		dataobj[$(par[i]).val()]=$(par[i+1]).val();
+    	}
+    	return dataobj;
+    }
+    function atest() {
+    	var dataobj=getdataobj();
+    	var iurl="http://"+$('#iurl').val();
+    	var method=$('#method').val();
+        $.ajax({
+            url: iurl,
+            type: method,
+            dataType: 'Json',
+            data: dataobj,
+            success: function(data){        //data参数表示服务器传回来的数据
+            				var res="";
+            				res+="数据发送成功...<br/>"
+            				res+=JSON.stringify(data);
+            				$('#resultdiv').html(res);
+                        },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                            // 通常 textStatus 和 errorThrown 之中
+ 							$('#errordiv').text(textStatus + errorThrown)
+                            //alert(textStatus + errorThrown);// 只有一个会包含信息
+                            // this;  调用本次AJAX请求时传递的options参数
+                        },
+            always: function(data) {
+                    //console.log("complete");
+                }
+        });
+
+    }
+    function testlogin(){
+        var user = 'test';
+        var passwd = 'passwd';
+        $.ajax({
+            url: 'http://yunhetong.com:8090/user/login',
+            type: 'POST',
+            dataType: 'Json',
+            data: {
+                'username': 'lxTest',
+                'password': 'lxTest'
+            },
+            success: function(data){        //data参数表示服务器传回来的数据
+            				var res = JSON.stringify(data);
+            				$('#resultdiv').html(res);
+                        },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+ 							$('#errordiv').text(textStatus + errorThrown)
+                        },
+            always: function(data) {
+                    console.log("complete");
+                }
+        });
+
+    }
+
+</script></html>
