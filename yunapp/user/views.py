@@ -33,13 +33,12 @@ def profile(uid):
 @user.route('/register', methods=['POST'])
 def register():
     username = request.values['username']
-    #realname = request.values['realname']
-    #type = request.values['type']
-    type=1
+    # realname = request.values['realname']
+    # type = request.values['type']
+    type = 1
     passwd = hashlib.md5(request.values['password']).hexdigest()
-    print passwd
     email = request.values['email']
-    #phone = request.values['phone']
+    # phone = request.values['phone']
     # parentUserId = request.values['parentUserId']
     # companyId = request.values['companyId']
     parent_user_id = 0
@@ -64,7 +63,7 @@ def register():
 @user.route('/active/<activecode>')
 @login_required
 def user_active(activecode):
-    if hashlib.md5(current_user.username+config.MD5_XXXX).hexdigest() == activecode:
+    if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == activecode:
         with engine.with_session() as ss:
             current_user.status = 2
         return 'True'
@@ -114,9 +113,14 @@ def test():
 
 
 def sent_mail(username, uemail):
-    msg ='<a href=\'http://192.168.1.55:8092/user/active/'+ MIMEText(hashlib.md5(username).hexdigest()+'\'>激活链接</a>')
-    msg['Subject'] = "这是一分激活邮件"
-    msg['From'] = "seanwu@yunhetong.net"
+    # msg = MIMEText(
+    # '<a href=\'http://192.168.1.55:8092/user/active/' + hashlib.md5(username).hexdigest() + '\'>' + hashlib.md5(
+    #         username + config.MD5_XXXX).hexdigest() + '</a>')
+
+    # msg = MIMEText('192.168.1.55:8092/user/active/' + hashlib.md5(username).hexdigest())
+    msg = MIMEText('http://www.baidu.com')
+    msg['Subject'] = '这是一封激活邮件'
+    msg['From'] = 'seanwu@yunhetong.net'
     msg['To'] = uemail
     s = smtplib.SMTP('smtp.mailgun.org', 587)
     s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
