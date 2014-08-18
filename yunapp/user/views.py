@@ -64,11 +64,11 @@ def get_email_content(username):
 
 def verify_parameter(args):
     re_args = {}
-    pattern = re.compile(r'^[\w\d]+[\d\w\_\.]+@([\d\w]+)\.([\d\w]+)(?:\.[\d\w]+)?$')
+    pattern_email = re.compile(r'^[\w\d]+[\d\w\_\.]+@([\d\w]+)\.([\d\w]+)(?:\.[\d\w]+)?$')  #邮件的正则
     if not ('username' in args.keys() and 'password' in args.keys() and 'email' in args.keys()):
         return False
-    match = pattern.match(args['email'])
-    if not match:
+    match_email = pattern_email.match(args['email'])
+    if not match_email:
         return False
     for k in args.keys():
         re_args[k] = args[k]
