@@ -190,11 +190,10 @@ class LxUser(Base, UserMixin):
         return self.id
 
     def is_active(self):
-        # if self.status > 1:
-        #     return True
-        # else:
-        #     return False
-        return True
+        if self.status > 1:
+            return True
+        else:
+            return False
 
     def is_authenticated(self):
         return True
