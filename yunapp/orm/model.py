@@ -201,19 +201,26 @@ class LxUser(Base, UserMixin):
     def is_anonymous(self):
         return False
 
-
-class LxFile(Base):
-    cols = ['id', 'fuuid', 'type', 'name', 'create_time', 'modify_time',
-            'status', ]
-
-
 class LxCompany(Base):
     cols = ['id', 'type', 'name', 'field1', 'field2', 'create_time',
             'modify_time', 'status', ]
-
 
 company_mapper = orm.mapper(LxCompany, db.t_lxcompany)
 user_mapper = orm.mapper(LxUser, db.t_lxuser, properties={
     'company': orm.relation(company_mapper)
 })
+
+class LxFile(Base):
+    cols = ['id', 'fuuid', 'type', 'name', 'create_time', 'modify_time',
+            'status', ]
 file_mapper = orm.mapper(LxFile, db.t_lxfile)
+
+class LxTempType(Base):
+    cols = ['id', 'name', 'level', 'parent', 'create_time', 'modify_time',
+            'status']
+temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype)
+
+class LxTemplate(Base):
+    cols = ['id', 'name', 'type_id', 'parent', 'create_time', 'modify_time',
+            'status']
+temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype)

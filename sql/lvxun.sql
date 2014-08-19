@@ -97,6 +97,38 @@ CREATE TABLE `lxfile` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';
 
+-- ----------------------------
+-- Table structure for `lxtemptype`
+-- ----------------------------
+DROP TABLE IF EXISTS `lxtemptype`;
+CREATE TABLE `lxtemptype` (
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
+  `name` varchar(64)  NOT NULL  COMMENT '模版名称',
+  `level` tinyint NOT NULL COMMENT '模版类型层级（0，1，2）三级',
+  `parent` int(16) NOT NULL COMMENT '父模版类型',
+  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `status` tinyint DEFAULT NULL COMMENT '文件状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='模版类型表';
+
+-- ----------------------------
+-- Table structure for `lxtemplate`
+-- ----------------------------
+DROP TABLE IF EXISTS `lxtemplate`;
+CREATE TABLE `lxtemplate` (
+  `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
+  `name` varchar(64)  NOT NULL  COMMENT '模版名称',
+  `type_id` tinyint NOT NULL COMMENT '模板类型',
+  `owner_id` int(16)  NOT NULL default 0 COMMENT '模版所有者',
+  `content` text  COMMENT '模版内容',
+  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `status` tinyint DEFAULT NULL COMMENT '模版状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';
+
 
 INSERT INTO wenwu_test.lxuser ( type, username, real_name, passwd, email, phone, parent_user_id, company_id, create_time, modify_time, sign_id, status) VALUES ( '1', 'sampleUser', 'test', '1', 'account@yunhetong.com', '1234567', 1, 1, '2014-08-12 15:19:48.0', '2014-08-12 15:19:52.0', 1, 1);
 INSERT INTO wenwu_test.lxcompany ( type, name, field1, field2, field3, create_time, modify_time, status) VALUES ('1', 'test', '11', '22', '33', '2014-08-12 15:24:40.0', '2014-08-12 15:24:43.0', '1');
+

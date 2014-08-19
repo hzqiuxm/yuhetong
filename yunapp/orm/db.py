@@ -6,6 +6,8 @@ from sqlalchemy.dialects.mysql import BIGINT, TIMESTAMP, TEXT, TINYINT, \
     VARCHAR, INTEGER
 import time
 
+current_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+
 _metadata = None
 
 if not _metadata:
@@ -48,8 +50,31 @@ t_lxfile = Table('lxfile', _metadata,
                  Column('extension', VARCHAR(8)),
                  Column('fpath', VARCHAR(256)),
                  Column('status', TINYINT),
-                 Column('create_time', TIMESTAMP),
-                 Column('modify_time', TIMESTAMP),
+                 Column('create_time', TIMESTAMP, nullable=False,default=current_time),
+                 Column('modify_time', TIMESTAMP, nullable=False,default=current_time),
                  mysql_engine='InnoDB',
 )
 
+
+t_lxtemptype = Table('lxtemptype', _metadata,
+                 Column('id', INTEGER, primary_key=True),
+                 Column('name', VARCHAR(64)),
+                 Column('level', TINYINT),
+                 Column('parent', INTEGER),
+                 Column('status', TINYINT),
+                 Column('create_time', TIMESTAMP, nullable=False,default=current_time),
+                 Column('modify_time', TIMESTAMP, nullable=False,default=current_time),
+                 mysql_engine='InnoDB',
+)
+
+t_lxtemplate = Table('lxtemplate', _metadata,
+                 Column('id', INTEGER, primary_key=True),
+                 Column('name', VARCHAR(64)),
+                 Column('type_id', INTEGER),
+                 Column('owner_id', INTEGER),
+                 Column('content', TEXT),
+                 Column('status', TINYINT),
+                 Column('create_time', TIMESTAMP, nullable=False,default=current_time),
+                 Column('modify_time', TIMESTAMP, nullable=False,default=current_time),
+                 mysql_engine='InnoDB',
+)
