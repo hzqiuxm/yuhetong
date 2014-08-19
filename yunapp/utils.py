@@ -59,5 +59,5 @@ def sent_mail(e_content, e_from,e_to,e_subject):
     s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
-    business_logger.info('/n send email: /n To'+e_to+'/n From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
+    # business_logger.info('/n send email: /n To'+e_to+'/n From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
     return True

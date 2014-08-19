@@ -223,4 +223,4 @@ temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype)
 class LxTemplate(Base):
     cols = ['id', 'name', 'type_id', 'parent', 'create_time', 'modify_time',
             'status']
-temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype)
+template_mapper = orm.mapper(LxTemplate, db.t_lxtemplate)
