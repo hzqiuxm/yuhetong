@@ -109,7 +109,7 @@ def login():
     username = request.values.get('username', '')
     passwd = request.values.get('password', '')
     if not username or not passwd:
-        return jsonify({{'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']}})
+        return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']})
     passwd = hashlib.md5(passwd).hexdigest()
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
