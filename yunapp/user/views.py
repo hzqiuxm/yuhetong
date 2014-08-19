@@ -10,14 +10,12 @@ from yunapp import utils
 from yunapp.user import constants
 from yunapp.logutils import StructedMsg
 
-
 user = Blueprint('user', __name__)
 app_logger = logging.getLogger('yunapp')
 business_logger = logging.getLogger('business')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
 
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
 def load_user(user_id):
@@ -48,7 +46,7 @@ def register():
                                 email=args['email'],
                                 # phone=args['phone'],
                                 parent_user_id=args['parent_user_id'],
-                                # company=args['new_company'],
+                                company=new_company,
                                 signId=args['signId'])
         ss.add(new_user)
     e_content = get_email_content(args['username'])
@@ -56,7 +54,7 @@ def register():
         return_dict = {'success': True, 'uid': new_user.id}
     else:
         return_dict = {'success': False, 'errmsg': '激活邮箱发送失败'}
-    business_logger.info('new user '+new_user.username+'register,userid='+new_user.id)
+    # business_logger.info('new user '+new_user.username+'register,userid='+new_user.id)
     return jsonify(return_dict)
 
 
