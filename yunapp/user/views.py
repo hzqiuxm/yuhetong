@@ -138,7 +138,7 @@ def login():
 def logout():
     logout_user()
     return_dict = {'success': True, 'errorMsg': 'no'}
-    business_logger.info('new user '+current_user.username+'register,userid='+current_user.id+'logout now')
+    business_logger.info('new user '+current_user.username+'register,userid='+current_user.id+'logout')
     return jsonify(return_dict)
 
 
