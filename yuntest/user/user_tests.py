@@ -3,18 +3,19 @@ import unittest
 import tempfile
 from yunapp import app
 
-class TestUser(unittest.TestCase):
 
+class TestUser(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
 
     def tearDown(self):
         pass
 
-    def register(self, username, password):
+    def register(self, username, password, email):
         return self.app.post('/user/register', data=dict(
             username=username,
-            password=password
+            password=password,
+            email=email
         ), follow_redirects=True)
 
     def login(self, username, password):
@@ -40,11 +41,28 @@ class TestUser(unittest.TestCase):
         rv = self.login('admin', 'wrong passwd')
         assert 'false' in rv.data
         # test success cond
-        rv = self.login('test', 'lxTest')
+        rv = self.login('test85', 'test85')
         assert 'true' in rv.data
 
-
-
+    def test_register(self):
+        # test no username
+        rv = self.register('', 'test200', 'wuxuewen@163.com')
+        assert 'false' in rv.data
+        # test no password
+        rv = self.register('test200', '', 'wuxuewen@163.com')
+        assert 'false' in rv.data
+        # test no email
+        rv = self.register('test200', 'test200', '')
+        assert 'false' in rv.data
+        # test email type error
+        rv = self.register('test200', 'test200', 'wuxuewen#163.com')
+        assert 'false' in rv.data
+        # test username type error
+        rv = self.register('test!@#$200', 'test200', 'wuxuewen@163.com')
+        assert 'false' in rv.data
+        # test success cond
+        rv = self.register('test200@test.com', 'test200', 'wuxuewen@163.com')
+        assert 'true' in rv.data
 
 
 if __name__ == '__main__':
