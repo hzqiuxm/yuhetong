@@ -2,11 +2,14 @@
 # # Common function  or comman constans
 import cgi
 # 下面这三句是发邮件的
-import smtplib
+import smtplib,logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
 import hashlib,time
+
+app_logger = logging.getLogger('yunapp')
+business_logger = logging.getLogger('business')
 
 def show_site_map(rules, prefix=None):
     links = []
@@ -56,5 +59,5 @@ def sent_mail(e_content, e_from,e_to,e_subject):
     s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     s.quit()
-    print 'True'
+    business_logger.info('/n send email: /n To'+e_to+'/n From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
     return True
