@@ -7,7 +7,8 @@ from yunapp.orm import engine
 from yunapp.logutils import StructedMsg
 
 mod_file = Blueprint('file', __name__)
-logger = logging.getLogger('yunapp')
+app_logger = logging.getLogger('yunapp')
+biz_logger = logging.getLogger('business')
 
 @mod_file.route('/upload', methods=['POST'])
 def upload():
@@ -71,14 +72,12 @@ def has_contract_perm(user_id, fuuid):
 # TODO(wenwu) test code for logging
 @mod_file.route('/testlog', methods=['GET'])
 def test_log():
-    logger.info(StructedMsg("hello", model=__name__))
+    app_logger.info(StructedMsg("log msg", model=__name__))
     return jsonify({'fid':'xxx'})
 
 @mod_file.route('/testlogbusiness', methods=['GET'])
 def test_business_log():
-    import logging
-    logger = logging.getLogger('business')
-    logger.info('business')
+    biz_logger.info('business')
     return jsonify({'fid':'xxx'})
 # TODO_END
 
