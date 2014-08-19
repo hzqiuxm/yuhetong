@@ -8,7 +8,6 @@ class TestUser(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
 
-
     def tearDown(self):
         pass
 
@@ -42,7 +41,7 @@ class TestUser(unittest.TestCase):
         assert 'false' in rv.data
         # test success cond
         rv = self.login('test', 'lxTest')
-        assert 'false' in rv.data
+        assert 'true' in rv.data
 
 
 
