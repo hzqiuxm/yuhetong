@@ -130,20 +130,28 @@ def get_template(tid):
 
 @template.route('/templates', methods=['GET'])
 def get_templates():
-    filter_dict = dict()
-    filter_dict['type_id'] = request.values.get('template_type_id', '')
-    filter_dict['name'] = request.values.get('search_key', '')
+    filter_dict = dict(status = 1)
+    if 'template_type_id' in request.values:
+        filter_dict['type_id'] = request.values.get('template_type_id', '')
+    search_key = None
+    if 'search_key' in request.values:
+        search_key = request.values.get('search_key', '')
     with engine.with_session() as ss:
-        templ = ss.query(model.LxTemplate)
-        if templ is None:
-            return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE']})
-        templ = templ.serialize()
-        templ.pop('gmt_modify')
-        templ.pop('gmt_create')
-        templ.pop('type')
-        templ.pop('owner')
-        return jsonify({'success':True, 'data': templ})
+        templates = ss.query(model.LxTemplate).filter_by(**filter_dict)
+        if search_key:
+            templates = templates.filter(
+                model.LxTemplate.name.like('%' + search_key +'%'))
+    templ_list = []
+    for templ in templates:
+        templ_item = templ.serialize()
+        templ_item.pop('gmt_modify')
+        templ_item.pop('gmt_create')
+        templ_item.pop('type')
+        # templ_type = templ_item.pop('type')
+        # templ_item['type_id'] = templ_type.id
+        templ_item.pop('owner')
+        templ_list.append(templ_item)
+    return jsonify({'success':True, 'data': templ_list})
 
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):

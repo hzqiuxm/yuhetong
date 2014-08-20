@@ -50,7 +50,7 @@ class TestTemplate(unittest.TestCase):
         return json.loads(rv.data)
 
     def get_templates(self):
-        rv = self.app.get('/ctemplate/' + str(template_id),
+        rv = self.app.get('/ctemplate/templates',
                             follow_redirects=True)
         if rv.status_code != 200:
             print 'delete template status_code error' + rv.status_code
@@ -114,7 +114,7 @@ class TestTemplate(unittest.TestCase):
         if add_result is None:
             raise AssertionError
 
-        get_result = self.get_templates(add_result.get('data'))
+        get_result = self.get_templates()
         if get_result is None:
             raise AssertionError
         self.assertEqual(get_result.get('success'), True)
