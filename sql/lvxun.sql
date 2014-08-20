@@ -31,7 +31,7 @@ CREATE TABLE `lxuser` (
   `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '用户创建时间',
   `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `sign_id` int(16) DEFAULT NULL COMMENT '用户签名Id',
-  `status` tinyint  DEFAULT NULL COMMENT '用户状态',
+  `status` tinyint  DEFAULT 1 COMMENT '用户状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户表';
 
@@ -48,7 +48,7 @@ CREATE TABLE `lxcompany` (
   `field3` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
   `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` tinyint  DEFAULT NULL COMMENT '文件状态',
+  `status` tinyint  DEFAULT 1 COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='公司表';
 
@@ -76,7 +76,7 @@ CREATE TABLE `lxcontract` (
   `fixed_fid` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '合同确定稿版本对应的fid',
   `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` tinyint  DEFAULT NULL COMMENT '合同状态',
+  `status` tinyint  DEFAULT 1 COMMENT '合同状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='合同表';
 
@@ -93,7 +93,7 @@ CREATE TABLE `lxfile` (
   `fpath` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '文件路径',
   `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` tinyint DEFAULT NULL COMMENT '文件状态',
+  `status` tinyint DEFAULT 1 COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';
 
@@ -105,10 +105,10 @@ CREATE TABLE `lxtemptype` (
   `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
   `name` varchar(64)  NOT NULL  COMMENT '模版名称',
   `level` tinyint NOT NULL COMMENT '模版类型层级（0，1，2）三级',
-  `parent` int(16) NOT NULL COMMENT '父模版类型',
+  `parent_id` int(16) COMMENT '父模版类型',
   `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` tinyint DEFAULT NULL COMMENT '文件状态',
+  `status` tinyint DEFAULT 1 COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='模版类型表';
 
@@ -120,11 +120,11 @@ CREATE TABLE `lxtemplate` (
   `id` int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
   `name` varchar(64)  NOT NULL  COMMENT '模版名称',
   `type_id` tinyint NOT NULL COMMENT '模板类型',
-  `owner_id` int(16)  NOT NULL default 0 COMMENT '模版所有者',
+  `owner_id` int(16)   COMMENT '模版所有者',
   `content` text  COMMENT '模版内容',
   `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
   `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  `status` tinyint DEFAULT NULL COMMENT '模版状态',
+  `status` tinyint DEFAULT 1 COMMENT '模版状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';
 
