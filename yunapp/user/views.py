@@ -54,7 +54,7 @@ def register():
     if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=new_user.email, e_subject='这是一封激活邮件'):
         return_dict = {'success': True, 'uid': new_user.id}
     else:
-        return_dict = {'success': False, 'errmsg': '激活邮箱发送失败'}
+        return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
     # business_logger.info('new user '+new_user.username+'register,userid='+new_user.id)
     return jsonify(return_dict)
 
@@ -77,11 +77,11 @@ def verify_parameter(args):
     match_email = pattern_email.match(args['email'])
     match_username = pattern_username.match(args['username'])
     if not match_email:
-        return {'success': False, 'errmsg': '邮箱格式错误'}
+        return {'success': False, 'errmsg': constants.ERROR_CODE['EMAIL_FORMAT_ERROR']}
     if not match_username:
-        return {'success': False, 'errmsg': '用户名格式错误'}
+        return {'success': False, 'errmsg': constants.ERROR_CODE['USER_FORMAT_ERROR']}
     if not args['password']:
-        return {'success': False, 'errmsg': '密码不能为空'}
+        return {'success': False, 'errmsg': constants.ERROR_CODE['PASSWORD_NULL_ERROR']}
     for k in args.keys():
         re_args[k] = args[k]
     re_args['type'] = '0'
@@ -101,7 +101,7 @@ def user_active(activecode):
             'user ' + current_user.username + 'register,userid=' + str(current_user.id) + 'atcive success')
         return_dict = {'success': True, 'errorMsg': '用户已经成功激活'}
     else:
-        return_dict = {'success': False, 'errorMsg': '激活失败'}
+        return_dict = {'success': False, 'errorMsg': constants.ERROR_CODE['ACTIVE_FAILD']}
     return jsonify(return_dict)
 
 
@@ -111,7 +111,7 @@ def namecheck():
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username).first()
     if luser:
-        return_dict = {'success': False, 'errorMsg': '用户名已经存在'}
+        return_dict = {'success': False, 'errorMsg': constants.ERROR_CODE['USERNAME_EXISTS_ERROR']}
     else:
         return_dict = {'success': True, 'errorMsg': ''}
     return jsonify(return_dict)
@@ -131,7 +131,7 @@ def login():
             business_logger.info('new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
             login_user(luser)
         else:
-            return_dict = {'success': False, 'errmsg': '用户名或密码错误'}
+            return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_OR_PASS_ERROR']}
     return jsonify(return_dict)
 
 
@@ -149,11 +149,11 @@ def logout():
 def del_user(uid):
     # uid = request.values.get('uid', '')
     if not uid:
-        return jsonify({'success': False, 'errmsg': 'uid为空'})
+        return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['UID_EMPTY_ERROR']})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
         if not c_user:
-            return jsonify({'success': False, 'errmsg': '不存在该用户'})
+            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
         if c_user.parent_user_id == 0:
             c_com = ss.query(model.LxCompany).filter_by(id=c_user.id).first()
             if c_com:
@@ -173,7 +173,7 @@ def update_user():
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
         if not c_user:
-            return jsonify({'success': False, 'errmsg': '不存在该用户'})
+            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
         c_user.type = request.values.get('type', c_user.type)
         # username= request.values.get('username',c_user.username)  用户名不给改
         c_user.real_name = request.values.get('real_name', c_user.real_name)
