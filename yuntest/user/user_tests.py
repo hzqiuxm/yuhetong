@@ -39,25 +39,25 @@ class TestUser(unittest.TestCase):
             phone=phone), follow_redirects=True)
 
 
-    def test_register(self):
-        # test no username
-        rv = self.register('', 'test200', 'wuxuewen@163.com')
-        assert 'false' in rv.data
-        # test no password
-        rv = self.register('test200', '', 'wuxuewen@163.com')
-        assert 'false' in rv.data
-        # test no email
-        rv = self.register('test200', 'test200', '')
-        assert 'false' in rv.data
-        # test email type error
-        rv = self.register('test200', 'test200', 'wuxuewen#163.com')
-        assert 'false' in rv.data
-        # test username type error
-        rv = self.register('test!@#$200', 'test200', 'wuxuewen@163.com')
-        assert 'false' in rv.data
-        # test success cond
-        rv = self.register('test104@test.com', 'test104', 'wuxuewen@163.com')
-        assert 'true' in rv.data
+    # def test_register(self):
+    #     # test no username
+    #     rv = self.register('', 'test200', 'wuxuewen@163.com')
+    #     assert 'false' in rv.data
+    #     # test no password
+    #     rv = self.register('test200', '', 'wuxuewen@163.com')
+    #     assert 'false' in rv.data
+    #     # test no email
+    #     rv = self.register('test200', 'test200', '')
+    #     assert 'false' in rv.data
+    #     # test email type error
+    #     rv = self.register('test200', 'test200', 'wuxuewen#163.com')
+    #     assert 'false' in rv.data
+    #     # test username type error
+    #     rv = self.register('test!@#$200', 'test200', 'wuxuewen@163.com')
+    #     assert 'false' in rv.data
+    #     # test success cond
+    #     rv = self.register('test104@test.com', 'test104', 'wuxuewen@163.com')
+    #     assert 'true' in rv.data
 
     def test_login_logout(self):
         # test no password

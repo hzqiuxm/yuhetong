@@ -144,10 +144,10 @@ def logout():
     return jsonify(return_dict)
 
 
-@user.route("/del", methods=['POST'])
+@user.route("/del/<uid>", methods=['DELETE'])
 # @login_required
-def del_user():
-    uid = request.values.get('uid', '')
+def del_user(uid):
+    # uid = request.values.get('uid', '')
     if not uid:
         return jsonify({'success': False, 'errmsg': 'uid为空'})
     with engine.with_session() as ss:
@@ -164,7 +164,7 @@ def del_user():
     return jsonify(return_dict)
 
 
-@user.route("/update", methods=['POST'])
+@user.route("/update", methods=['PUT'])
 #@login_required
 def update_user():
     uid = request.values.get('uid', '')
