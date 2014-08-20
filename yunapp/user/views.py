@@ -17,6 +17,7 @@ business_logger = logging.getLogger('business')
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
 def load_user(user_id):
     with engine.with_session() as ss:
@@ -69,7 +70,9 @@ def verify_parameter(args):
     re_args = {}
     pattern_email = re.compile(r'^[\w\d]+[\d\w\_\.]+@([\d\w]+)\.([\d\w]+)(?:\.[\d\w]+)?$')  # 邮件的正则
     pattern_username = re.compile(r'^[\w\d]+[\d\w\_\.]+@([\d\w]+)\.([\d\w]+)(?:\.[\d\w]+)?$')  # 用户名的正则，跟邮箱一样
-    if not ('username' in args.keys() and 'password' in args.keys() and 'email' in args.keys()):
+    if not ('username' in args.keys()
+            and 'password' in args.keys()
+            and 'email' in args.keys()):
         return False
     match_email = pattern_email.match(args['email'])
     match_username = pattern_username.match(args['username'])
@@ -94,7 +97,8 @@ def user_active(activecode):
     if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == activecode:
         with engine.with_session() as ss:
             current_user.status = 2
-        business_logger.info('user '+current_user.username+'register,userid='+current_user.id+'atcive success')
+        business_logger.info(
+            'user ' + current_user.username + 'register,userid=' + str(current_user.id) + 'atcive success')
         return_dict = {'success': True, 'errorMsg': '用户已经成功激活'}
     else:
         return_dict = {'success': False, 'errorMsg': '激活失败'}
@@ -122,21 +126,62 @@ def login():
     passwd = hashlib.md5(passwd).hexdigest()
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
-    if luser:
-        return_dict = {'success': True, 'errmsg': '登陆成功' + str(luser.id)}
-        login_user(luser)
-        business_logger.info('new user '+current_user.username+'register,userid='+current_user.id+'is loginning')
-    else:
-        return_dict = {'success': False, 'errmsg': '用户名或密码错误'}
+        if luser:
+            return_dict = {'success': True, 'errmsg': '登陆成功' + str(luser.id)}
+            business_logger.info('new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
+            login_user(luser)
+        else:
+            return_dict = {'success': False, 'errmsg': '用户名或密码错误'}
     return jsonify(return_dict)
 
 
-@app.route("/logout")
+@user.route("/logout")
 @login_required
 def logout():
+    business_logger.info('new user ' + current_user.username + 'register,userid=' + str(current_user.id) + 'logout')
     logout_user()
     return_dict = {'success': True, 'errorMsg': 'no'}
-    business_logger.info('new user '+current_user.username+'register,userid='+current_user.id+'logout')
+    return jsonify(return_dict)
+
+
+@user.route("/del", methods=['POST'])
+# @login_required
+def del_user():
+    uid = request.values.get('uid', '')
+    if not uid:
+        return jsonify({'success': False, 'errmsg': 'uid为空'})
+    with engine.with_session() as ss:
+        c_user = ss.query(model.LxUser).filter_by(id=uid).first()
+        if not c_user:
+            return jsonify({'success': False, 'errmsg': '不存在该用户'})
+        if c_user.parent_user_id == 0:
+            c_com = ss.query(model.LxCompany).filter_by(id=c_user.id).first()
+            if c_com:
+                c_com.status = -1
+        c_user.status = -1
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(c_user.id) + 'is deleted')
+    return jsonify(return_dict)
+
+
+@user.route("/update", methods=['POST'])
+#@login_required
+def update_user():
+    uid = request.values.get('uid', '')
+    if not uid:
+        return jsonify({'success': False, 'errmsg': 'uid为空'})
+    with engine.with_session() as ss:
+        c_user = ss.query(model.LxUser).filter_by(id=uid).first()
+        if not c_user:
+            return jsonify({'success': False, 'errmsg': '不存在该用户'})
+        c_user.type = request.values.get('type', c_user.type)
+        # username= request.values.get('username',c_user.username)  用户名不给改
+        c_user.real_name = request.values.get('real_name', c_user.real_name)
+        # c_user.email = request.values.get('email', c_user.email)
+        c_user.phone = request.values.get('phone', c_user.phone)
+        c_user.modify_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(c_user.id) + 'has been update')
     return jsonify(return_dict)
 
 
