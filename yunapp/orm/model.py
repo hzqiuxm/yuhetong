@@ -183,13 +183,13 @@ class Base(object):
 
 class LxUser(Base, UserMixin):
     cols = ['id', 'type', 'username', 'real_name', 'passwd', 'email',
-            'phone', 'parent_user_id', 'company', 'create_time',
-            'modify_time', 'sign_id', 'status', ]
+            'phone', 'parent_user_id', 'company', 'gmt_create',
+            'gmt_modify', 'sign_id', 'status', ]
 
 
 class LxCompany(Base):
-    cols = ['id', 'type', 'name', 'field1', 'field2', 'create_time',
-            'modify_time', 'status', ]
+    cols = ['id', 'type', 'name', 'field1', 'field2', 'gmt_create',
+            'gmt_modify', 'status', ]
 
 company_mapper = orm.mapper(LxCompany, db.t_lxcompany)
 user_mapper = orm.mapper(LxUser, db.t_lxuser, properties={
@@ -197,16 +197,21 @@ user_mapper = orm.mapper(LxUser, db.t_lxuser, properties={
 })
 
 class LxFile(Base):
-    cols = ['id', 'fuuid', 'type', 'name', 'create_time', 'modify_time',
+    cols = ['id', 'fuuid', 'type', 'name', 'gmt_create', 'gmt_modify',
             'status', ]
 file_mapper = orm.mapper(LxFile, db.t_lxfile)
 
 class LxTempType(Base):
-    cols = ['id', 'name', 'level', 'parent', 'create_time', 'modify_time',
+    cols = ['id', 'name', 'level', 'parent', 'gmt_create', 'gmt_modify',
             'status']
-temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype)
 
+temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype, properties={
+    'parent': orm.relation(LxTempType, remote_side=db.t_lxtemptype.columns.get('id'))
+})
 class LxTemplate(Base):
-    cols = ['id', 'name', 'type_id', 'parent', 'create_time', 'modify_time',
-            'status']
-template_mapper = orm.mapper(LxTemplate, db.t_lxtemplate)
+    cols = ['id', 'name', 'type', 'owner', 'content', 'gmt_create',
+            'gmt_modify', 'status']
+template_mapper = orm.mapper(LxTemplate, db.t_lxtemplate, properties={
+    'type': orm.relation(LxTempType, remote_side=db.t_lxtemptype.columns.get('id')),
+    'owner': orm.relation(LxUser, remote_side=db.t_lxuser.columns.get('id'))
+})

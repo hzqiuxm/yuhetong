@@ -78,6 +78,19 @@ def get_template_types():
         type_list.append(t_type)
     return jsonify({'success':True, 'data':type_list})
 
+@template.route('/check_template_name', methods=['GET'])
+def check_template_name():
+    t_name = request.values.get('template_name', '')
+    if not t_name:
+        return jsonify(dict(success=False, errorMsg=constants.ERROR_CODE[
+            'PARAM_NOT_ENOUGH']))
+    with engine.with_session() as ss:
+        templ = ss.query(model.LxTemplate).filter_by(name=t_name).first()
+        if templ is None:
+            return jsonify(dict(success=True, data=True))
+        else:
+            return jsonify(dict(success=True, data=False))
+
 @template.route('/templates', methods=['POST'])
 def add_template():
     param_check_result = check_new_template_param(request.values)
@@ -95,7 +108,8 @@ def add_template():
         new_template = model.LxTemplate(
             name = t_name,
             type = t_type,
-            content = t_content
+            content = t_content,
+            status = 1
         )
         ss.add(new_template)
     return jsonify({'success':True, 'data':new_template.id})
@@ -114,6 +128,23 @@ def get_template(tid):
         templ.pop('owner')
         return jsonify({'success':True, 'data': templ})
 
+@template.route('/templates', methods=['GET'])
+def get_templates():
+    filter_dict = dict()
+    filter_dict['type_id'] = request.values.get('template_type_id', '')
+    filter_dict['name'] = request.values.get('search_key', '')
+    with engine.with_session() as ss:
+        templ = ss.query(model.LxTemplate)
+        if templ is None:
+            return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
+            'NO_SUCH_TEMPLATE']})
+        templ = templ.serialize()
+        templ.pop('gmt_modify')
+        templ.pop('gmt_create')
+        templ.pop('type')
+        templ.pop('owner')
+        return jsonify({'success':True, 'data': templ})
+
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):
     with engine.with_session() as ss:
@@ -122,7 +153,7 @@ def del_template(tid):
             return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
             'NO_SUCH_TEMPLATE']})
         templ.update(dict(status=-1))
-        return jsonify({'success':True, 'data': templ})
+        return jsonify({'success':True, 'data': templ.id})
 
 @template.route('/<int:tid>', methods=['PUT'])
 def update_template(tid):
