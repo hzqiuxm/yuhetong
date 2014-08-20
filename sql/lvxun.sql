@@ -28,8 +28,8 @@ CREATE TABLE `lxuser` (
   `parent_user_id` int(16)  default 0 COMMENT '主账户id,
   子账户具有的属性，有该属性表示是子账户',
   `company_id` int(16)  default 0 COMMENT '对应的公司id',
-  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '用户创建时间',
-  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '用户创建时间',
+  `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `sign_id` int(16) DEFAULT NULL COMMENT '用户签名Id',
   `status` tinyint  DEFAULT NULL COMMENT '用户状态',
   PRIMARY KEY (`id`)
@@ -46,8 +46,8 @@ CREATE TABLE `lxcompany` (
   `field1` varchar(80) COLLATE utf8_bin COMMENT '公司认证信息字段',
   `field2` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
   `field3` varchar(80) COLLATE utf8_bin COMMENT '公司证信息字段',
-  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` tinyint  DEFAULT NULL COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='公司表';
@@ -74,8 +74,8 @@ CREATE TABLE `lxcontract` (
   `issued_fid4` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '合同正式稿版本4 对应的fid',
   `issued_fid5` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '合同正式稿版本5 对应的fid',
   `fixed_fid` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '合同确定稿版本对应的fid',
-  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` tinyint  DEFAULT NULL COMMENT '合同状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='合同表';
@@ -91,8 +91,8 @@ CREATE TABLE `lxfile` (
   `name` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '文件名称',
   `extension` varchar(8) COLLATE utf8_bin NOT NULL COMMENT '文件扩展名',
   `fpath` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '文件路径',
-  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` tinyint DEFAULT NULL COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';
@@ -106,8 +106,8 @@ CREATE TABLE `lxtemptype` (
   `name` varchar(64)  NOT NULL  COMMENT '模版名称',
   `level` tinyint NOT NULL COMMENT '模版类型层级（0，1，2）三级',
   `parent` int(16) NOT NULL COMMENT '父模版类型',
-  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` tinyint DEFAULT NULL COMMENT '文件状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='模版类型表';
@@ -122,13 +122,13 @@ CREATE TABLE `lxtemplate` (
   `type_id` tinyint NOT NULL COMMENT '模板类型',
   `owner_id` int(16)  NOT NULL default 0 COMMENT '模版所有者',
   `content` text  COMMENT '模版内容',
-  `create_time` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `modify_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
+  `gmt_create` TIMESTAMP NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `gmt_modify` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
   `status` tinyint DEFAULT NULL COMMENT '模版状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='文件表';
 
 
-INSERT INTO wenwu_test.lxuser ( type, username, real_name, passwd, email, phone, parent_user_id, company_id, create_time, modify_time, sign_id, status) VALUES ( '1', 'sampleUser', 'test', '1', 'account@yunhetong.com', '1234567', 1, 1, '2014-08-12 15:19:48.0', '2014-08-12 15:19:52.0', 1, 1);
-INSERT INTO wenwu_test.lxcompany ( type, name, field1, field2, field3, create_time, modify_time, status) VALUES ('1', 'test', '11', '22', '33', '2014-08-12 15:24:40.0', '2014-08-12 15:24:43.0', '1');
+INSERT INTO wenwu_test.lxuser ( type, username, real_name, passwd, email, phone, parent_user_id, company_id, gmt_create, gmt_modify, sign_id, status) VALUES ( '1', 'sampleUser', 'test', '1', 'account@yunhetong.com', '1234567', 1, 1, '2014-08-12 15:19:48.0', '2014-08-12 15:19:52.0', 1, 1);
+INSERT INTO wenwu_test.lxcompany ( type, name, field1, field2, field3, gmt_create, gmt_modify, status) VALUES ('1', 'test', '11', '22', '33', '2014-08-12 15:24:40.0', '2014-08-12 15:24:43.0', '1');
 
