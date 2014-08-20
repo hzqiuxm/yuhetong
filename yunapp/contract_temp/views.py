@@ -14,6 +14,9 @@ biz_logger = logging.getLogger('business')
 #TODO(wenwu) Detele before online, init template in db, cannot called by user
 @template.route('/init_template_type', methods=['GET'])
 def init_template_type():
+    """ Init template type from file template_type_content
+        The legal department should edit the document and run the function
+    """
     content_path = current_app.root_path + \
     '/contract_temp/template_type_content'
     with open(content_path, 'r') as c_t:
@@ -63,6 +66,9 @@ def get_temptype_content(line):
 
 @template.route('/template_types', methods=['GET'])
 def get_template_types():
+    """ Get the template types from the system
+    :param parent_type_id
+    """
     ptype_id = request.values.get('parent_type_id', '')
     with engine.with_session() as ss:
         if not ptype_id:
@@ -80,6 +86,10 @@ def get_template_types():
 
 @template.route('/check_template_name', methods=['GET'])
 def check_template_name():
+    """ Check the template_name is exist or not
+    :param template_name
+    :return True: not exist can be used; False: exist can not be used
+    """
     t_name = request.values.get('template_name', '')
     if not t_name:
         return jsonify(dict(success=False, errorMsg=constants.ERROR_CODE[
@@ -93,6 +103,10 @@ def check_template_name():
 
 @template.route('/templates', methods=['POST'])
 def add_template():
+    """ Add a template
+    :param template_name, template_type_id, template_content
+    :return new_template_id
+    """
     param_check_result = check_new_template_param(request.values)
     if not param_check_result.get('success'):
         return jsonify(param_check_result)
@@ -116,6 +130,10 @@ def add_template():
 
 @template.route('/<int:tid>', methods=['GET'])
 def get_template(tid):
+    """ Get a template by id
+    :param template_type_id
+    :return the particular template
+    """
     with engine.with_session() as ss:
         templ = ss.query(model.LxTemplate).get(tid)
         if templ is None:
@@ -130,23 +148,40 @@ def get_template(tid):
 
 @template.route('/templates', methods=['GET'])
 def get_templates():
-    filter_dict = dict()
-    filter_dict['type_id'] = request.values.get('template_type_id', '')
-    filter_dict['name'] = request.values.get('search_key', '')
+    """ Get templates by template_type_id or name key word
+        search_key use a like search
+    :param template_type_id, search_key
+    :return templ_list
+    """
+    filter_dict = dict(status = 1)
+    if 'template_type_id' in request.values:
+        filter_dict['type_id'] = request.values.get('template_type_id', '')
+    search_key = None
+    if 'search_key' in request.values:
+        search_key = request.values.get('search_key', '')
     with engine.with_session() as ss:
-        templ = ss.query(model.LxTemplate)
-        if templ is None:
-            return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE']})
-        templ = templ.serialize()
-        templ.pop('gmt_modify')
-        templ.pop('gmt_create')
-        templ.pop('type')
-        templ.pop('owner')
-        return jsonify({'success':True, 'data': templ})
+        templates = ss.query(model.LxTemplate).filter_by(**filter_dict)
+        if search_key:
+            templates = templates.filter(
+                model.LxTemplate.name.like('%' + search_key +'%'))
+    templ_list = []
+    for templ in templates:
+        templ_item = templ.serialize()
+        templ_item.pop('gmt_modify')
+        templ_item.pop('gmt_create')
+        templ_item.pop('type')
+        # templ_type = templ_item.pop('type')
+        # templ_item['type_id'] = templ_type.id
+        templ_item.pop('owner')
+        templ_list.append(templ_item)
+    return jsonify({'success':True, 'data': templ_list})
 
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):
+    """ Delete templates by template_type_id
+    :param template_type_id
+    :return templ.id
+    """
     with engine.with_session() as ss:
         templ = ss.query(model.LxTemplate).get(tid)
         if templ is None:
@@ -157,6 +192,10 @@ def del_template(tid):
 
 @template.route('/<int:tid>', methods=['PUT'])
 def update_template(tid):
+    """ Update templates by template_type_id
+    :param template_type_id
+    :return templ.id
+    """
     with engine.with_session() as ss:
         templ = ss.query(model.LxTemplate).get(tid)
         if templ is None:
@@ -179,6 +218,10 @@ def update_template(tid):
     return jsonify({'success':True, 'data': templ.id})
 
 def check_new_template_param(arg_values):
+    """ Delete templates by template_type_id
+    :param arg_values
+    :return True or False
+    """
     t_name = arg_values.get('template_name', '')
     t_type_id = arg_values.get('template_type_id', '')
     t_content = arg_values.get('template_content', '')
