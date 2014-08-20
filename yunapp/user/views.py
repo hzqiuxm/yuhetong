@@ -127,8 +127,9 @@ def login():
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
         if luser:
-            return_dict = {'success': True, 'errmsg': '登陆成功' + str(luser.id)}
-            business_logger.info('new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
+            return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
+            business_logger.info(
+                'new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
             login_user(luser)
         else:
             return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_OR_PASS_ERROR']}
@@ -165,7 +166,7 @@ def del_user(uid):
 
 
 @user.route("/update", methods=['PUT'])
-#@login_required
+# @login_required
 def update_user():
     uid = request.values.get('uid', '')
     if not uid:
