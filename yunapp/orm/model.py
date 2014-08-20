@@ -186,20 +186,6 @@ class LxUser(Base, UserMixin):
             'phone', 'parent_user_id', 'company', 'create_time',
             'modify_time', 'sign_id', 'status', ]
 
-    def get_id(self):
-        return self.id
-
-    def is_active(self):
-        if self.status > 1:
-            return True
-        else:
-            return False
-
-    def is_authenticated(self):
-        return True
-
-    def is_anonymous(self):
-        return False
 
 class LxCompany(Base):
     cols = ['id', 'type', 'name', 'field1', 'field2', 'create_time',
