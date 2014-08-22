@@ -22,7 +22,7 @@ CREATE TABLE `lxuser` (
   `type` tinyint NOT NULL COMMENT '用户类型 先设置1',
   `username` varchar(80) COLLATE utf8_bin NOT NULL UNIQUE COMMENT '用户名',
   `real_name` varchar(80) COLLATE utf8_bin COMMENT '真实姓名',
-  `passwd` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
+  `passwd` varchar(128) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
   `email` varchar(64) COLLATE utf8_bin NOT NULL COMMENT '用户邮箱',
   `phone` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '用户联系电话',
   `parent_user_id` int(16)  default 0 COMMENT '主账户id,

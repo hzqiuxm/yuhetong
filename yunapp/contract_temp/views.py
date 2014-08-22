@@ -2,6 +2,7 @@
 import logging
 
 from flask import Blueprint, current_app, jsonify, request
+from flask.ext.login import login_required
 
 from yunapp.orm import model, engine
 from yunapp.logutils import StructedMsg
@@ -65,10 +66,13 @@ def get_temptype_content(line):
 #TODO END
 
 @template.route('/template_types', methods=['GET'])
+@login_required
 def get_template_types():
     """ Get the template types from the system
     :param parent_type_id
     """
+
+
     ptype_id = request.values.get('parent_type_id', '')
     with engine.with_session() as ss:
         if not ptype_id:

@@ -2,6 +2,7 @@
 
 from flask import Blueprint, render_template, jsonify, current_app, request
 from flask.ext.login import LoginManager, login_required, current_user, login_user, logout_user
+from flask.ext.bcrypt import Bcrypt
 from yunapp.yunapps import app
 from yunapp.orm import model, engine
 from yunapp import config
@@ -10,13 +11,16 @@ from yunapp import utils
 from yunapp.user import constants
 from yunapp.logutils import StructedMsg
 
+
 user = Blueprint('user', __name__)
 app_logger = logging.getLogger('yunapp')
 business_logger = logging.getLogger('business')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.session_protection = "strong"
 
+bcrypt = Bcrypt(app)
 
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
 def load_user(user_id):
@@ -43,7 +47,7 @@ def register():
         new_user = model.LxUser(username=args['username'],
                                 # real_name=args['realname'],
                                 type=args['type'],
-                                passwd=args['passwd'],
+                                passwd=args['password'],
                                 email=args['email'],
                                 # phone=args['phone'],
                                 parent_user_id=args['parent_user_id'],
@@ -73,7 +77,7 @@ def verify_parameter(args):
     if not ('username' in args.keys()
             and 'password' in args.keys()
             and 'email' in args.keys()):
-        return False
+        return {'success': False, 'errmsg': constants.ERROR_CODE['EMAIL_FORMAT_ERROR']}
     match_email = pattern_email.match(args['email'])
     match_username = pattern_username.match(args['username'])
     if not match_email:
@@ -87,7 +91,8 @@ def verify_parameter(args):
     re_args['type'] = '0'
     re_args['parent_user_id'] = 0
     re_args['signId'] = 0
-    re_args['passwd'] = hashlib.md5(request.values['password']).hexdigest()
+    # re_args['password'] = hashlib.md5(request.values['password']).hexdigest()
+    re_args['password'] = bcrypt.generate_password_hash(request.values['password'])
     return re_args
 
 
@@ -123,16 +128,20 @@ def login():
     passwd = request.values.get('password', '')
     if not username or not passwd:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']})
-    passwd = hashlib.md5(passwd).hexdigest()
     with engine.with_session() as ss:
-        luser = ss.query(model.LxUser).filter_by(username=username, passwd=passwd).first()
+        luser = ss.query(model.LxUser).filter_by(username=username).first()
         if luser:
-            return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
-            business_logger.info(
-                'new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
-            login_user(luser)
+            if bcrypt.check_password_hash(luser.passwd, passwd):
+                return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
+                business_logger.info(
+                    'new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
+                login_user(luser)
+            else:
+                return_dict = {'success': False, 'errmsg': constants.ERROR_CODE[
+                'PASS_ERROR']}
         else:
-            return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_OR_PASS_ERROR']}
+            return_dict = {'success': False, 'errmsg': constants.ERROR_CODE[
+                'USERNAME_NOT_EXISTS_ERROR']}
     return jsonify(return_dict)
 
 
