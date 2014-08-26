@@ -49,6 +49,7 @@
 	<div id="errordiv"></div>
 </body>
 	<script type="text/javascript">
+
     function addparm(){
     	var an ='<li>键 : <input type="text"  /> 值 ：<input type="text" /></li>'
     	document.getElementById("par").innerHTML+=an;
@@ -113,5 +114,6 @@
         });
 
     }
-
+    var csrftoken = "{{ csrf_token() }}"
+    console.log(csrftoken);
 </script></html>
