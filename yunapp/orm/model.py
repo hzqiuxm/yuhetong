@@ -191,27 +191,45 @@ class LxCompany(Base):
     cols = ['id', 'type', 'name', 'field1', 'field2', 'gmt_create',
             'gmt_modify', 'status', ]
 
+
 company_mapper = orm.mapper(LxCompany, db.t_lxcompany)
 user_mapper = orm.mapper(LxUser, db.t_lxuser, properties={
     'company': orm.relation(company_mapper)
 })
 
+
 class LxFile(Base):
     cols = ['id', 'fuuid', 'type', 'name', 'gmt_create', 'gmt_modify',
             'status', ]
+
+
 file_mapper = orm.mapper(LxFile, db.t_lxfile)
+
 
 class LxTempType(Base):
     cols = ['id', 'name', 'level', 'parent', 'gmt_create', 'gmt_modify',
             'status']
 
+
+
 temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype, properties={
     'parent': orm.relation(LxTempType, remote_side=db.t_lxtemptype.columns.get('id'))
 })
+
+
 class LxTemplate(Base):
     cols = ['id', 'name', 'type', 'owner', 'content', 'gmt_create',
             'gmt_modify', 'status']
+
+
 template_mapper = orm.mapper(LxTemplate, db.t_lxtemplate, properties={
     'type': orm.relation(LxTempType, remote_side=db.t_lxtemptype.columns.get('id')),
     'owner': orm.relation(LxUser, remote_side=db.t_lxuser.columns.get('id'))
 })
+
+
+class LxEmail(Base):
+    cols = ['id', 'eTo', 'eFrom', 'eSubject', 'eContent', 'eSentTime']
+
+
+email_mapper = orm.mapper(LxEmail,db.t_lxemial)

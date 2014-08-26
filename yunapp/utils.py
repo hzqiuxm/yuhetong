@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 # # Common function  or comman constans
-import cgi
+import cgi, hashlib, time
 # 下面这三句是发邮件的
-import smtplib,logging
+import smtplib, logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
-import hashlib,time
+from yunapp.orm import model, engine
+
 
 app_logger = logging.getLogger('yunapp')
 business_logger = logging.getLogger('business')
+
 
 def show_site_map(rules, prefix=None):
     links = []
@@ -34,7 +36,7 @@ def show_site_map(rules, prefix=None):
     return ''.join(s)
 
 
-def sent_mail(e_content, e_from,e_to,e_subject):
+def sent_mail(e_content, e_from, e_to, e_subject):
     """
     :author:seanwu
     :param content: 邮件内容
@@ -58,6 +60,12 @@ def sent_mail(e_content, e_from,e_to,e_subject):
     s = smtplib.SMTP('smtp.mailgun.org', 587)
     s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
     s.sendmail(msg['From'], msg['To'], msg.as_string())
+    with engine.with_session() as ss:
+        new_email = model.LxEmail(eTo=msg['To'],
+                                  eFrom=msg['From'],
+                                  eSubject=e_subject,
+                                  eContent=e_content)
+        ss.add(new_email)
     s.quit()
     # business_logger.info('/n send email: /n To'+e_to+'/n From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
     return True

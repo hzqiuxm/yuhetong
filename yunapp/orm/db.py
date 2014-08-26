@@ -78,3 +78,12 @@ t_lxtemplate = Table('lxtemplate', _metadata,
                  Column('owner_id', INTEGER, ForeignKey('lxuser.id') ),
                  mysql_engine='InnoDB',
 )
+
+t_lxemial =Table('lxemail',_metadata,
+                 Column('id', INTEGER, primary_key=True),
+                 Column('eFrom', VARCHAR(50),nullable=False),
+                 Column('eTo', VARCHAR(50),nullable=False),
+                 Column('eSubject', VARCHAR(50),nullable=False),
+                 Column('eContent', VARCHAR(50),nullable=False),
+                 Column('eSentTime',TIMESTAMP,nullable=False,default=current_time),
+)
