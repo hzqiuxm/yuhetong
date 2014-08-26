@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, send_file, jsonify
 import os
 from flask import Flask, request, redirect, url_for
-from yunapp.yunapps import app
+from yunapp.yunapps import app, yun_redis
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -39,3 +39,13 @@ def template_load(filename=None):
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+@test.route('/add_user_visit', methods=['GET'])
+def add_user_redis():
+    yun_redis.incr('user:visit', 1)
+    return jsonify({'success': True})
+
+@test.route('/get_user_visit', methods=['GET'])
+def get_user_visit():
+    print yun_redis.RESPONSE_CALLBACKS
+    return jsonify({'user_visit': yun_redis.get('user:visit')})
