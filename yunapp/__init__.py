@@ -18,7 +18,6 @@ from yunapp.admin.contract_template_admin import ComtractTemplateAdminView
 from flask.ext.admin.contrib.sqla import ModelView
 from yunapp.orm import model, engine
 
-
 logutils.init_log()
 
 my_loader = jinja2.ChoiceLoader([
@@ -41,7 +40,9 @@ admin = Admin(app, name='Yunhetong')
 admin.add_view(ComtractTemplateAdminView(name='Contract Template'))
 admin.add_view(ModelView(model.LxTempType, engine.s))
 
+# CSRF Protect With wtf
 CsrfProtect(app)
+
 
 @app.route("/sitemap.html", methods=['GET'])
 def site_map():
