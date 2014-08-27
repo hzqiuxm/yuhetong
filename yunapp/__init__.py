@@ -49,4 +49,4 @@ def site_map():
 
 @app.route("/home.html", methods=['GET'])
 def yunapp_index():
-    return render_template('home.html')
+    return render_template('newhome.html')
