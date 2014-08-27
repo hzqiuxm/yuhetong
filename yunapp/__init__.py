@@ -3,6 +3,7 @@
 
 import jinja2
 
+from flask import render_template
 from flask.ext.admin import Admin
 from flask_wtf.csrf import CsrfProtect
 from test.views import test as mod_test
@@ -46,3 +47,7 @@ CsrfProtect(app)
 @app.route("/sitemap.html", methods=['GET'])
 def site_map():
     return utils.show_site_map(app.url_map.iter_rules())
+
+@app.route("/home.html", methods=['GET'])
+def yunapp_index():
+    return render_template('home.html')
