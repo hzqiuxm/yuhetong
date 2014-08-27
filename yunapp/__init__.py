@@ -47,6 +47,6 @@ CsrfProtect(app)
 def site_map():
     return utils.show_site_map(app.url_map.iter_rules())
 
-@app.route("/home.html", methods=['GET'])
+@app.route("/index", methods=['GET'])
 def yunapp_index():
     return render_template('newhome.html')
