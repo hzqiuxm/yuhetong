@@ -4,12 +4,14 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    {% include 'header.html' %}
-    <div id="container">
-        {% include 'sider.html' %}
-        <div id="content">
-            Login
-        </div>
-    </div>
+    <body>
 
+        {% include 'header.html' %}
+        <div id="container">
+            {% include 'sider.html' %}
+            <div id="content">
+                {{csrf_token()}}
+            </div>
+        </div>
+    </body>
 {% endblock %}
