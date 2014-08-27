@@ -124,6 +124,7 @@ def namecheck():
 
 @user.route('/login', methods=['POST'])
 def login():
+    print 'aaa'
     username = request.values.get('username', '')
     passwd = request.values.get('password', '')
     if not username or not passwd:
