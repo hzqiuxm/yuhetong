@@ -1,10 +1,37 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock %}
+{% block title %}用户登录{% endblock %}
 {% block head %}
-    {{ super() }}
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/main.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/plugins.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/responsive.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/icons.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/login.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome/font-awesome.min.css')}}">
+    <!--[if IE 7]><link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome/font-awesome-ie7.min.css')}}"><![endif]-->
+    <!--[if IE 8]><link href="{{ url_for('static', filename='css/ie8.css')}}" rel="stylesheet" type="text/css"/><![endif]-->
+    <link href="{{ url_for('static',filename='/css/fonts.css')}}" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-1.10.2.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/lodash.compat.min.js')}}"></script>
+
+    <!--[if lt IE 9]><script src="{{ url_for('static', filename='js/libs/html5shiv.js')}}"></script><![endif]-->
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/uniform/jquery.uniform.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/validation/jquery.validate.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/nprogress/nprogress.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/login.js')}}"></script>
+
+    <script>$(document).ready(function(){Login.init()});</script>
 {% endblock %}
 {% block content %}
-
+    <body class="login">
     <div class="logo">
         <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" />
         <strong>云</strong>合同
@@ -113,5 +140,5 @@
     <div class="footer">
         <a href="#" class="sign-up">没有账号? <strong>注册</strong></a>
     </div>
-
+    </body>
 {% endblock %}
