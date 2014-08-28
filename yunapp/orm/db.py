@@ -80,7 +80,7 @@ t_lxtemplate = Table('lxtemplate', _metadata,
 )
 
 t_lxemial =Table('lxemail',_metadata,
-                 Column('id', INTEGER, primary_key=True),
+                 Column('id', INTEGER, primary_key=True,autoincrement=True),
                  Column('eFrom', VARCHAR(50),nullable=False),
                  Column('eTo', VARCHAR(50),nullable=False),
                  Column('eSubject', VARCHAR(50),nullable=False),

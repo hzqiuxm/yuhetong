@@ -22,6 +22,7 @@ login_manager.session_protection = "strong"
 
 bcrypt = Bcrypt(app)
 
+
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
 def load_user(user_id):
     with engine.with_session() as ss:
@@ -41,6 +42,7 @@ def register():
     args = verify_parameter(request.values)
     if 'success' in args:
         return jsonify(args)
+    print args['password']
     with engine.with_session() as ss:
         new_company = model.LxCompany()
         ss.add(new_company)
@@ -127,11 +129,13 @@ def login():
     print 'aaa'
     username = request.values.get('username', '')
     passwd = request.values.get('password', '')
+    print passwd
     if not username or not passwd:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']})
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username).first()
         if luser:
+            print luser.passwd + '----' + passwd
             if bcrypt.check_password_hash(luser.passwd, passwd):
                 return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
                 business_logger.info(
@@ -139,7 +143,7 @@ def login():
                 login_user(luser)
             else:
                 return_dict = {'success': False, 'errmsg': constants.ERROR_CODE[
-                'PASS_ERROR']}
+                    'PASS_ERROR']}
         else:
             return_dict = {'success': False, 'errmsg': constants.ERROR_CODE[
                 'USERNAME_NOT_EXISTS_ERROR']}
@@ -195,13 +199,16 @@ def update_user():
     business_logger.info('userid=' + str(c_user.id) + 'has been update')
     return jsonify(return_dict)
 
-#TODO Delete when get online
+
+# TODO Delete when get online
 @user.route('/test', methods=['POST'])
 @login_required
 def test():
     return_dict = {'success': False, 'errorMsg': '用户已经登' + str(current_user.id)}
     return jsonify(return_dict)
 
+
 @user.route('/login', methods=['GET'])
 def login_page():
     return render_template('user/login.html')
+
