@@ -130,7 +130,7 @@ var Login = function () {
                                 }
                                 else if (data.success == true) {
                                     al.text(data.errmsg + " 欢迎回来！");
-                                    window.location.href = '../home.html';
+                                    window.location.href = '../index';
                                 }
                                 al.show();
                                 NProgress.done();
@@ -189,7 +189,7 @@ var Login = function () {
                         //                    $.post("login?time=" + (new Date()).getTime(), $(".login-form").serialize(), function(data){
                         //                        alert(data);
                         //                    }, "Json");
-                                                var csrftoken = $('meta[name=csrf-token]').attr('content');
+                        var csrftoken = $('meta[name=csrf-token]').attr('content');
                         $.ajaxSetup({
                             beforeSend: function (xhr, settings) {
                                 if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
@@ -197,6 +197,7 @@ var Login = function () {
                                 }
                             }
                         });
+                        NProgress.start(); //这就是个显示进度条的
                         //alert($(".register-form").serialize());
                         $.ajax({
                             url: "register?time=" + (new Date()).getTime(),
@@ -206,16 +207,18 @@ var Login = function () {
                             success: function (data) {        //data参数表示服务器传回来的数据
                                 var al = $(".register-form .alert-danger");
                                 //console.log(msg);
-                                NProgress.start(); //这就是个显示进度条的
+
                                 if (data.success == false) {
-                                    al.text(msg.errmsg);
+                                    al.text(data.errmsg);
                                 }
                                 else if (data.success == true) {
                                     al.text('注册成功');
+                                    al.show();
+                                    NProgress.done();
+                                    window.location.href = '../index';
                                 }
-                                al.show();
-                                NProgress.done();
-                                window.location.href = 'user_index.html';
+                                    al.show();
+                                    NProgress.done();
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
                                 // 通常 textStatus 和 errorThrown 之中

@@ -19,6 +19,7 @@ business_logger = logging.getLogger('business')
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.session_protection = "strong"
+# login_manager.login_view = "users.login"
 
 bcrypt = Bcrypt(app)
 
@@ -59,6 +60,7 @@ def register():
     e_content = get_email_content(args['username'])
     if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=new_user.email, e_subject='这是一封激活邮件'):
         return_dict = {'success': True, 'uid': new_user.id}
+        login_user(new_user)
     else:
         return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
     # business_logger.info('new user '+new_user.username+'register,userid='+new_user.id)
@@ -151,7 +153,7 @@ def login():
 
 
 @user.route("/logout")
-@login_required
+# @login_required
 def logout():
     business_logger.info('new user ' + current_user.username + 'register,userid=' + str(current_user.id) + 'logout')
     logout_user()
@@ -210,5 +212,9 @@ def test():
 
 @user.route('/login', methods=['GET'])
 def login_page():
-    return render_template('user/login.html')
+    if current_user.is_authenticated():
+        # return render_template('user/login.html')
+        return render_template('newhome.html')
+    else:
+        return render_template('user/login.html')
 
