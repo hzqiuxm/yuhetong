@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <body>
+        {% include 'header.html' %}
+        <div id="container">
+            {% include 'sider.html' %}
+            <div id="content">
+                <form action="templates" method="post" >
+                    <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+                    template_name: <input type="text" name="template_name" />
+                    template_type_id: <input type="text" name="template_type_id" />
+                    template_content: <input type="text" name="template_content" />
+                    <input type="submit" value="Submit">
+                </form>
+                {% for temp_item in data  %}
+                    Get item detail:
+                                {{temp_item.name}} ---- {{temp_item.content}}
+                    <br>
+                    Get item list all: {{temp_item}}
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </body>
+{% endblock %}

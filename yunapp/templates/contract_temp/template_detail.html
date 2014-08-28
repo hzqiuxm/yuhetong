@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <body>
+        {% include 'header.html' %}
+        <div id="container">
+            {% include 'sider.html' %}
+            <div id="content">
+
+                {% for temp_item in data  %}
+                    {{temp_item.name}} ---- {{temp_item.content}}
+                    <br>
+                    {{temp_item}}
+                {% endfor %}
+
+                
+            </div>
+        </div>
+
+    </body>
+{% endblock %}

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from flask import Blueprint, current_app, jsonify, request
+from flask import Blueprint, current_app, jsonify, request, render_template
 from flask.ext.login import login_required
 
 from yunapp.orm import model, engine
@@ -148,10 +148,11 @@ def get_template(tid):
         templ.pop('gmt_create')
         templ.pop('type')
         templ.pop('owner')
+        # return jsonify({'success':True, 'data': templ})
         return jsonify({'success':True, 'data': templ})
 
-@template.route('/templates', methods=['GET'])
-def get_templates():
+@template.route('/templates／<int:page>', methods=['GET'])
+def get_templates(page = 1):
     """ Get templates by template_type_id or name key word
         search_key use a like search
     :param template_type_id, search_key
@@ -173,12 +174,13 @@ def get_templates():
         templ_item = templ.serialize()
         templ_item.pop('gmt_modify')
         templ_item.pop('gmt_create')
-        templ_item.pop('type')
-        # templ_type = templ_item.pop('type')
-        # templ_item['type_id'] = templ_type.id
+        templ_type = templ_item.pop('type')
+        templ_item['type_id'] = templ_type.id
+        templ_item['type_name'] = templ_type.name
         templ_item.pop('owner')
         templ_list.append(templ_item)
-    return jsonify({'success':True, 'data': templ_list})
+    return render_template('contract_temp/template_list.html', data=templ_list)
+    # return jsonify({'success':True, 'data': templ_list})
 
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):
