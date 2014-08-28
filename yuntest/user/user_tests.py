@@ -12,12 +12,19 @@ class TestUser(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        app.config['TESTING'] = True
+        # Wrong key:
+        # app.config['CSRF_ENABLED'] = False
+        # Right key:
+        app.config['WTF_CSRF_ENABLED'] = False
         cls.app = app.test_client()
+
         rv = cls.app.post('/user/register', data=dict(
             username=cls.__test_user['username'],
             password=cls.__test_user['password'],
             email=cls.__test_user['email']
         ), follow_redirects=True)
+        print rv.data
         if 'true' in rv.data:
             c_user = json.loads(rv.data)
             cls.__testuid = int(c_user['uid'])
@@ -25,6 +32,7 @@ class TestUser(unittest.TestCase):
             raise AssertionError
 
     def setUp(self):
+
         pass
 
     def tearDown(self):
