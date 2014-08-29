@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_template, send_file, jsonify
 import os, io, StringIO
-from flask import Flask, request, redirect, url_for
-from yunapp.yunapps import app
 from docx import Document
 from docx.shared import Inches
 from HTMLParser import HTMLParser
+
+from flask import Blueprint, render_template, send_file, jsonify
+from flask import Flask, request, redirect, url_for
+
+from yunapp.yunapps import app
+
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 

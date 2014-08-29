@@ -1,13 +1,15 @@
 # -*- coding:utf-8 -*-
 
 import logging
-from yunapp import config
-from yunapp.yunapps import app
-from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login 里面 用户类的一些基本方法，我们的User类要继承他
+
+from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login里面 用户类的一些基本方法，我们的User类要继承他
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import  Column, ForeignKey, func, String, Integer,  Text
 from sqlalchemy.orm import backref, relationship
 # from sqlalchemy.dialects.mysql import BIGINT, TIMESTAMP, TEXT, TINYINT, VARCHAR, INTEGER
+
+from yunapp import config
+from yunapp.yunapps import app
 from yunapp.orm.db_base import LxMixin
 
 logger = logging.getLogger('ORM.MODEL')

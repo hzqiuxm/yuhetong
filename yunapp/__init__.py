@@ -6,6 +6,7 @@ import jinja2, sys
 from flask import render_template
 from flask.ext.admin import Admin
 from flask_wtf.csrf import CsrfProtect
+
 from test.views import test as mod_test
 from user.views import user as mod_user
 from file.views import mod_file
@@ -15,8 +16,8 @@ from yunapps import app
 from yunapp import utils, logutils
 
 # Admin import may be delete online
-from yunapp.admin.contract_template_admin import ComtractTemplateAdminView
-from flask.ext.admin.contrib.sqla import ModelView
+# from yunapp.admin.contract_template_admin import ComtractTemplateAdminView
+# from flask.ext.admin.contrib.sqla import ModelView
 from yunapp.orm import model, engine
 
 print sys.getdefaultencoding()
@@ -40,9 +41,9 @@ app.register_blueprint(mod_c_template, url_prefix='/ctemplate')
 app.register_blueprint(mod_contract, url_prefix='/contract')
 
 # Flask-admin should be delete
-admin = Admin(app, name='Yunhetong')
-admin.add_view(ComtractTemplateAdminView(name='Contract Template'))
-admin.add_view(ModelView(model.LxTempType, engine.s))
+# admin = Admin(app, name='Yunhetong')
+# admin.add_view(ComtractTemplateAdminView(name='Contract Template'))
+# admin.add_view(ModelView(model.LxTempType, engine.s))
 
 CsrfProtect(app)
 

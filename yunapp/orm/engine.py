@@ -1,7 +1,9 @@
-from contextlib import contextmanager
+# -*- coding:utf-8 -*-
 import logging
+from contextlib import contextmanager
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+
 from yunapp import config
 
 logger = logging.getLogger('ORM.ENGINE')
