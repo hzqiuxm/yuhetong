@@ -43,7 +43,7 @@ def init_template_type():
                         name = t_dict.get('name'),
                         level = t_dict.get('level'),
                         status = t_dict.get('status'),
-                        parent = parent_temp_type
+                        parent_id = parent_temp_type.id
                     )
                     ss.add(new_temp_type)
                     biz_logger.info(StructedMsg('add level ' + str(t_dict.get(
@@ -70,12 +70,10 @@ def get_template_types():
     """ Get the template types from the system
     :param parent_type_id
     """
-
-
     ptype_id = request.values.get('parent_type_id', '')
     with engine.with_session() as ss:
         if not ptype_id:
-            t_types = ss.query(model.LxTempType).filter_by(level=0)
+            t_types = ss.query(model.LxTempType).all()
         else:
             t_types = ss.query(model.LxTempType).filter_by(parent_id=ptype_id)
     type_list = []
@@ -83,7 +81,8 @@ def get_template_types():
         t_type = t_type.serialize()
         t_type.pop('gmt_modify')
         t_type.pop('gmt_create')
-        t_type.pop('parent')
+        t_type.pop('parent_id')
+        t_type.pop('children')
         type_list.append(t_type)
     return jsonify({'success':True, 'data':type_list})
 
@@ -131,7 +130,7 @@ def add_template():
         ss.add(new_template)
     return jsonify({'success':True, 'data':new_template.id})
 
-@template.route('/<int:tid>', methods=['GET'])
+@template.route('/template/<int:tid>', methods=['GET'])
 def get_template(tid):
     """ Get a template by id
     :param template_type_id
@@ -150,7 +149,7 @@ def get_template(tid):
         # return jsonify({'success':True, 'data': templ})
         return jsonify({'success':True, 'data': templ})
 
-@template.route('/templates/<int:page>', methods=['GET'])
+@template.route('/<int:page>', methods=['GET'])
 def get_templates(page = 1):
     """ Get templates by template_type_id or name key word
         search_key use a like search
