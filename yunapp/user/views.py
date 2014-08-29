@@ -46,6 +46,7 @@ def register():
     print args['password']
     with engine.with_session() as ss:
         new_company = model.LxCompany()
+        new_company.name = 'company name'
         ss.add(new_company)
         new_user = model.LxUser(username=args['username'],
                                 # real_name=args['realname'],
@@ -53,9 +54,8 @@ def register():
                                 passwd=args['password'],
                                 email=args['email'],
                                 # phone=args['phone'],
-                                parent_user_id=args['parent_user_id'],
-                                company=new_company,
-                                signId=args['signId'])
+                                # parent_id=args['parent_user_id'],
+                                company=new_company)
         ss.add(new_user)
     e_content = get_email_content(args['username'])
     if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=new_user.email, e_subject='这是一封激活邮件'):
@@ -171,7 +171,7 @@ def del_user(uid):
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
         if not c_user:
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
-        if c_user.parent_user_id == 0:
+        if c_user.parent_id == 0:
             c_com = ss.query(model.LxCompany).filter_by(id=c_user.id).first()
             if c_com:
                 c_com.status = -1

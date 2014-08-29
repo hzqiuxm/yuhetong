@@ -38,6 +38,7 @@ def get_engine(host='master', port=None, name=None, echo=False, **kwargs):
 @contextmanager
 def with_session(transaction=False):
     sess = session_maker()
+    sess._model_changes = {}
     try:
         yield sess
         sess.commit()

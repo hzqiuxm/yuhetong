@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @author: wenwu
 
-import jinja2
+import jinja2, sys
 
 from flask import render_template
 from flask.ext.admin import Admin
@@ -18,6 +18,8 @@ from yunapp import utils, logutils
 from yunapp.admin.contract_template_admin import ComtractTemplateAdminView
 from flask.ext.admin.contrib.sqla import ModelView
 from yunapp.orm import model, engine
+
+print sys.getdefaultencoding()
 
 
 logutils.init_log()
