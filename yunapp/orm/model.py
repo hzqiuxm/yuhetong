@@ -1,26 +1,28 @@
 # -*- coding:utf-8 -*-
 
-import datetime, time, json
 import logging
-from sqlalchemy import orm, sql, and_, or_
 from yunapp import config
 from yunapp.yunapps import app
 from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login 里面 用户类的一些基本方法，我们的User类要继承他
 from flask.ext.sqlalchemy import SQLAlchemy
+<<<<<<< HEAD
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, ForeignKey, func, String, \
     Integer, TIMESTAMP, Text
+=======
+from sqlalchemy import  Column, ForeignKey, func, String, Integer,  Text
+>>>>>>> e4a91a11dd40ada50f5f723a7fc18a342764c5f5
 from sqlalchemy.orm import backref, relationship
 # from sqlalchemy.dialects.mysql import BIGINT, TIMESTAMP, TEXT, TINYINT, VARCHAR, INTEGER
+from yunapp.orm.db_base import LxMixin
 
-
-Base = declarative_base()
 logger = logging.getLogger('ORM.MODEL')
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URI
 
 db = SQLAlchemy(app)
 
 
+<<<<<<< HEAD
 class LxMixin(object):
     id = Column(Integer, primary_key=True, autoincrement=True)
     status = Column(Integer)
@@ -71,6 +73,8 @@ class LxMixin(object):
             self.gmt_modify = sql.func.current_timestamp()
 
 
+=======
+>>>>>>> e4a91a11dd40ada50f5f723a7fc18a342764c5f5
 class LxUser(db.Model, UserMixin, LxMixin):
     __tablename__ = 'lxuser'
 
@@ -96,6 +100,15 @@ class LxUser(db.Model, UserMixin, LxMixin):
     commpany_id = Column(Integer, ForeignKey('lxcompany.id'), nullable=False)
     company = relationship('lxcompany', uselist=False, backref='owner')
 
+<<<<<<< HEAD
+=======
+    sign = relationship('LxSign', uselist=False, backref='owner')
+    # one to one relationship
+
+    company = relationship('LxCompany')
+    company_id = Column(Integer, ForeignKey('lxcompany.id'), nullable=True)
+    # many to one relationship
+>>>>>>> e4a91a11dd40ada50f5f723a7fc18a342764c5f5
 
 class LxCompany(db.Model, LxMixin):
     __tablename__ = 'lxcompany'
@@ -103,6 +116,7 @@ class LxCompany(db.Model, LxMixin):
             'gmt_create', 'gmt_modify', 'status', ]
     type = Column(Integer)
     name = Column(String(255), nullable=False, unique=True)
+<<<<<<< HEAD
     shouhanimg = Column(String(100))
     orzNo = Column(String(50))
     orzimg = Column(String(100))
@@ -112,6 +126,9 @@ class LxCompany(db.Model, LxMixin):
     address = Column(String(100))
     status = Column(Integer)
     owner_id = Column(Integer, ForeignKey('lxuser.id'))
+=======
+    # owner_id = Column(Integer, ForeignKey('lxuser.id'))
+>>>>>>> e4a91a11dd40ada50f5f723a7fc18a342764c5f5
 
 
 class LxSign(db.Model, LxMixin):
