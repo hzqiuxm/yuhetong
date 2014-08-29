@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from flask import Blueprint, current_app, jsonify, request
+from flask import Blueprint, current_app, jsonify, request, render_template
 from flask.ext.login import login_required
 
 from yunapp.orm import model, engine
@@ -18,8 +18,7 @@ def init_template_type():
     """ Init template type from file template_type_content
         The legal department should edit the document and run the function
     """
-    content_path = current_app.root_path + \
-    '/contract_temp/template_type_content'
+    content_path = current_app.root_path + '/contract_temp/template_type_content'
     with open(content_path, 'r') as c_t:
         for content in c_t.readlines():
             t_dict = get_temptype_content(content)
@@ -66,7 +65,7 @@ def get_temptype_content(line):
 #TODO END
 
 @template.route('/template_types', methods=['GET'])
-@login_required
+# @login_required
 def get_template_types():
     """ Get the template types from the system
     :param parent_type_id
@@ -148,10 +147,11 @@ def get_template(tid):
         templ.pop('gmt_create')
         templ.pop('type')
         templ.pop('owner')
+        # return jsonify({'success':True, 'data': templ})
         return jsonify({'success':True, 'data': templ})
 
-@template.route('/templates', methods=['GET'])
-def get_templates():
+@template.route('/templates/<int:page>', methods=['GET'])
+def get_templates(page = 1):
     """ Get templates by template_type_id or name key word
         search_key use a like search
     :param template_type_id, search_key
@@ -173,12 +173,13 @@ def get_templates():
         templ_item = templ.serialize()
         templ_item.pop('gmt_modify')
         templ_item.pop('gmt_create')
-        templ_item.pop('type')
-        # templ_type = templ_item.pop('type')
-        # templ_item['type_id'] = templ_type.id
+        templ_type = templ_item.pop('type')
+        templ_item['type_id'] = templ_type.id
+        templ_item['type_name'] = templ_type.name
         templ_item.pop('owner')
         templ_list.append(templ_item)
-    return jsonify({'success':True, 'data': templ_list})
+    return render_template('contract_temp/template_list.html', data=templ_list)
+    # return jsonify({'success':True, 'data': templ_list})
 
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):
