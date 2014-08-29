@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/lvxun/list.css')}}">
+    <script type="text/javascript" src="{{url_for('static',filename='js/lvxun/list.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-1.10.2.min.js')}}"></script>
+{% endblock %}
+{% block content %}
+		<div class="headline"></div>
+		<div class="mainbody">
+			<div class="leftside"></div>
+			<div class="rightside">
+				<div class="search">
+					<label>类型1
+						<select class="serviceType">
+							<option value="1">劳动人事</option>
+							<option value="2">企业治理</option>
+							<option value="3">知识产权</option>
+							<option value="4">公司经营</option>
+						</select>
+					</label>
+					<label>类型2
+						<select style="display:inline" class="ldrs">
+							<option>劳动合同</option>
+							<option>劳务合同</option>
+							<option>派遣合同</option>
+							<option>培训合同</option>
+							<option>劳动争议总裁申请书</option>
+						</select>
+
+						<select style="display:none" class="qyzl">
+							<option>公司设立</option>
+							<option>合伙协议</option>
+							<option>投资协议</option>
+							<option>分立/合并</option>
+							<option>股权设置</option>
+						</select>
+
+						<select style="display:none" class="zscq">
+							<option>商标</option>
+							<option>专利</option>
+							<option>著作权</option>
+							<option>商业机密</option>
+						</select>
+
+						<select style="display:none" class="gsjy">
+							<option>租赁/融资租赁合同</option>
+							<option>文化艺术合同</option>
+							<option>买卖合同</option>
+							<option>承包合同</option>
+							<option>贸易合同</option>
+							<option>建设工程合同</option>
+							<option>运输、仓储、保管合同</option>
+							<option>生产、加工、维修合同</option>
+							<option>技术合同</option>
+							<option>服务合同</option>
+						</select>
+					</label>
+					<label>
+						查找
+						<input type="text" name="ketword" >
+						<input type="submit" value="提交" >
+					</label>
+				</div>
+				<div class="menu">
+					<ul class="textList" > 
+						<li>
+							<span><a href="javascript:void(0);">关于开除臭傻逼的合同模板</a></span>
+							<div class="optionDiv" >
+								<a href="javascript:void(0);" >修改</a>
+								<a href="javascript:void(0);" >删除</a>
+							</div>
+						</li>
+						<li>
+							<span>关于开除臭傻逼的合同模板</span>
+							<div class="optionDiv" >
+								<a href="javascript:void(0);" >修改</a>
+								<a href="javascript:void(0);" >删除</a>
+							</div>
+						</li>
+						<li>
+							<span>关于开除臭傻逼的合同模板</span>
+							<div class="optionDiv" >
+								<a href="javascript:void(0);" >修改</a>
+								<a href="javascript:void(0);" >删除</a>
+							</div>
+						</li>
+						<li>
+							<span>关于开除臭傻逼的合同模板</span>
+							<div class="optionDiv" >
+								<a href="javascript:void(0);" >修改</a>
+								<a href="javascript:void(0);" >删除</a>
+							</div>
+						</li>
+						<li>
+							<span>关于开除臭傻逼的合同模板</span>
+							<div class="optionDiv" >
+								<a href="javascript:void(0);" >修改</a>
+								<a href="javascript:void(0);" >删除</a>
+							</div>
+						</li>
+					</ul>
+					<div style="height:30px;" >
+						<ul class="pageList" >
+							<li><a href="javascript:void(0);" class="page_num">< <</a></li>
+							<li><a href="javascript:void(0);" class="page_num">上一页</a></li>
+							<li><a href="javascript:void(0);" class="page_num">1</a></li>
+							<li><a href="javascript:void(0);" class="page_num">2</a></li>
+							<li><a href="javascript:void(0);" class="page_num">3</a></li>
+							<li><a href="javascript:void(0);" class="page_num">4</a></li>
+							<li><a href="javascript:void(0);" class="page_num">5</a></li>
+							<li><a href="javascript:void(0);" class="page_num">6</a></li>
+							<li><a href="javascript:void(0);" class="page_num">下一页</a></li>
+							<li><a href="javascript:void(0);" class="page_num">> ></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endlock %}

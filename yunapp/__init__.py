@@ -51,3 +51,7 @@ def site_map():
 @app.route("/index", methods=['GET'])
 def yunapp_index():
     return render_template('newhome.html')
+
+@app.route("/list", methods=['GET'])
+def yunapp_index():
+    return render_template('list.html')
