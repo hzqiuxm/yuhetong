@@ -174,6 +174,7 @@ def get_templates(page = 1):
         templ_item.pop('gmt_modify')
         templ_item.pop('gmt_create')
         templ_type = templ_item.pop('type')
+
         templ_item['type_id'] = templ_type.id
         templ_item['type_name'] = templ_type.name
         templ_item.pop('owner')
