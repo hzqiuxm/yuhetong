@@ -183,13 +183,13 @@ class Base(object):
 
 class LxUser(Base, UserMixin):
     cols = ['id', 'type', 'username', 'real_name', 'passwd', 'email',
-            'phone', 'parent_user_id', 'company', 'gmt_create',
-            'gmt_modify', 'sign_id', 'status', ]
+            'phone', 'idCardNo', 'idCardimg1', 'idCardimg2', 'shouhanimg', 'parent_user_id', 'company', 'create_time',
+            'address','modify_time', 'sign_id', 'status', ]
 
 
 class LxCompany(Base):
-    cols = ['id', 'type', 'name', 'field1', 'field2', 'gmt_create',
-            'gmt_modify', 'status', ]
+    cols = ['id', 'type', 'orzNo', 'orzimg', 'yyzyNo', 'yyzyimg', 'legal_person', 'address', 'name', 'create_time',
+            'modify_time', 'status', ]
 
 
 company_mapper = orm.mapper(LxCompany, db.t_lxcompany)
@@ -209,7 +209,6 @@ file_mapper = orm.mapper(LxFile, db.t_lxfile)
 class LxTempType(Base):
     cols = ['id', 'name', 'level', 'parent', 'gmt_create', 'gmt_modify',
             'status']
-
 
 
 temptype_mapper = orm.mapper(LxTempType, db.t_lxtemptype, properties={
@@ -232,4 +231,4 @@ class LxEmail(Base):
     cols = ['id', 'eTo', 'eFrom', 'eSubject', 'eContent', 'eSentTime']
 
 
-email_mapper = orm.mapper(LxEmail,db.t_lxemial)
+email_mapper = orm.mapper(LxEmail, db.t_lxemial)

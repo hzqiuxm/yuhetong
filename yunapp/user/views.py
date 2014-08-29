@@ -43,7 +43,6 @@ def register():
     args = verify_parameter(request.values)
     if 'success' in args:
         return jsonify(args)
-    print args['password']
     with engine.with_session() as ss:
         new_company = model.LxCompany()
         ss.add(new_company)
@@ -128,16 +127,13 @@ def namecheck():
 
 @user.route('/login', methods=['POST'])
 def login():
-    print 'aaa'
     username = request.values.get('username', '')
     passwd = request.values.get('password', '')
-    print passwd
     if not username or not passwd:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']})
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username).first()
         if luser:
-            print luser.passwd + '----' + passwd
             if bcrypt.check_password_hash(luser.passwd, passwd):
                 return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
                 business_logger.info(
@@ -202,6 +198,24 @@ def update_user():
     return jsonify(return_dict)
 
 
+@user.route("/renzheng", methods=['PUT'])
+# @login_required
+def renzheng_user():
+    with engine.with_session() as ss:
+        # username= request.values.get('username',c_user.username)  用户名不给改
+        current_user.real_name = request.values.get('real_name', current_user.real_name)
+        # c_user.email = request.values.get('email', c_user.email)
+        current_user.phone = request.values.get('phone', current_user.phone)
+        current_user.idCardNo = request.values.get('idCardNo', current_user.phone)
+        current_user.idCardimg1 = request.values.get('idCardimg1', current_user.phone)
+        current_user.idCardimg2 = request.values.get('idCardimg2', current_user.phone)
+        current_user.shouhanimg = request.values.get('shouhanimg', current_user.phone)
+        current_user.address = request.values.get('address', current_user.phone)
+        current_user.modify_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(current_user.id) + 'has been update')
+    return jsonify(return_dict)
+
 # TODO Delete when get online
 @user.route('/test', methods=['POST'])
 @login_required
@@ -215,6 +229,14 @@ def login_page():
     if current_user.is_authenticated():
         # return render_template('user/login.html')
         return render_template('newhome.html')
+    else:
+        return render_template('user/login.html')
+
+@user.route('/smrz', methods=['GET'])
+def smrz_page():
+    if current_user.is_authenticated():
+        # return render_template('user/login.html')
+        return render_template('user/smrz.html')
     else:
         return render_template('user/login.html')
 
