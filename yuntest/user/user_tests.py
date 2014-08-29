@@ -1,5 +1,5 @@
-import unittest, json, time, hashlib
-import tempfile
+import unittest, json, time, hashlib, tempfile
+
 from yunapp import app,config
 
 

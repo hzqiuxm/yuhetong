@@ -1,13 +1,13 @@
 # -*- coding:utf-8 -*-
 
 import logging
-from yunapp import config
-from yunapp.yunapps import app
-from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login 里面 用户类的一些基本方法，我们的User类要继承他
-from flask.ext.sqlalchemy import SQLAlchemy
 
+from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login里面 用户类的一些基本方法，我们的User类要继承他
+from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, ForeignKey, func, String, Integer, Text
 from sqlalchemy.orm import backref, relationship
+from yunapp import config
+from yunapp.yunapps import app
 from yunapp.orm.db_base import LxMixin
 
 logger = logging.getLogger('ORM.MODEL')
@@ -20,7 +20,7 @@ class LxUser(db.Model, UserMixin, LxMixin):
     __tablename__ = 'lxuser'
 
     cols = ['id', 'type', 'username', 'real_name', 'passwd', 'email',
-            'phone', 'idCardNo', 'idCardimg1', 'idCardimg2', 'shouhanimg', 'parent_user_id', 'company_id',
+            'phone', 'idCardNo', 'idCardimg1', 'idCardimg2', 'authorization_img', 'parent_user_id', 'company_id',
             'address', 'sign_id', 'status', ]
     type = Column(Integer)
     username = Column(String(128), nullable=False, unique=True)
@@ -31,32 +31,28 @@ class LxUser(db.Model, UserMixin, LxMixin):
     idCardNo = Column(String(50))
     idCardimg1 = Column(String(100))
     idCardimg2 = Column(String(100))
-    shouhanimg = Column(String(100))
+    authorization_img = Column(String(100))
     address = Column(String(50))
-    status = Column(Integer)
     parent_id = Column(Integer, ForeignKey('lxuser.id'), nullable=True)
     parent = relationship('lxuser', remote_side='lxuser.id')
-    sign_id = Column(Integer, ForeignKey('lxsign.id'))
-    sign = relationship('lxsign', uselist=False, backref='owner')
-    commpany_id = Column(Integer, ForeignKey('lxcompany.id'), nullable=False)
-    company = relationship('lxcompany', uselist=False, backref='owner')
+    sign = relationship('LxSign', uselist=False, backref='owner')
+    company = relationship('LxCompany')
+    company_id = Column(Integer, ForeignKey('lxcompany.id'), nullable=True)
 
 
 class LxCompany(db.Model, LxMixin):
     __tablename__ = 'lxcompany'
-    cols = ['id', 'type', 'name', 'orzNo', 'orzimg', 'yyzyNo', 'yyzyimg', 'legal_person', 'address',
+    cols = ['id', 'type', 'name', 'organizationNo',  'organizationimg', 'business_license_No',
+            'business_license_img', 'legal_person', 'address',
             'gmt_create', 'gmt_modify', 'status', ]
     type = Column(Integer)
     name = Column(String(255), nullable=False, unique=True)
-    shouhanimg = Column(String(100))
-    orzNo = Column(String(50))
-    orzimg = Column(String(100))
-    yyzyNo = Column(String(50))
-    yyzyimg = Column(String(100))
+    organizationNo = Column(String(50))
+    organization_img = Column(String(100))
+    business_license_No = Column(String(50))
+    business_license_img = Column(String(100))
     legal_person = Column(String(10))
     address = Column(String(100))
-    status = Column(Integer)
-    owner_id = Column(Integer, ForeignKey('lxuser.id'))
 
 
 class LxSign(db.Model, LxMixin):

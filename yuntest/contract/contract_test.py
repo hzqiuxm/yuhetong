@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Seanwu'
 
-import unittest, json, time, hashlib
-import tempfile
-from yunapp import app, config
+import unittest, json, time, hashlib, tempfile
 from docx import Document
+from yunapp import app, config
 
 
 class TestContract(unittest.TestCase):

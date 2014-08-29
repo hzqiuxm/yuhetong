@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import os, uuid, logging
+
 from flask import Blueprint, render_template, jsonify, request, send_file
-import constants
-from yunapp.orm import model
-from yunapp.orm import engine
+
+from yunapp.orm import model, engine
 from yunapp.logutils import StructedMsg
+from yunapp.file import constants
 
 mod_file = Blueprint('file', __name__)
 app_logger = logging.getLogger('yunapp')
