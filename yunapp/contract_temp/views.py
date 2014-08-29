@@ -18,8 +18,7 @@ def init_template_type():
     """ Init template type from file template_type_content
         The legal department should edit the document and run the function
     """
-    content_path = current_app.root_path + \
-    '/contract_temp/template_type_content'
+    content_path = current_app.root_path + '/contract_temp/template_type_content'
     with open(content_path, 'r') as c_t:
         for content in c_t.readlines():
             t_dict = get_temptype_content(content)
@@ -66,7 +65,7 @@ def get_temptype_content(line):
 #TODO END
 
 @template.route('/template_types', methods=['GET'])
-@login_required
+# @login_required
 def get_template_types():
     """ Get the template types from the system
     :param parent_type_id
@@ -151,7 +150,7 @@ def get_template(tid):
         # return jsonify({'success':True, 'data': templ})
         return jsonify({'success':True, 'data': templ})
 
-@template.route('/templates／<int:page>', methods=['GET'])
+@template.route('/templates/<int:page>', methods=['GET'])
 def get_templates(page = 1):
     """ Get templates by template_type_id or name key word
         search_key use a like search
