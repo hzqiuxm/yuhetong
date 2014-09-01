@@ -13,30 +13,31 @@
     <div id="content">
         <div id="PersonalInfo">
             个人信息：
-            <form action="renzhenguser" method="put">
+            <form action="renzhenguser" method="put"  id="personalinfo">
                 <input name='_csrf_token' type=hidden value="{{ csrf_token() }}" />
-                真实姓名：<input name='' value="" type="text" /> <br/>
-                手机号码:<input name='' value="" type="text" /> <br/>
-                身份证号码:<input name='' value="" type="text" /> <br/>
-                通讯地址:<input name='' value="" type="text" />  <br/>
-                身份证扫描件1:<input name='' value="" type="text" /> <br/>
-                身份证扫描件2:<input name='' value="" type="text" /> <br/>
-                企业授权文件:<input name='' value="" type="text" /> <br/>
+                真实姓名：<input name='real_name' value="" type="text" /> <br/>
+                手机号码:<input name='phone' value="" type="text" /> <br/>
+                身份证号码:<input name='idCardNo' value="" type="text" /> <br/>
+                通讯地址:<input name='address' value="" type="text" />  <br/>
+                身份证扫描件1:<input name='idCardimg1' value="111" type="text" /> <br/>
+                身份证扫描件2:<input name='idCardimg2' value="222" type="text" /> <br/>
+                企业授权文件:<input name='authorizationimg' value="333" type="text" /> <br/>
                 <input name='' value="提交" type="submit" /> <br/>
 
             </form>
         </div>
         <div id="CompanyInfo">
             企业信息：
-            <form action="renzhengcompany" method="put">
+            <form action="renzhengcompany" method="put" id="companyinfo">
                 <input name='_csrf_token' type=hidden value="{{ csrf_token() }}" />
-                企业全称：<input name='' value="" type="text" /> <br/>
-                组织机构代码：<input name='' value="" type="text" /> <br/>
-                组织机扫描件：<input name='' value="" type="text" /> <br/>
-                营业执照号码：<input name='' value="" type="text" /> <br/>
-                营业执照扫描件：<input name='' value="" type="text" /> <br/>
-                公司地址：<input name='' value="" type="text" /> <br/>
-                <input name='' value="提交" type="submit" /> <br/>
+                企业全称：<input name='name' value="" type="text" /> <br/>
+                组织机构代码：<input name='organizationNo' value="" type="text" /> <br/>
+                组织机扫描件：<input name='organizationimg' value="111" type="text" /> <br/>
+                营业执照号码：<input name='business_license_No' value="" type="text" /> <br/>
+                营业执照扫描件：<input name='business_license_img' value="222" type="text" /> <br/>
+                公司地址：<input name='address' value="" type="text" /> <br/>
+                法人代表：<input name='legal_person' value="" type="text" /> <br/>
+                <input value="提交" type="submit" /> <br/>
             </form>
         </div>
     </div>
