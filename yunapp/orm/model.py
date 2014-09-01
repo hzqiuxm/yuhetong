@@ -34,12 +34,15 @@ class LxUser(db.Model, UserMixin, LxMixin):
     authorization_img = Column(String(100))
     address = Column(String(50))
     parent_id = Column(Integer, ForeignKey('lxuser.id'), nullable=True)
-    parent = relationship('lxuser', remote_side='lxuser.id')
-    sign_id = Column(Integer, ForeignKey('lxsign.id'))
+    children = relationship("LxUser")
+
     sign = relationship('LxSign', uselist=False, backref='owner')
+    # one to one relationship  LxSign
+
     company = relationship('LxCompany')
     company_id = Column(Integer, ForeignKey('lxcompany.id'), nullable=True)
-    children = relationship("LxUser")
+    # many to one relationship
+
 
 
 class LxCompany(db.Model, LxMixin):
