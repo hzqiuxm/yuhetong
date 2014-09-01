@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-import hashlib, time, re, logging
 
 from flask import Blueprint, render_template, jsonify, current_app, request
 from flask.ext.login import LoginManager, login_required, current_user, login_user, logout_user
 from flask.ext.bcrypt import Bcrypt
-
 from yunapp.yunapps import app
 from yunapp.orm import model, engine
 from yunapp import config
+import hashlib, time, re, logging
 from yunapp import utils
 from yunapp.user import constants
 from yunapp.logutils import StructedMsg
@@ -199,7 +198,7 @@ def update_user():
     return jsonify(return_dict)
 
 
-@user.route("/renzheng", methods=['PUT'])
+@user.route("/renzhenguser", methods=['PUT'])
 # @login_required
 def renzheng_user():
     with engine.with_session() as ss:
@@ -207,15 +206,33 @@ def renzheng_user():
         current_user.real_name = request.values.get('real_name', current_user.real_name)
         # c_user.email = request.values.get('email', c_user.email)
         current_user.phone = request.values.get('phone', current_user.phone)
-        current_user.idCardNo = request.values.get('idCardNo', current_user.phone)
-        current_user.idCardimg1 = request.values.get('idCardimg1', current_user.phone)
-        current_user.idCardimg2 = request.values.get('idCardimg2', current_user.phone)
-        current_user.shouhanimg = request.values.get('shouhanimg', current_user.phone)
+        current_user.idCardNo = request.values.get('idCardNo', current_user.idCardNo)
+        current_user.idCardimg1 = request.values.get('idCardimg1', current_user.idCardimg1)
+        current_user.idCardimg2 = request.values.get('idCardimg2', current_user.idCardimg2)
+        current_user.authorization_img = request.values.get('authorizationimg', current_user.authorization_img)
         current_user.address = request.values.get('address', current_user.phone)
         current_user.modify_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
     return_dict = {'success': True, 'errorMsg': 'no'}
     business_logger.info('userid=' + str(current_user.id) + 'has been update')
     return jsonify(return_dict)
+
+
+@user.route("/renzhengcompany", methods=['PUT'])
+# @login_required
+def renzheng_company():
+    with engine.with_session() as ss:
+        c_com = ss.query(model.LxCompany).filter_by(id=current_user.id).first()
+        c_com.name = request.values.get('name', c_com.name)
+        c_com.organizationNo = request.values.get('organizationNo', c_com.organizationNo)
+        c_com.organizationimg = request.values.get('organizationimg', c_com.organizationimg)
+        c_com.business_license_No = request.values.get('business_license_No', c_com.business_license_No)
+        c_com.business_license_img = request.values.get('business_license_img', c_com.business_license_img)
+        c_com.legal_person = request.values.get('legal_person', c_com.legal_person)
+        c_com.address = request.values.get('address', c_com.address)
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(current_user.id) + 'has been update')
+    return jsonify(return_dict)
+
 
 # TODO Delete when get online
 @user.route('/test', methods=['POST'])
@@ -235,9 +252,6 @@ def login_page():
 
 @user.route('/smrz', methods=['GET'])
 def smrz_page():
-    if current_user.is_authenticated():
-        # return render_template('user/login.html')
-        return render_template('user/smrz.html')
-    else:
-        return render_template('user/login.html')
+    return render_template('user/certification.html')
+
 

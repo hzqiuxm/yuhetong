@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block content %}
+<body>
+{% include 'header.html' %}
+<div id="container">
+    {% include 'sider.html' %}
+    <div id="content">
+        <div id="PersonalInfo">
+            个人信息：
+            <form action="renzhenguser" method="put">
+                <input name='_csrf_token' type=hidden value="{{ csrf_token() }}" />
+                真实姓名：<input name='' value="" type="text" /> <br/>
+                手机号码:<input name='' value="" type="text" /> <br/>
+                身份证号码:<input name='' value="" type="text" /> <br/>
+                通讯地址:<input name='' value="" type="text" />  <br/>
+                身份证扫描件1:<input name='' value="" type="text" /> <br/>
+                身份证扫描件2:<input name='' value="" type="text" /> <br/>
+                企业授权文件:<input name='' value="" type="text" /> <br/>
+                <input name='' value="提交" type="submit" /> <br/>
+
+            </form>
+        </div>
+        <div id="CompanyInfo">
+            企业信息：
+            <form action="renzhengcompany" method="put">
+                <input name='_csrf_token' type=hidden value="{{ csrf_token() }}" />
+                企业全称：<input name='' value="" type="text" /> <br/>
+                组织机构代码：<input name='' value="" type="text" /> <br/>
+                组织机扫描件：<input name='' value="" type="text" /> <br/>
+                营业执照号码：<input name='' value="" type="text" /> <br/>
+                营业执照扫描件：<input name='' value="" type="text" /> <br/>
+                公司地址：<input name='' value="" type="text" /> <br/>
+                <input name='' value="提交" type="submit" /> <br/>
+            </form>
+        </div>
+    </div>
+</div>
+<script language="javascript">
+
+
+
+</script>
+</body>
+{% endblock %}
