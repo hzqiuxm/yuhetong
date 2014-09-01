@@ -4,6 +4,7 @@ import logging
 from flask import Blueprint, current_app, jsonify, request, render_template
 from flask.ext.login import login_required
 
+from yunapp.utils import get_int_page_num
 from yunapp.orm import model, engine
 from yunapp.orm.model import LxTempType, LxTemplate
 from yunapp.logutils import StructedMsg
@@ -73,14 +74,14 @@ def get_template_types():
     """
     # Get input params
     ptype_id = request.values.get('parent_type_id', '')
-    page_num = request.values.get('page_num', 1)
-    page_num = int(page_num)
+    page_num = get_int_page_num(request.values.get('page_num', '1'))
+
     f_dict = dict()
     f_dict['status'] = 1
     if ptype_id:
         f_dict['parent_id'] = ptype_id
 
-    t_types = LxTempType.query.filter_by(**f_dict)
+    t_types = LxTempType.query.filter_by(**f_dict).order_by(LxTempType.id.desc())
     t_types = t_types.paginate(page_num, constants.PAGE_SIZE, False)
 
     re_dict = dict()
@@ -166,7 +167,7 @@ def get_templates():
     :param template_type_id, search_key
     :return templ_list
     """
-    page_num = int(request.values.get('page_num', 1))
+    page_num = get_int_page_num(request.values.get('page_num', '1'))
 
     filter_dict = dict(status = 1)
     if 'template_type_id' in request.values:
@@ -174,7 +175,8 @@ def get_templates():
     search_key = None
     if 'search_key' in request.values:
         search_key = request.values.get('search_key', '')
-    templates = LxTemplate.query.filter_by(**filter_dict)
+    templates = LxTemplate.query.filter_by(**filter_dict).order_by(
+        LxTemplate.id.desc())
     # templates = ss.query(LxTemplate).filter_by(**filter_dict)
     if search_key:
         templates = templates.filter(
