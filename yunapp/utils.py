@@ -69,3 +69,10 @@ def sent_mail(e_content, e_from, e_to, e_subject):
     s.quit()
     # business_logger.info('/n send email: /n To'+e_to+'/n From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
     return True
+
+def get_int_page_num(page_num):
+    if page_num.isdigit():
+        page_num = int(page_num)
+    else:
+        page_num = 1
+    return page_num
