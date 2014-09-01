@@ -39,6 +39,7 @@ class LxUser(db.Model, UserMixin, LxMixin):
     sign = relationship('LxSign', uselist=False, backref='owner')
     company = relationship('LxCompany')
     company_id = Column(Integer, ForeignKey('lxcompany.id'), nullable=True)
+    children = relationship("LxUser")
 
 
 class LxCompany(db.Model, LxMixin):
@@ -77,13 +78,14 @@ class LxFile(db.Model, LxMixin):
 class LxTempType(db.Model, LxMixin):
     __tablename__ = 'lxtemptype'
 
-    cols = ['id', 'name', 'level', 'parent', 'gmt_create', 'gmt_modify',
-            'status']
+
+    cols = ['id', 'name', 'level', 'parent_id', 'gmt_create', 'gmt_modify',
+            'status', 'children']
     level = Column(Integer)
     name = Column(String(64), nullable=False)
 
     parent_id = Column(Integer, ForeignKey('lxtemptype.id'), nullable=True)
-    parent = relationship('LxTempType', remote_side='LxTempType.id')
+    children = relationship('LxTempType')
 
 
 class LxTemplate(db.Model, LxMixin):
