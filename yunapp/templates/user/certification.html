@@ -2,7 +2,8 @@
 {% block title %}Index{% endblock %}
 {% block head %}
 {{ super() }}
-
+<script type="text/javascript"
+        src="{{ url_for('static', filename='plugins/validation/jquery.validate.min.js')}}"></script>
 {% endblock %}
 
 {% block content %}
@@ -11,41 +12,127 @@
 <div id="container">
     {% include 'sider.html' %}
     <div id="content">
-        <div id="PersonalInfo">
+        <div>
+            <form action="../file/upload" method="post"
+                  enctype="multipart/form-data" target="upload">
+                <label for="file">Filename:</label>
+                <input type="file" name="user_file" id="file"/>
+                <input type="text" name="attr" />
+                <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+                <br/>
+                <input type="submit" name="submit" value="Submit"/>
+            </form>
+        </div>
+
+        <div>
             个人信息：
-            <form action="renzhenguser" method="put"  id="personalinfo">
-                <input name='_csrf_token' type=hidden value="{{ csrf_token() }}" />
-                真实姓名：<input name='real_name' value="" type="text" /> <br/>
-                手机号码:<input name='phone' value="" type="text" /> <br/>
-                身份证号码:<input name='idCardNo' value="" type="text" /> <br/>
-                通讯地址:<input name='address' value="" type="text" />  <br/>
-                身份证扫描件1:<input name='idCardimg1' value="111" type="text" /> <br/>
-                身份证扫描件2:<input name='idCardimg2' value="222" type="text" /> <br/>
-                企业授权文件:<input name='authorizationimg' value="333" type="text" /> <br/>
-                <input name='' value="提交" type="submit" /> <br/>
+            <form id="personalinfo">
+                真实姓名：<input name='real_name' value="asdf" type="text"/> <br/>
+                手机号码:<input name='phone' value="asf" type="text"/> <br/>
+                身份证号码:<input name='idCardNo' value="asf" type="text"/> <br/>
+                通讯地址:<input name='address' value="asdfasd" type="text"/> <br/>
+                身份证扫描件1:<input name='idCardimg1' value="111" type="text"/> <br/>
+                身份证扫描件2:<input name='idCardimg2' value="222" type="text"/> <br/>
+                企业授权文件:<input name='authorizationimg' value="333" type="text"/> <br/>
+                <input name='' value="提交" type="submit"/> <br/>
 
             </form>
         </div>
-        <div id="CompanyInfo">
+        <div>
             企业信息：
-            <form action="renzhengcompany" method="put" id="companyinfo">
-                <input name='_csrf_token' type=hidden value="{{ csrf_token() }}" />
-                企业全称：<input name='name' value="" type="text" /> <br/>
-                组织机构代码：<input name='organizationNo' value="" type="text" /> <br/>
-                组织机扫描件：<input name='organizationimg' value="111" type="text" /> <br/>
-                营业执照号码：<input name='business_license_No' value="" type="text" /> <br/>
-                营业执照扫描件：<input name='business_license_img' value="222" type="text" /> <br/>
-                公司地址：<input name='address' value="" type="text" /> <br/>
-                法人代表：<input name='legal_person' value="" type="text" /> <br/>
-                <input value="提交" type="submit" /> <br/>
+            <form id="companyinfo">
+                企业全称：<input name='name' value="" type="text"/> <br/>
+                组织机构代码：<input name='organizationNo' value="" type="text"/> <br/>
+                组织机扫描件：<input name='organizationimg' value="111" type="text"/> <br/>
+                营业执照号码：<input name='business_license_No' value="" type="text"/> <br/>
+                营业执照扫描件：<input name='business_license_img' value="222" type="text"/> <br/>
+                公司地址：<input name='address' value="" type="text"/> <br/>
+                法人代表：<input name='legal_person' value="" type="text"/> <br/>
+                <input value="提交" type="submit"/> <br/>
             </form>
         </div>
     </div>
 </div>
 <script language="javascript">
+    function changfid(fid,inputname){
+            if(!inputname)
+            {
+                $('input[name='+inputname+']').val(fid);
+            }
+    }
+    $("#personalinfo").validate({
+        submitHandler: function () {
+            var csrftoken = $('meta[name=csrf-token]').attr('content');
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                    }
+                }
+            });
+            //alert($(".register-form").serialize());
+            $.ajax({
+                url: "authenticationuser?time=" + (new Date()).getTime(),
+                type: "PUT",
+                data: $("#personalinfo").serialize(),      //这个表示将表单的内容序列化
+                dataType: "Json",
+                success: function (data) {        //data参数表示服务器传回来的数据
+                    if (data.success == false) {
+                        alert('修改失败');
+                    }
+                    else if (data.success == true) {
+                        alert('修改成功');
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // 通常 textStatus 和 errorThrown 之中
+                    alert(textStatus + errorThrown);
+                    //alert(textStatus + errorThrown);// 只有一个会包含信息
+                    // this;  调用本次AJAX请求时传递的options参数
+                }
+            });
 
+            return false;
+        }
+    });
 
+    $("#companyinfo").validate({
+        submitHandler: function () {
+            var csrftoken = $('meta[name=csrf-token]').attr('content');
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                    }
+                }
+            });
+            //alert($(".register-form").serialize());
+            $.ajax({
+                url: "authenticationuser?time=" + (new Date()).getTime(),
+                type: "PUT",
+                data: $("#companyinfo").serialize(),      //这个表示将表单的内容序列化
+                dataType: "Json",
+                success: function (data) {        //data参数表示服务器传回来的数据
+                    if (data.success == false) {
+                        alert('修改失败');
+                    }
+                    else if (data.success == true) {
+                        alert('修改成功');
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // 通常 textStatus 和 errorThrown 之中
+                    alert(textStatus + errorThrown);
+                    //alert(textStatus + errorThrown);// 只有一个会包含信息
+                    // this;  调用本次AJAX请求时传递的options参数
+                }
+            });
 
+            return false;
+        }
+    });
 </script>
+
 </body>
+<iframe src="#" name="upload" style="width:700px;" id="uploadimg"></iframe>
 {% endblock %}

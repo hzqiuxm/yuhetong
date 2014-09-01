@@ -45,7 +45,7 @@ def register():
         return jsonify(args)
     with engine.with_session() as ss:
         new_company = model.LxCompany()
-        new_company.name = 'company name'
+        new_company.name = time.time()
         ss.add(new_company)
         new_user = model.LxUser(username=args['username'],
                                 # real_name=args['realname'],
@@ -67,9 +67,8 @@ def register():
 
 
 def get_email_content(username):
-    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + hashlib.md5(
-        username + config.MD5_XXXX).hexdigest() + '\">' + 'http://192.168.1.55:8092/user/active/' + hashlib.md5(
-        username + config.MD5_XXXX).hexdigest() + '</a>'
+    active_code =hashlib.md5( username + config.MD5_XXXX).hexdigest()
+    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + active_code+ '\">' + 'http://192.168.1.55:8092/user/active/' + active_code+ '</a>'
     return e_content
 
 
@@ -137,7 +136,7 @@ def login():
             if bcrypt.check_password_hash(luser.passwd, passwd):
                 return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
                 business_logger.info(
-                    'new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
+                    'user ' + str(luser.username) + 'login,userid=' + str(luser.id) + 'is loginning')
                 login_user(luser)
             else:
                 return_dict = {'success': False, 'errmsg': constants.ERROR_CODE[
@@ -151,7 +150,7 @@ def login():
 @user.route("/logout")
 # @login_required
 def logout():
-    business_logger.info('new user ' + current_user.username + 'register,userid=' + str(current_user.id) + 'logout')
+    business_logger.info('user' + current_user.username + ',userid=' + str(current_user.id) + 'logout')
     logout_user()
     return_dict = {'success': True, 'errorMsg': 'no'}
     return jsonify(return_dict)
@@ -198,7 +197,7 @@ def update_user():
     return jsonify(return_dict)
 
 
-@user.route("/renzhenguser", methods=['PUT'])
+@user.route("/authenticationuser", methods=['PUT'])
 # @login_required
 def renzheng_user():
     with engine.with_session() as ss:
@@ -217,7 +216,7 @@ def renzheng_user():
     return jsonify(return_dict)
 
 
-@user.route("/renzhengcompany", methods=['PUT'])
+@user.route("/authenticationcompany", methods=['PUT'])
 # @login_required
 def renzheng_company():
     with engine.with_session() as ss:
