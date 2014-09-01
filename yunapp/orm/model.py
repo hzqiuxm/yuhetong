@@ -47,7 +47,7 @@ class LxCompany(db.Model, LxMixin):
             'business_license_img', 'legal_person', 'address',
             'gmt_create', 'gmt_modify', 'status', ]
     type = Column(Integer)
-    name = Column(String(255), nullable=False, unique=True)
+    name = Column(String(255), nullable=False)
     organizationNo = Column(String(50))
     organization_img = Column(String(100))
     business_license_No = Column(String(50))
