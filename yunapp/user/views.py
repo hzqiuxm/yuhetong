@@ -221,9 +221,10 @@ def renzheng_user():
 def renzheng_company():
     with engine.with_session() as ss:
         c_com = ss.query(model.LxCompany).filter_by(id=current_user.id).first()
+        print c_com.id
         c_com.name = request.values.get('name', c_com.name)
         c_com.organizationNo = request.values.get('organizationNo', c_com.organizationNo)
-        c_com.organizationimg = request.values.get('organizationimg', c_com.organizationimg)
+        c_com.organization_img = request.values.get('organizationimg', c_com.organization_img)
         c_com.business_license_No = request.values.get('business_license_No', c_com.business_license_No)
         c_com.business_license_img = request.values.get('business_license_img', c_com.business_license_img)
         c_com.legal_person = request.values.get('legal_person', c_com.legal_person)

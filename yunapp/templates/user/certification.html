@@ -55,7 +55,7 @@
 </div>
 <script language="javascript">
     function changfid(fid,inputname){
-            if(!inputname)
+            if(inputname)
             {
                 $('input[name='+inputname+']').val(fid);
             }
@@ -108,7 +108,7 @@
             });
             //alert($(".register-form").serialize());
             $.ajax({
-                url: "authenticationuser?time=" + (new Date()).getTime(),
+                url: "authenticationcompany?time=" + (new Date()).getTime(),
                 type: "PUT",
                 data: $("#companyinfo").serialize(),      //这个表示将表单的内容序列化
                 dataType: "Json",

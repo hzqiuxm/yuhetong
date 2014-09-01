@@ -4,7 +4,7 @@
 import jinja2, sys
 
 from flask import render_template
-from flask.ext.admin import Admin
+# from flask.ext.admin import Admin
 from flask_wtf.csrf import CsrfProtect
 
 from test.views import test as mod_test
