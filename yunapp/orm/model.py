@@ -20,8 +20,8 @@ class LxUser(db.Model, UserMixin, LxMixin):
     __tablename__ = 'lxuser'
 
     cols = ['id', 'type', 'username', 'real_name', 'passwd', 'email',
-            'phone', 'idCardNo', 'idCardimg1', 'idCardimg2', 'authorization_img', 'parent_user_id', 'company_id',
-            'address', 'sign_id', 'status', ]
+            'phone', 'idCardNo', 'idCardimg1', 'idCardimg2', 'authorization_img',
+            'parent_user_id', 'company_id', 'address', 'sign_id', 'status', ]
     type = Column(Integer)
     username = Column(String(128), nullable=False, unique=True)
     real_name = Column(String(128))

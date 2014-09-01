@@ -107,7 +107,8 @@ def save_file(file_upload, fuuid):
         file_path = os.path.join(constants.FILE_STORE_FOLDER, fuuid)
         file_upload.save(file_path)
         return file_path
-    except:
+    except Exception, e:
+        print e
         return None
 
 def get_file_type(file_extention):
