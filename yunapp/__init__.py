@@ -55,5 +55,5 @@ def yunapp_index():
     return render_template('newhome.html')
 
 @app.route("/list", methods=['GET'])
-def yunapp_index():
+def yunapp_idex():
     return render_template('list.html')

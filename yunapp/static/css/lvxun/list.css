@@ -71,11 +71,12 @@ ul{
 	height: 100%
 }
 
-.rightside{
+.right_side{
 	border: 1px solid #ccc;
 	height: 100%;
 	float: right;
-	width: 90%
+	width: 100%;
+	padding:6% 1%
 }
 
 .search{
