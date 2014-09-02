@@ -1,0 +1,116 @@
+html,body{
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.optionDiv{
+	float: right;
+	margin-right: 20px;
+}
+
+.textList a{
+	text-decoration: none;
+	display: inline-block;
+	margin-right: 15px;
+}
+
+ul{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.textList {
+	min-height: 300px;
+}
+
+.textList li{
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	border-bottom: 1px dotted #ccc;
+}
+
+.textList li span{
+	margin-left: 20px;
+	line-height: 30px;
+}
+
+.pageList{
+	height: 30px;
+	float: right; 
+}
+
+.pageList li{
+	float: left;
+	margin-right: 10px;
+}
+
+.pageList a{
+	text-decoration: none;
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.headline{
+	height: 10%;
+	border: 1px solid #ccc;
+}
+
+.mainbody{
+	height: 90%;
+	width: 100%;
+}
+
+.leftside{
+	border: 1px solid #ccc;
+	float: left;
+	width:9%;
+	height: 100%
+}
+
+.rightside{
+	border: 1px solid #ccc;
+	height: 100%;
+	float: right;
+	width: 90%
+}
+
+.search{
+	height:40px;
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+}
+
+.menu{
+	height:auto;
+	overflow: auto;
+	border-top: 1px solid; 
+	padding-bottom: 80px;
+}
+
+.page_num_click{
+	text-decoration: none;
+	color: #000000 ;
+	display: inline-block;
+	margin-right: 15px;
+	cursor: default;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
