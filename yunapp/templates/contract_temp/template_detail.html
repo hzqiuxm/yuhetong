@@ -4,17 +4,88 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="assets/css/simditor/font-awesome.css" />
+    
+    <link rel="stylesheet" type="text/css" href="assets/css/simditor/simditor.css" />
+
+    <script type="text/javascript" src="assets/js/simditor/simditor-all.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+                App.init();
+                Plugins.init();
+                FormComponents.init();
+                var editor, mobileToolbar, toolbar;
+                toolbar = ['title', 'bold','center', 'italic', 'underline',  'color', '|', 'ol', 'ul', 'blockquote', 'table',  'hr', ];
+                mobileToolbar = ["bold", "underline", "strikethrough", "color", "ul", "ol"];
+                editor = new Simditor({
+                  textarea: $('#lxtempType'),
+                  placeholder: '这里输入文字...',
+                  toolbar: toolbar
+                });
+                editor.on('valuechanged', function(){
+                    //alert(editor.getValue());
+                    editor.sync();
+                });
+                $(".select2-select-00").select2();
+        });
+    </script>
+
     <body>
         {% include 'header.html' %}
         <div id="container">
             {% include 'sider.html' %}
             <div id="content">
+                <div class="container">
+                 <div class="stateBar" style=" height: 40px; margin-top: 40px;" >
+                    <div class="form-group lxtempType" style="width: 500px;" > 
+                                    <label class="col-md-2 control-label" for="lxtempTypeId">
+                                        合同类型</label>
+                                    <div class="col-md-10">
+                                        <select id="lxtempTypeId" class="select2-select-00 col-md-12 full-width-fix">
+                                            <optgroup label="劳动人事">
+                                                <option value="1">劳动合同</option>
+                                                <option value="2">劳务合同</option>
+                                                <option value="3">派遣合同</option>
+                                                <option value="4">培训合同</option>
+                                                <option value="5">劳动争议仲裁申请书合同</option>
+                                            </optgroup>
+                                            <optgroup label="企业治理">
+                                                <option value="6">公司设立</option>
+                                                <option value="7">合伙协议</option>
+                                                <option value="8">投资协议</option>
+                                                <option value="9">分立/合并</option>
+                                                <option value="10">股权设置</option>
+                                            </optgroup>
+                                            <optgroup label="知识产权">
+                                                <option value="11">商标</option>
+                                                <option value="12">专利</option>
+                                                <option value="13">著作权</option>
+                                                <option value="14">商业秘密</option>
+                                            </optgroup>
+                                            <optgroup label="公司经营">
+                                                <option value="15">租赁／融资租赁合同</option>
+                                                <option value="16">文化艺术合同</option>
+                                                <option value="17">买卖合同</option>
+                                                <option value="18">承包合同</option>
+                                                <option value="19">贸易合同</option>
+                                                <option value="20">建设工程合同</option>
+                                                <option value="21">运输、仓储、保管合同</option>
+                                                <option value="22">生产、加工、维修合同</option>
+                                                <option value="23">技术合同</option>
+                                                <option value="24">服务合同</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                        <div>
+                            <div><button>提交模板</button></div>
+                        </div>
+                </div>
 
-                {% for temp_item in data  %}
-                    {{temp_item.name}} ---- {{temp_item.content}}
-                    <br>
-                    {{temp_item}}
-                {% endfor %}
+                <div class="editer" >
+                    <textarea textarea id="lxtempType" placeholder="这里输入内容" autofocus ></textarea>
+                </div>
 
                 
             </div>
