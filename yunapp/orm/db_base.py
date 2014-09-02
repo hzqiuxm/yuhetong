@@ -6,7 +6,7 @@ from sqlalchemy import  Column, ForeignKey, func, String, \
     Integer, TIMESTAMP, Text
 
 class LxMixin(object):
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True,autoincrement=True)
     status = Column(Integer)
     gmt_modify = Column(TIMESTAMP, nullable=False, default=sql.func.current_timestamp())
     gmt_create = Column(TIMESTAMP, nullable=False, default=sql.func.current_timestamp())

@@ -43,10 +43,9 @@ def register():
     args = verify_parameter(request.values)
     if 'success' in args:
         return jsonify(args)
-    print args['password']
     with engine.with_session() as ss:
         new_company = model.LxCompany()
-        new_company.name = 'company name'
+        new_company.name = time.time()
         ss.add(new_company)
         new_user = model.LxUser(username=args['username'],
                                 # real_name=args['realname'],
@@ -68,9 +67,8 @@ def register():
 
 
 def get_email_content(username):
-    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + hashlib.md5(
-        username + config.MD5_XXXX).hexdigest() + '\">' + 'http://192.168.1.55:8092/user/active/' + hashlib.md5(
-        username + config.MD5_XXXX).hexdigest() + '</a>'
+    active_code =hashlib.md5( username + config.MD5_XXXX).hexdigest()
+    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + active_code+ '\">' + 'http://192.168.1.55:8092/user/active/' + active_code+ '</a>'
     return e_content
 
 
@@ -128,20 +126,17 @@ def namecheck():
 
 @user.route('/login', methods=['POST'])
 def login():
-    print 'aaa'
     username = request.values.get('username', '')
     passwd = request.values.get('password', '')
-    print passwd
     if not username or not passwd:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['EMPTY_USERNAME_OR_PASS']})
     with engine.with_session() as ss:
         luser = ss.query(model.LxUser).filter_by(username=username).first()
         if luser:
-            print luser.passwd + '----' + passwd
             if bcrypt.check_password_hash(luser.passwd, passwd):
                 return_dict = {'success': True, 'errmsg': '登陆成功', 'uid': str(luser.id)}
                 business_logger.info(
-                    'new user ' + str(luser.username) + 'register,userid=' + str(luser.id) + 'is loginning')
+                    'user ' + str(luser.username) + 'login,userid=' + str(luser.id) + 'is loginning')
                 login_user(luser)
             else:
                 return_dict = {'success': False, 'errmsg': constants.ERROR_CODE[
@@ -155,7 +150,7 @@ def login():
 @user.route("/logout")
 # @login_required
 def logout():
-    business_logger.info('new user ' + current_user.username + 'register,userid=' + str(current_user.id) + 'logout')
+    business_logger.info('user' + current_user.username + ',userid=' + str(current_user.id) + 'logout')
     logout_user()
     return_dict = {'success': True, 'errorMsg': 'no'}
     return jsonify(return_dict)
@@ -202,6 +197,43 @@ def update_user():
     return jsonify(return_dict)
 
 
+@user.route("/authenticationuser", methods=['PUT'])
+# @login_required
+def renzheng_user():
+    with engine.with_session() as ss:
+        # username= request.values.get('username',c_user.username)  用户名不给改
+        current_user.real_name = request.values.get('real_name', current_user.real_name)
+        # c_user.email = request.values.get('email', c_user.email)
+        current_user.phone = request.values.get('phone', current_user.phone)
+        current_user.idCardNo = request.values.get('idCardNo', current_user.idCardNo)
+        current_user.idCardimg1 = request.values.get('idCardimg1', current_user.idCardimg1)
+        current_user.idCardimg2 = request.values.get('idCardimg2', current_user.idCardimg2)
+        current_user.authorization_img = request.values.get('authorizationimg', current_user.authorization_img)
+        current_user.address = request.values.get('address', current_user.phone)
+        current_user.modify_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(current_user.id) + 'has been update')
+    return jsonify(return_dict)
+
+
+@user.route("/authenticationcompany", methods=['PUT'])
+# @login_required
+def renzheng_company():
+    with engine.with_session() as ss:
+        c_com = ss.query(model.LxCompany).filter_by(id=current_user.id).first()
+        print c_com.id
+        c_com.name = request.values.get('name', c_com.name)
+        c_com.organizationNo = request.values.get('organizationNo', c_com.organizationNo)
+        c_com.organization_img = request.values.get('organizationimg', c_com.organization_img)
+        c_com.business_license_No = request.values.get('business_license_No', c_com.business_license_No)
+        c_com.business_license_img = request.values.get('business_license_img', c_com.business_license_img)
+        c_com.legal_person = request.values.get('legal_person', c_com.legal_person)
+        c_com.address = request.values.get('address', c_com.address)
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(current_user.id) + 'has been update')
+    return jsonify(return_dict)
+
+
 # TODO Delete when get online
 @user.route('/test', methods=['POST'])
 @login_required
@@ -217,4 +249,9 @@ def login_page():
         return render_template('newhome.html')
     else:
         return render_template('user/login.html')
+
+@user.route('/smrz', methods=['GET'])
+def smrz_page():
+    return render_template('user/certification.html')
+
 
