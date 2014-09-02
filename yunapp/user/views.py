@@ -184,7 +184,7 @@ def del_user():
 def update_user():
     uid = request.values.get('uid', '')
     password = request.values.get('password', '')
-    if not uid or not password:
+    if not uid:
         return jsonify({'success': False, 'errmsg': 'uid为空'})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()

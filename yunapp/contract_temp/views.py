@@ -206,6 +206,9 @@ def get_templates():
     return render_template('contract_temp/template_list.html', data=re_dict)
     # return jsonify({'success':True, 'data': templ_list})
 
+
+
+
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):
     """ Delete templates by template_type_id
