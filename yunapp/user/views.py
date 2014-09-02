@@ -156,16 +156,19 @@ def logout():
     return jsonify(return_dict)
 
 
-@user.route("/del/<uid>", methods=['DELETE'])
+@user.route("/del", methods=['DELETE'])
 # @login_required
-def del_user(uid):
-    # uid = request.values.get('uid', '')
+def del_user():
+    uid = request.values.get('uid', '')
+    password = request.values.get('password', '')
     if not uid:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['UID_EMPTY_ERROR']})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
         if not c_user:
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
+        elif not bcrypt.check_password_hash(c_user.passwd, password):
+            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['PASS_ERROR']})
         if c_user.parent_id == 0:
             c_com = ss.query(model.LxCompany).filter_by(id=c_user.id).first()
             if c_com:
@@ -180,12 +183,15 @@ def del_user(uid):
 # @login_required
 def update_user():
     uid = request.values.get('uid', '')
-    if not uid:
+    password = request.values.get('password', '')
+    if not uid or not password:
         return jsonify({'success': False, 'errmsg': 'uid为空'})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
         if not c_user:
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
+        elif not bcrypt.check_password_hash(c_user.passwd, password):
+            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['PASS_ERROR']})
         c_user.type = request.values.get('type', c_user.type)
         # username= request.values.get('username',c_user.username)  用户名不给改
         c_user.real_name = request.values.get('real_name', c_user.real_name)
@@ -221,7 +227,6 @@ def renzheng_user():
 def renzheng_company():
     with engine.with_session() as ss:
         c_com = ss.query(model.LxCompany).filter_by(id=current_user.id).first()
-        print c_com.id
         c_com.name = request.values.get('name', c_com.name)
         c_com.organizationNo = request.values.get('organizationNo', c_com.organizationNo)
         c_com.organization_img = request.values.get('organizationimg', c_com.organization_img)
