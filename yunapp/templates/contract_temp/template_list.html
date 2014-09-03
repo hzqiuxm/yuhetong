@@ -2,9 +2,7 @@
 {% block title %}Index{% endblock %}
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/lvxun/list.css')}}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-1.10.2.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='js/lvxun/list.js')}}"></script>
 {% endblock %}
 {% block content %}
     <body>
@@ -56,21 +54,27 @@
                 </div>
                 <table class="listTable" >
                     <tbody>
-                        <tr><td>模板名称20行</td><td><a href="javascript:void(0);" >删除</a></td><a href="javascript:void(0);" >修改</a></tr>
+                        <tr>
+                            <td><a href="javascript:void(0);" class="templateName" >模板名称20行</a></td>
+                            <td>
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="infoBar" >
                     <ul class="pageList">
-                        <li><a href="javascript:void(0);" class="page_num">< <</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">上一页</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">1</a></li>
-                        <li><a href="javascript:void(0);" class="page_num select">2</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">3</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">4</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">5</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">6</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">下一页</a></li>
-                        <li><a href="javascript:void(0);" class="page_num">> ></a></li>
+                        <li><a href="javascript:void(0);" class=""><<</a></li>
+                        <li><a href="javascript:void(0);" class="">上一页</a></li>
+                        <li><a href="javascript:void(0);" class="">1</a></li>
+                        <li><a href="javascript:void(0);" class="select">2</a></li>
+                        <li><a href="javascript:void(0);" class="">3</a></li>
+                        <li><a href="javascript:void(0);" class="">4</a></li>
+                        <li><a href="javascript:void(0);" class="">5</a></li>
+                        <li><a href="javascript:void(0);" class="">6</a></li>
+                        <li><a href="javascript:void(0);" class="">下一页</a></li>
+                        <li><a href="javascript:void(0);" class="">> ></a></li>
                     </ul>
                 </div>
             </div>

@@ -2,19 +2,13 @@
 {% block title %}template_detail{% endblock %}
 {% block head %}
     {{ super() }}
-{% endblock %}
-{% block content %}
-    <link href="{{ url_for('static',filename='css/simditor/font-awesome.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static',filename='css/simditor/font-awesome.css')}}" rel="stylesheet" type="text/css" />
     
     <link href="{{ url_for('static',filename='css/simditor/simditor.css')}}" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/simditor/simditor-all.js')}}"></script>
 
     <script type="text/javascript">
-
-        var requestDate = {
-            "lxtempTypeId":"{{request.values.tid}}";
-        };
 
         $(document).ready(function(){
                 alert(12);
@@ -36,6 +30,9 @@
                 $(".select2-select-00").select2();
         });
     </script>
+{% endblock %}
+{% block content %}
+
 
     <body>
         {% include 'header.html' %}
@@ -45,11 +42,6 @@
                 <div class="container">
                  <div class="stateBar" style=" height: 40px; margin-top: 40px;" >
                     <div class="form-group lxtempType" style="width: 500px;" >
-                        {{ request.url_root }}{{url_for('template.get_template_types')}}
-                        <br>
-                        {{ request.values.xxx }}
-                        <br>
-                        {{ g }}
                                     <label class="col-md-2 control-label" for="lxtempTypeId">
                                         合同类型</label>
                                     <div class="col-md-10">
