@@ -44,7 +44,7 @@ app.register_blueprint(mod_contract, url_prefix='/api/contract')
 # Flask-admin should be delete
 # admin = Admin(app, name='Yunhetong')
 # admin.add_view(ComtractTemplateAdminView(name='Contract Template'))
-# admin.add_view(ModelView(model.LxTempType, engine.s))
+# admin.add_view(ModelView(model.LxTempTyp  e, engine.s))
 
 # Blueprint Register for web
 app.register_blueprint(web_users, url_prefix='/user')

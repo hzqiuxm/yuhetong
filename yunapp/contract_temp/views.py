@@ -73,27 +73,36 @@ def get_template_types():
     :param parent_type_id
     """
     # Get input params
-    ptype_id = request.values.get('parent_type_id', '')
-    page_num = get_int_page_num(request.values.get('page_num', '1'))
+    # ptype_id = request.values.get('parent_type_id', '')
+    # page_num = get_int_page_num(request.values.get('page_num', '1'))
 
     f_dict = dict()
     f_dict['status'] = 1
-    if ptype_id:
-        f_dict['parent_id'] = ptype_id
+    f_dict['level'] = 0
+    # if ptype_id:
+    #     f_dict['parent_id'] = ptype_id
 
     t_types = LxTempType.query.filter_by(**f_dict).order_by(LxTempType.id.desc())
-    t_types = t_types.paginate(page_num, constants.PAGE_SIZE, False)
+    # t_types = t_types.paginate(page_num, constants.PAGE_SIZE, False)
 
     re_dict = dict()
-    re_dict['total'] = t_types.total
-    re_dict['total_page'] = t_types.pages
+    # re_dict['total'] = t_types.total
+    # re_dict['total_page'] = t_types.pages
     type_list = list()
-    for t_type in t_types.items:
+    for t_type in t_types:
         t_type = t_type.serialize()
         t_type.pop('gmt_modify')
         t_type.pop('gmt_create')
         # t_type.pop('parent_id')
-        t_type.pop('children')
+        children = t_type.pop('children')
+        child_list = list()
+        for child in children:
+            child = child.serialize()
+            child.pop('children')
+            child.pop('gmt_modify')
+            child.pop('gmt_create')
+            child_list.append(child)
+        t_type['children'] = child_list
         type_list.append(t_type)
     re_dict['list'] = type_list
     return jsonify({'success':True, 'data':re_dict})
@@ -203,8 +212,8 @@ def get_templates():
         templ_item.pop('owner')
         templ_list.append(templ_item)
     re_dict['list'] = templ_list
-    return render_template('contract_temp/template_list.html', data=re_dict)
-    # return jsonify({'success':True, 'data': templ_list})
+    # return render_template('contract_temp/template_list.html', data=re_dict)
+    return jsonify({'success':True, 'data': re_dict})
 
 
 
