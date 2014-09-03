@@ -24,6 +24,7 @@ def init_template_type():
     with open(content_path, 'r') as c_t:
         for content in c_t.readlines():
             t_dict = get_temptype_content(content)
+            print t_dict
             if t_dict is None:
                 biz_logger.error('Add template type error content:' + content)
                 continue
