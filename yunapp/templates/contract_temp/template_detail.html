@@ -38,7 +38,12 @@
             <div id="content">
                 <div class="container">
                  <div class="stateBar" style=" height: 40px; margin-top: 40px;" >
-                    <div class="form-group lxtempType" style="width: 500px;" > 
+                    <div class="form-group lxtempType" style="width: 500px;" >
+                        {{ request.url_root }}{{url_for('template.get_template_types')}}
+                        <br>
+                        {{ request.values.xxx }}
+                        <br>
+                        {{ g }}
                                     <label class="col-md-2 control-label" for="lxtempTypeId">
                                         合同类型</label>
                                     <div class="col-md-10">

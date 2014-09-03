@@ -12,7 +12,7 @@ def createdb():
 
 @manager.command
 def init_temptype():
-    r = requests.get('http://yunhetong.com:8090/ctemplate/init_template_type')
+    r = requests.get('http://yunhetong.com:8090/api/ctemplate/init_template_type')
     print r.status_code
 
 if __name__ == "__main__":
