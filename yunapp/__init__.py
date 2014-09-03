@@ -52,7 +52,6 @@ app.register_blueprint(web_users, url_prefix='/user')
 app.register_blueprint(web_templates, url_prefix='/ctemplate')
 
 CsrfProtect(app)
-app.config['SERVER_NAME'] = 'yunhetong.com:8091'
 
 @app.route("/sitemap.html", methods=['GET'])
 def site_map():
