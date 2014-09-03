@@ -4,11 +4,11 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="assets/css/simditor/font-awesome.css" />
+    <link href="{{ url_for('static',filename='css/simditor/font-awesome.css')}}" rel="stylesheet" type="text/css">
     
-    <link rel="stylesheet" type="text/css" href="assets/css/simditor/simditor.css" />
+    <link href="{{ url_for('static',filename='css/simditor/simditor.css')}}" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="assets/js/simditor/simditor-all.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/simditor/simditor-all.js')}}"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
