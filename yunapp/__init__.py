@@ -16,6 +16,7 @@ from yunapps import app
 from yunapp import utils, logutils
 
 from yunapp.web.users import web_users
+from yunapp.web.ctemplates import web_templates
 # Admin import may be delete online
 # from yunapp.admin.contract_template_admin import ComtractTemplateAdminView
 # from flask.ext.admin.contrib.sqla import ModelView
@@ -48,6 +49,7 @@ app.register_blueprint(mod_contract, url_prefix='/api/contract')
 
 # Blueprint Register for web
 app.register_blueprint(web_users, url_prefix='/user')
+app.register_blueprint(web_templates, url_prefix='/ctemplate')
 
 CsrfProtect(app)
 

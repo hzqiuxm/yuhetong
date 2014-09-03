@@ -99,6 +99,8 @@ def get_template_types():
         for child in children:
             child = child.serialize()
             child.pop('children')
+            child.pop('parent_id')
+            child.pop('status')
             child.pop('gmt_modify')
             child.pop('gmt_create')
             child_list.append(child)
