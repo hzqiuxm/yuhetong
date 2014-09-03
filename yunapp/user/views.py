@@ -239,24 +239,4 @@ def renzheng_company():
     return jsonify(return_dict)
 
 
-# TODO Delete when get online
-@user.route('/test', methods=['POST'])
-@login_required
-def test():
-    return_dict = {'success': False, 'errorMsg': '用户已经登' + str(current_user.id)}
-    return jsonify(return_dict)
-
-
-@user.route('/login', methods=['GET'])
-def login_page():
-    if current_user.is_authenticated():
-        # return render_template('user/login.html')
-        return render_template('newhome.html')
-    else:
-        return render_template('user/login.html')
-
-@user.route('/smrz', methods=['GET'])
-def smrz_page():
-    return render_template('user/certification.html')
-
 

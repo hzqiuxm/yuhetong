@@ -4,7 +4,7 @@
 {{ super() }}
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/lvxun/list.css')}}">
 <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-1.10.2.min.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static',filename='js/lvxun/list.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='js/lvxun/template_list.js')}}"></script>
 {% endblock %}
 {% block content %}
 <header class="header navbar navbar-fixed-top" role="banner">
@@ -223,8 +223,8 @@
                 <ul class="textList">
 
                         {% for temp_item in data.list %}
-                        <span><a href="javascript:void(0);">{{temp_item.name}}</a></span>
                         <li>
+                            <span><a href="javascript:void(0);">{{temp_item.name}}</a></span>
                         <div class="optionDiv">
                             <a href="javascript:void(0);">修改</a>
                             <a href="javascript:void(0);">删除</a>
@@ -234,6 +234,7 @@
 
 
                 </ul>
+        {{url_for('template.get_template_types')}}
                 <div style="height:30px;">
                     <ul class="pageList">
                         <li><a href="javascript:void(0);" class="page_num">< <</a></li>

@@ -59,7 +59,7 @@ $(function () {
         $.ajax({
             url: "../ctemplate/" + (new Date()).getTime(),
             type: "GET",
-            data: {'aaa': 'aaa'},      //这个表示将表单的内容序列化
+            data: {'page_num': '3'},      //这个表示将表单的内容序列化
             dataType: "Json",
             success: function (data) {        //data参数表示服务器传回来的数据
 
