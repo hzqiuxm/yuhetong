@@ -203,7 +203,8 @@ def get_templates():
         templ_item.pop('owner')
         templ_list.append(templ_item)
     re_dict['list'] = templ_list
-    return render_template('contract_temp/template_list.html', data=re_dict)
+    return render_template('contract_temp/list.html', data=re_dict)
+    # return render_template('contract_temp/template_list.html', data=re_dict)
     # return jsonify({'success':True, 'data': templ_list})
 
 
