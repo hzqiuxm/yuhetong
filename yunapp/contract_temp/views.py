@@ -92,7 +92,7 @@ def get_template_types():
         t_type = t_type.serialize()
         t_type.pop('gmt_modify')
         t_type.pop('gmt_create')
-        t_type.pop('parent_id')
+        # t_type.pop('parent_id')
         t_type.pop('children')
         type_list.append(t_type)
     re_dict['list'] = type_list
