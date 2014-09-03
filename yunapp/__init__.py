@@ -15,6 +15,7 @@ from contract_temp.views import template as mod_c_template
 from yunapps import app
 from yunapp import utils, logutils
 
+from yunapp.web.users import web_users
 # Admin import may be delete online
 # from yunapp.admin.contract_template_admin import ComtractTemplateAdminView
 # from flask.ext.admin.contrib.sqla import ModelView
@@ -34,16 +35,19 @@ app.jinja_loader = my_loader
 
 # Blueprint Register
 app.config.from_object('config')
-app.register_blueprint(mod_test, url_prefix='/test')
-app.register_blueprint(mod_user, url_prefix='/user')
-app.register_blueprint(mod_file, url_prefix='/file')
-app.register_blueprint(mod_c_template, url_prefix='/ctemplate')
-app.register_blueprint(mod_contract, url_prefix='/contract')
+app.register_blueprint(mod_test, url_prefix='/api/test')
+app.register_blueprint(mod_user, url_prefix='/api/user')
+app.register_blueprint(mod_file, url_prefix='/api/file')
+app.register_blueprint(mod_c_template, url_prefix='/api/ctemplate')
+app.register_blueprint(mod_contract, url_prefix='/api/contract')
 
 # Flask-admin should be delete
 # admin = Admin(app, name='Yunhetong')
 # admin.add_view(ComtractTemplateAdminView(name='Contract Template'))
-# admin.add_view(ModelView(model.LxTempType, engine.s))
+# admin.add_view(ModelView(model.LxTempTyp  e, engine.s))
+
+# Blueprint Register for web
+app.register_blueprint(web_users, url_prefix='/user')
 
 CsrfProtect(app)
 
@@ -54,7 +58,3 @@ def site_map():
 @app.route("/index", methods=['GET'])
 def yunapp_index():
     return render_template('newhome.html')
-
-@app.route("/list", methods=['GET'])
-def yunapp_idex():
-    return render_template('list.html')
