@@ -21,6 +21,6 @@ def login_page():
     else:
         return render_template('user/login.html')
 
-@web_users.route('/smrz', methods=['GET'])
+@web_users.route('/authentication', methods=['GET'])
 def smrz_page():
     return render_template('user/certification.html')
