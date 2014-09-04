@@ -3,6 +3,9 @@
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+        var URL_ROOT ="{{ request.url_root }}";
+    </script>
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />

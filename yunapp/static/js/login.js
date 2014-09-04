@@ -116,7 +116,7 @@ var Login = function () {
                             }
                         });
                         $.ajax({
-                            url: "{{ request.url_root }}{{url_for('user.login')}}?time=" + (new Date()).getTime(),
+                            url: LoginUrl+"?time=" + (new Date()).getTime(),
                             type: "POST",
                             data: $(".login-form").serialize(),      //这个表示将表单的内容序列化
                             dataType: "Json",
@@ -194,7 +194,7 @@ var Login = function () {
                         NProgress.start(); //这就是个显示进度条的
                         //alert($(".register-form").serialize());
                         $.ajax({
-                            url: "{{ request.url_root }}{{url_for('user.register')}}?time=" + (new Date()).getTime(),
+                            url: RegisterUrl+"?time=" + (new Date()).getTime(),
                             type: "POST",
                             data: $(".register-form").serialize(),      //这个表示将表单的内容序列化
                             dataType: "Json",
