@@ -2,22 +2,19 @@
 __author__ = 'Seanwu'
 
 import logging,io,StringIO
-from docx import Document
-from docx.shared import Inches
 
-from flask import Blueprint, render_template, jsonify, current_app, request,send_file
+from flask import Blueprint, jsonify, current_app, request,send_file
 
 from yunapp.orm import model
 from yunapp.orm import engine
 from yunapp.logutils import StructedMsg
-from yunapp.yunapps import app
-from yunapp.contract.models import Yunhetong_HTMLParser
+from yunapp.contract.utils import Yunhetong_HTMLParser
 
 contract = Blueprint('contract', __name__)
 app_logger = logging.getLogger('yunapp')
 biz_logger = logging.getLogger('business')
 
-@contract.route('/<filename>.docx',methods=['POST'])
+@contract.route('/api/<filename>.docx',methods=['POST'])
 def doc_create(filename):
     doc_file = StringIO.StringIO()
     parser = Yunhetong_HTMLParser(doc_file)

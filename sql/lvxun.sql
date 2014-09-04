@@ -34,7 +34,7 @@ CREATE TABLE 'lxuser' (
   'company_id' int(16)  default 0 COMMENT '对应的公司id',
   'create_time' TIMESTAMP NOT NULL DEFAULT 0 COMMENT '用户创建时间',
   'modify_time' TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最近修改时间',
-  'address' varchar(100) '通讯地址',
+  'address' varchar(100) COMMENT '通讯地址',
   'sign_id' int(16) DEFAULT NULL COMMENT '用户签名Id',
   'status' tinyint  DEFAULT NULL COMMENT '用户状态',
   PRIMARY KEY ('id')
@@ -46,11 +46,11 @@ CREATE TABLE 'lxuser' (
 DROP TABLE IF EXISTS 'lxcompany';
 CREATE TABLE 'lxcompany' (
   'id' int(16) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id主键',
-  'name' varchar(128) utf8_bin COMMENT '公司名称',
-  'orzNo' varchar(20) COMMENT '组织机构代码'
-  'orzimg' varchar(100) COMMENT '组织机构代码证扫描件'
-  'yyzyNo' varchar(20) COMMENT '营业执照号码'
-  'yyzyimg' varchar(100) COMMENT '营业执照扫描件'
+  'name' varchar(128)  COMMENT '公司名称',
+  'orzNo' varchar(20) COMMENT '组织机构代码',
+  'orzimg' varchar(100) COMMENT '组织机构代码证扫描件',
+  'yyzyNo' varchar(20) COMMENT '营业执照号码',
+  'yyzyimg' varchar(100) COMMENT '营业执照扫描件',
   'type' tinyint   COMMENT '公司类型 先设置1',
   'legal_person' varchar(80) COLLATE utf8_bin COMMENT '法人代表',
   'address' varchar(80) COLLATE utf8_bin COMMENT '公司地址',
