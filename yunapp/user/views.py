@@ -216,7 +216,7 @@ def resert_password():
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
         elif not bcrypt.check_password_hash(c_user.passwd, password):
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['PASS_ERROR']})
-        
+
     return_dict = {'success': True, 'errorMsg': 'no'}
     business_logger.info('userid=' + str(c_user.id) + 'has been update')
     return jsonify(return_dict)

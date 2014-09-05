@@ -190,6 +190,7 @@ def get_templates():
     filter_dict = dict(status=1)
     if 'template_type_id' in request.values:
         t_type_id = request.values.get('template_type_id')
+        print t_type_id
         if t_type_id.isdigital() and int(t_type_id) > 0:
             filter_dict['type_id'] = request.values.get('template_type_id')
     search_key = None
