@@ -223,7 +223,8 @@ def del_template():
     :param template_type_id
     :return templ.id
     """
-    tid=request.value.get('tid','')
+    tid=request.values.get('tid','')
+    print tid
     with engine.with_session() as ss:
         templ = ss.query(LxTemplate).get(tid)
         if templ is None:
