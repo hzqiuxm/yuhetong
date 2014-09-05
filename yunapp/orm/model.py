@@ -106,10 +106,30 @@ class LxTemplate(db.Model, LxMixin):
 
 class LxEmail(db.Model, LxMixin):
     __tablename__ = 'lxemail'
-    cols = ['id', 'eTo', 'eFrom', 'eSubject', 'eContent']
+    cols = ['id', 'eTo', 'eFrom', 'eSubject', 'eContent', 'gmt_create',
+            'gmt_modify', 'status']
     eTo = Column(String(50), nullable=False)
     eFrom = Column(String(50), nullable=False)
     eSubject = Column(String(100), nullable=False)
     eContent = Column(Text, nullable=False)
 
+class LxContract(db.Model, LxMixin):
+    __tablename__ = 'lxcontract'
+    cols = ['id', 'stage', 'name', 'participants', 'eContent', 'gmt_create',
+            'gmt_modify', 'status']
+    stage = Column(Integer, nullable=False)
+    name = Column(String(64), nullable=False)
 
+    participants = Column(String(256), nullable=False)
+    write_perm_users = Column(String(256), nullable=False)
+    read_perm_users = Column(String(256), nullable=False)
+    sign_perm_users = Column(String(256), nullable=False)
+
+    version = Column(Integer, nullable=False)
+    draft = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    file_id_v1 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    file_id_v2 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    file_id_v3 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    file_id_v4 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    file_id_v5 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    owner_id = Column(Integer, ForeignKey('lxuser.id'))

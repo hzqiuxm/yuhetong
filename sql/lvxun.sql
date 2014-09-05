@@ -149,6 +149,32 @@ CREATE TABLE 'lxemail' (
   'eSentTime' datetime NOT NULL COMMENT '邮件发送时间',
   PRIMARY KEY ('id')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Table structure for 'lxcontract'
+-- ----------------------------
+DROP TABLE IF EXISTS 'lxcontract';
+CREATE TABLE 'lxcontract' (
+  'id' int(11) NOT NULL,
+  'stage' int(11) COMMENT '合同签订阶段',
+  'name' varchar (128) COMMENT '合同名称',
+
+  'participants' varchar (256) COMMENT '合同参与方 user id list',
+  'write_perm_users' varchar (256) COMMENT '拥有写权限的用户列表',
+  'read_perm_users' varchar (256) COMMENT '拥有读权限的用户列表',
+  'sign_perm_users' varchar (256) COMMENT '拥有签权限的用户列表',
+
+  'owner_id' int(16)  COMMENT '合同所有者',
+  'draft' int(16)  COMMENT '合同草稿',
+  'file_id_v1' int(16)  COMMENT '合同文件v1',
+  'file_id_v2' int(16)  COMMENT '合同文件v2',
+  'file_id_v3' int(16)  COMMENT '合同文件v3',
+  'file_id_v4' int(16)  COMMENT '合同文件v4',
+  'file_id_v5' int(16)  COMMENT '合同文件v5',
+  PRIMARY KEY ('id')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 INSERT INTO wenwu_test.lxuser ( type, username, real_name, passwd, email, phone, parent_user_id, company_id, create_time, modify_time, sign_id, status) VALUES ( '1', 'sampleUser', 'test', '1', 'account@yunhetong.com', '1234567', 1, 1, '2014-08-12 15:19:48.0', '2014-08-12 15:19:52.0', 1, 1);
 INSERT INTO wenwu_test.lxcompany ( type, name, field1, field2, field3, create_time, modify_time, status) VALUES ('1', 'test', '11', '22', '33', '2014-08-12 15:24:40.0', '2014-08-12 15:24:43.0', '1');
 
