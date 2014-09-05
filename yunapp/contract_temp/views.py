@@ -14,7 +14,7 @@ template = Blueprint('template', __name__)
 app_logger = logging.getLogger('yunapp')
 biz_logger = logging.getLogger('business')
 
-#TODO(wenwu) Detele before online, init template in db, cannot called by user
+# TODO(wenwu) Detele before online, init template in db, cannot called by user
 @template.route('/init_template_type', methods=['GET'])
 def init_template_type():
     """ Init template type from file template_type_content
@@ -30,27 +30,28 @@ def init_template_type():
             with engine.with_session() as ss:
                 if t_dict.get('parent') == '0':
                     new_temp_type = LxTempType(
-                        name = t_dict.get('name'),
-                        level = t_dict.get('level'),
-                        status = t_dict.get('status')
+                        name=t_dict.get('name'),
+                        level=t_dict.get('level'),
+                        status=t_dict.get('status')
                     )
                     ss.add(new_temp_type)
                     biz_logger.info(StructedMsg('add level 0 template' +
-                                                t_dict.get('name'),model=__name__))
+                                                t_dict.get('name'), model=__name__))
                 else:
                     parent_temp_type = LxTempType.query.filter_by(
                         name=t_dict.get('parent'), status=1
                     ).first()
                     new_temp_type = LxTempType(
-                        name = t_dict.get('name'),
-                        level = t_dict.get('level'),
-                        status = t_dict.get('status'),
-                        parent_id = parent_temp_type.id
+                        name=t_dict.get('name'),
+                        level=t_dict.get('level'),
+                        status=t_dict.get('status'),
+                        parent_id=parent_temp_type.id
                     )
                     ss.add(new_temp_type)
                     biz_logger.info(StructedMsg('add level ' + str(t_dict.get(
-                        'level')) + ' template' +  t_dict.get('name'), model=__name__))
+                        'level')) + ' template' + t_dict.get('name'), model=__name__))
         return jsonify({'success': True})
+
 
 def get_temptype_content(line):
     temptype_dict = {}
@@ -64,6 +65,8 @@ def get_temptype_content(line):
     except:
         app_logger.exception('get temptype content error')
         return None
+
+
 #TODO END
 
 @template.route('/template_types', methods=['GET'])
@@ -107,7 +110,8 @@ def get_template_types():
         t_type['children'] = child_list
         type_list.append(t_type)
     re_dict['list'] = type_list
-    return jsonify({'success':True, 'data':re_dict})
+    return jsonify({'success': True, 'data': re_dict})
+
 
 @template.route('/check_template_name', methods=['GET'])
 def check_template_name():
@@ -124,6 +128,7 @@ def check_template_name():
         return jsonify(dict(success=True, data=True))
     else:
         return jsonify(dict(success=True, data=False))
+
 
 @template.route('/templates', methods=['POST'])
 def add_template():
@@ -142,15 +147,16 @@ def add_template():
             id=t_type_id, status=1).first()
         if t_type is None:
             return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE_TYPE']})
+                'NO_SUCH_TEMPLATE_TYPE']})
         new_template = LxTemplate(
-            name = t_name,
-            type = t_type,
-            content = t_content,
-            status = 1
+            name=t_name,
+            type=t_type,
+            content=t_content,
+            status=1
         )
         ss.add(new_template)
-    return jsonify({'success':True, 'errorMsg':''})
+    return jsonify({'success': True, 'errorMsg': ''})
+
 
 @template.route('/template/<int:tid>', methods=['GET'])
 def get_template(tid):
@@ -161,15 +167,16 @@ def get_template(tid):
     with engine.with_session() as ss:
         templ = ss.query(LxTemplate).get(tid)
         if templ is None:
-            return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE']})
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'NO_SUCH_TEMPLATE']})
         templ = templ.serialize()
         templ.pop('gmt_modify')
         templ.pop('gmt_create')
         templ.pop('type')
         templ.pop('owner')
         # return jsonify({'success':True, 'data': templ})
-        return jsonify({'success':True, 'data': templ})
+        return jsonify({'success': True, 'data': templ})
+
 
 @template.route('/', methods=['GET'])
 def get_templates():
@@ -180,9 +187,11 @@ def get_templates():
     """
     page_num = get_int_page_num(request.values.get('page_num', '1'))
 
-    filter_dict = dict(status = 1)
+    filter_dict = dict(status=1)
     if 'template_type_id' in request.values:
-        filter_dict['type_id'] = request.values.get('template_type_id', '')
+    t_type_id = request.values.get('template_type_id')
+    if t_type_id.isdigital() and int(t_type_id) > 0:
+        filter_dict['type_id'] = request.values.get('template_type_id')
     search_key = None
     if 'search_key' in request.values:
         search_key = request.values.get('search_key', '')
@@ -191,7 +200,7 @@ def get_templates():
     # templates = ss.query(LxTemplate).filter_by(**filter_dict)
     if search_key:
         templates = templates.filter(
-            LxTemplate.name.like('%' + search_key +'%'))
+            LxTemplate.name.like('%' + search_key + '%'))
 
     templates = templates.paginate(page_num, constants.PAGE_SIZE, False)
     re_dict = dict()
@@ -214,7 +223,7 @@ def get_templates():
         templ_item.pop('owner')
         templ_list.append(templ_item)
     re_dict['list'] = templ_list
-    return jsonify({'success':True, 'data': re_dict})
+    return jsonify({'success': True, 'data': re_dict})
 
 
 @template.route('/<int:tid>', methods=['DELETE'])
@@ -226,10 +235,11 @@ def del_template(tid):
     with engine.with_session() as ss:
         templ = ss.query(LxTemplate).get(tid)
         if templ is None:
-            return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE']})
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'NO_SUCH_TEMPLATE']})
         templ.update(dict(status=-1))
-        return jsonify({'success':True, 'data': templ.id})
+        return jsonify({'success': True, 'data': templ.id})
+
 
 @template.route('/<int:tid>', methods=['PUT'])
 def update_template(tid):
@@ -240,8 +250,8 @@ def update_template(tid):
     with engine.with_session() as ss:
         templ = ss.query(LxTemplate).get(tid)
         if templ is None:
-            return jsonify({'success':False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE']})
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'NO_SUCH_TEMPLATE']})
         update_dict = dict()
         if 'template_name' in request.values:
             update_dict['name'] = request.values.get('template_name', '')
@@ -251,12 +261,13 @@ def update_template(tid):
                 id=t_type_id, status=1).first()
             if t_type is None:
                 return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
-            'NO_SUCH_TEMPLATE_TYPE']})
+                    'NO_SUCH_TEMPLATE_TYPE']})
             update_dict['type'] = t_type
         if 'template_content' in request.values:
             update_dict['content'] = request.values.get('template_content', '')
         templ.update(update_dict)
-    return jsonify({'success':True, 'errorMsg': ''})
+    return jsonify({'success': True, 'errorMsg': ''})
+
 
 def check_new_template_param(arg_values):
     """ Delete templates by template_type_id
