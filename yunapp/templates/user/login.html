@@ -25,7 +25,10 @@
     <script type="text/javascript" src="{{ url_for('static', filename='plugins/validation/jquery.validate.min.js')}}"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='plugins/nprogress/nprogress.js')}}"></script>
-
+    <script type="text/javascript">
+        var LoginUrl = URL_ROOT+"{{url_for('user.login')}}";
+        var RegisterUrl= URL_ROOT+"{{url_for('user.register')}}";
+    </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/login.js')}}"></script>
 
     <script>$(document).ready(function(){Login.init()});</script>

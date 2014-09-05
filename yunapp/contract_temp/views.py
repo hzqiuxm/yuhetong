@@ -24,7 +24,6 @@ def init_template_type():
     with open(content_path, 'r') as c_t:
         for content in c_t.readlines():
             t_dict = get_temptype_content(content)
-            print t_dict
             if t_dict is None:
                 biz_logger.error('Add template type error content:' + content)
                 continue
@@ -151,7 +150,7 @@ def add_template():
             status = 1
         )
         ss.add(new_template)
-    return jsonify({'success':True, 'data':new_template.id})
+    return jsonify({'success':True, 'errorMsg':''})
 
 @template.route('/template/<int:tid>', methods=['GET'])
 def get_template(tid):
@@ -215,10 +214,7 @@ def get_templates():
         templ_item.pop('owner')
         templ_list.append(templ_item)
     re_dict['list'] = templ_list
-    # return render_template('contract_temp/template_list.html', data=re_dict)
     return jsonify({'success':True, 'data': re_dict})
-
-
 
 
 @template.route('/<int:tid>', methods=['DELETE'])
@@ -260,7 +256,7 @@ def update_template(tid):
         if 'template_content' in request.values:
             update_dict['content'] = request.values.get('template_content', '')
         templ.update(update_dict)
-    return jsonify({'success':True, 'data': templ.id})
+    return jsonify({'success':True, 'errorMsg': ''})
 
 def check_new_template_param(arg_values):
     """ Delete templates by template_type_id

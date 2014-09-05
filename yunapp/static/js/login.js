@@ -116,7 +116,7 @@ var Login = function () {
                             }
                         });
                         $.ajax({
-                            url: "login?time=" + (new Date()).getTime(),
+                            url: LoginUrl+"?time=" + (new Date()).getTime(),
                             type: "POST",
                             data: $(".login-form").serialize(),      //这个表示将表单的内容序列化
                             dataType: "Json",
@@ -142,7 +142,11 @@ var Login = function () {
                                 alert(textStatus + errorThrown);
                                 //alert(textStatus + errorThrown);// 只有一个会包含信息
                                 // this;  调用本次AJAX请求时传递的options参数
+                            },
+                            complete:function(){
+                                alert(a);
                             }
+
                         });
 
                         return false;
@@ -166,17 +170,6 @@ var Login = function () {
                 })
             }
         };
-        var a = function () {
-            if ($.validator) {
-                $(".register-form").validate({
-                    invalidHandler: function (i, h) {
-                    },
-                    submitHandler: function (h) {
-                        window.location.href = "index.html"
-                    }
-                })
-            }
-        };
         var h = function () {
             if ($.validator) {
                 $(".register-form").validate({
@@ -189,6 +182,7 @@ var Login = function () {
                         //                    $.post("login?time=" + (new Date()).getTime(), $(".login-form").serialize(), function(data){
                         //                        alert(data);
                         //                    }, "Json");
+                        alert(a);
                         var csrftoken = $('meta[name=csrf-token]').attr('content');
                         $.ajaxSetup({
                             beforeSend: function (xhr, settings) {
@@ -200,7 +194,7 @@ var Login = function () {
                         NProgress.start(); //这就是个显示进度条的
                         //alert($(".register-form").serialize());
                         $.ajax({
-                            url: "register?time=" + (new Date()).getTime(),
+                            url: RegisterUrl+"?time=" + (new Date()).getTime(),
                             type: "POST",
                             data: $(".register-form").serialize(),      //这个表示将表单的内容序列化
                             dataType: "Json",
@@ -222,7 +216,7 @@ var Login = function () {
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
                                 // 通常 textStatus 和 errorThrown 之中
-                                alert(textStatus + errorThrown);
+                                //alert(textStatus + errorThrown);
                                 //alert(textStatus + errorThrown);// 只有一个会包含信息
                                 // this;  调用本次AJAX请求时传递的options参数
                             }
