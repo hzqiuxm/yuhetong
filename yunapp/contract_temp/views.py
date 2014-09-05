@@ -218,7 +218,7 @@ def get_templates():
 
 
 @template.route('/<int:tid>', methods=['DELETE'])
-def del_template():
+def del_template(tid):
     """ Delete templates by template_type_id
     :param template_type_id
     :return templ.id
