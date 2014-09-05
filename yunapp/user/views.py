@@ -203,6 +203,29 @@ def update_user():
     return jsonify(return_dict)
 
 
+@user.route("/resetpwd", methods=['PUT'])
+# @login_required
+def resert_password():
+    uid = request.values.get('uid', '')
+    password = request.values.get('password', '')
+    if not uid:
+        return jsonify({'success': False, 'errmsg': 'uid为空'})
+    with engine.with_session() as ss:
+        c_user = ss.query(model.LxUser).filter_by(id=uid).first()
+        if not c_user:
+            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
+        elif not bcrypt.check_password_hash(c_user.passwd, password):
+            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['PASS_ERROR']})
+        c_user.type = request.values.get('type', c_user.type)
+        # username= request.values.get('username',c_user.username)  用户名不给改
+        c_user.real_name = request.values.get('real_name', c_user.real_name)
+        # c_user.email = request.values.get('email', c_user.email)
+        c_user.phone = request.values.get('phone', c_user.phone)
+        c_user.modify_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    return_dict = {'success': True, 'errorMsg': 'no'}
+    business_logger.info('userid=' + str(c_user.id) + 'has been update')
+    return jsonify(return_dict)
+
 @user.route("/authenticationuser", methods=['PUT'])
 # @login_required
 def renzheng_user():
