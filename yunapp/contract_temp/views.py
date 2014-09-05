@@ -217,14 +217,12 @@ def get_templates():
     return jsonify({'success':True, 'data': re_dict})
 
 
-@template.route('/', methods=['DELETE'])
-def del_template():
+@template.route('/<int:tid>', methods=['DELETE'])
+def del_template(tid):
     """ Delete templates by template_type_id
     :param template_type_id
     :return templ.id
     """
-    tid=request.values.get('tid','')
-    print tid
     with engine.with_session() as ss:
         templ = ss.query(LxTemplate).get(tid)
         if templ is None:
