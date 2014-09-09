@@ -4,13 +4,24 @@
     {{ super() }}
 
     <script type="text/javascript">
-        var pageName = 0;
+        var csrftoken = $('meta[name=csrf-token]').attr('content');
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                }
+            }
+        });
+
+        var pageNum = 1;
         var lxtempType = 0;
-        function buildTable(){
+
+        function buildTable(pageNum,lxtempType){
             var args;
             args = 1 <= arguments.length ? arguments : [];
             $.ajax({
                 "url":"http://yunhetong.com:8091/api/ctemplate/",
+                "data":{"page_num":pageNum,"template_type_id":lxtempType},
                 "type":"get",
                 "success":function(data){
                     var data = data.data;
@@ -21,7 +32,7 @@
                     for(var i = 0 ; i < data.list.length; i++){
                         $(rows[i]).attr("id","td" + data.list[i].id);
                         $("td.itemName ",rows[i]).html("<a href='template_detail?id=" + data.list[i].id + "'>" + data.list[i].name + "</a>");
-                        $("a.deleteButton ",rows[i]).html("删除").attr("itemId",data.list[i].id);
+                        $("a.deleteButton ",rows[i]).html("删除").attr("itemid",data.list[i].id);
                         $("a.editerButton ",rows[i]).html("修改").attr("href","template_detail?id=" + data.list[i].id);
                     }
                 }
@@ -30,7 +41,7 @@
 
         function buildPageName(num,index){
             var list = $(".pageList");
-            var str = '<li><a href="javascript:void(0);" class="first" ><<</a></li>';
+            var str = '<li><a href="javascript:void(0);" class="first" pageNum=1 ><<</a></li>';
             var startNum = 1;
             var endNum = num;
             if(num > 7 && index <= 3){
@@ -47,26 +58,30 @@
             for(var i = startNum ; i <= endNum ; i++ ){
                 str += '<li><a href="javascript:void(0);" ';
                 if(i == index ){
-                    str += " class='select' >" + i 
+                    str += " class='select' pageNum="+i+" >" + i 
                 }else{
                     str += " >" + i 
                 }
                 str += '</a></li>';
             }
-            str += '<li><a href="javascript:void(0);" class="end" >>></a></li>';
+            str += '<li><a href="javascript:void(0);" class="end" pageNum='+num+' >>></a></li>';
             list.html(str); 
-            
+            $(".pageList li a").bind("click",function(){
+                buildTable($(this).attr("pageNum"),lxtempType);
+            })
         }
 
         function deleteItem(){
+            var num = $(this).attr("itemid");
             $.ajax({
-                "url":"http://yunhetong.com:8091/api/ctemplate/",
+                "url":"http://yunhetong.com:8091/api/ctemplate/"+$(this).attr("itemid"),
+                "data":"?csrftoken=" + csrftoken,
                 "type":"delete",
-                "data":"id="+$(this).attr("itemId"),
                 "success":function(data){
                     if(data.success == true){
-                        var dom = $("#id"+$(this).attr("itemId"));
-                        $("a",dom).html("").unbind("click");
+                        var dom = $("#td"+num);
+                        $("a",dom).text("").unbind("click");
+                        buildTable(pageNum,lxtempType);
                     }
                 }
             })
@@ -78,7 +93,7 @@
                 "type":"get",
                 "success":function(data){
                     var list  = data.data.list;
-                    var str = "<optgroup label='全部'><option value='-1' >全部类型</option></optgroup>";
+                    var str = "<optgroup label='全部'><option value='0' >全部类型</option></optgroup>";
                     var strTemp = "";
                     for(var i = 0 ; i < list.length ; i++){
                         strTemp = "";
@@ -97,9 +112,12 @@
 
         $(document).ready(function(){
                 buildlxtempTypeList();
-                buildTable({
-                    "pageName":1
-                });
+                buildTable(pageNum,lxtempType);
+                $("#lxtempTypeId").change(function(){
+                    lxtempType = $(this).val();
+                    pageNum =1 ;
+                    buildTable(pageNum,lxtempType);
+                })
         });
     </script>
 {% endblock %}
@@ -113,7 +131,7 @@
                     <label class="col-md-2 control-label" for="lxtempTypeId">
                         合同类型</label>
                     <div class="col-md-10">
-                        <select id="lxtempTypeId" class="select2-select-00 col-md-12 full-width-fix">
+                        <select id="lxtempTypeId" class="select2-select-00 col-md-12 full-width-fix" >
                         </select>
                     </div>
                 </div>
