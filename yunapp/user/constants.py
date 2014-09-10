@@ -10,5 +10,6 @@ ERROR_CODE = {
     'PASS_ERROR': '密码错误',
     'UID_EMPTY_ERROR': 'UID为空错误',
     'USERNAME_NOT_EXISTS_ERROR': '不存在该用户',
-    'SENT_ACCTIVE_EMAIL_ERROR': '激活邮件发送失败'
+    'SENT_ACCTIVE_EMAIL_ERROR': '激活邮件发送失败',
+    'ERROR_PERMISSION_DENIED': '权限不足'
 }

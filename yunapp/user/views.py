@@ -66,9 +66,43 @@ def register():
     return jsonify(return_dict)
 
 
+@user.route('/adduser', methods=['POST'])
+@login_required
+def admin_add_user():
+    if current_user.id == '0':
+        return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['ERROR_PERMISSION_DENIED']})
+    args = verify_parameter(request.values)
+    if 'success' in args:
+        return jsonify(args)
+    with engine.with_session() as ss:
+        new_user = model.LxUser(username=args['username'],
+                                # real_name=args['realname'],
+                                type=args['type'],
+                                passwd=args['password'],
+                                email=args['email'],
+                                phone=request.values.get('phone', ''),
+                                idCardNo=request.values.get('idCardNo',''),
+                                idCardimg1=request.values.get('idCardimg1',''),
+                                idCardimg2=request.values.get('idCardimg2', ''),
+                                authorization_img=request.values.get('authorizationimg',''),
+                                parent_id=current_user.id,
+                                # phone=args['phone'],
+                                # parent_id=args['parent_user_id'],
+                                company=current_user.company)
+        ss.add(new_user)
+        current_user.children.append(new_user)
+    e_content = get_email_content(args['username'])
+    if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=new_user.email, e_subject='这是一封激活邮件'):
+        return_dict = {'success': True, 'uid': new_user.id}
+    else:
+        return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
+    # business_logger.info('new user '+new_user.username+'register,userid='+new_user.id)
+    return jsonify(return_dict)
+
+
 def get_email_content(username):
-    active_code =hashlib.md5( username + config.MD5_XXXX).hexdigest()
-    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + active_code+ '\">' + 'http://192.168.1.55:8092/user/active/' + active_code+ '</a>'
+    active_code = hashlib.md5(username + config.MD5_XXXX).hexdigest()
+    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + active_code + '\">' + 'http://192.168.1.55:8092/user/active/' + active_code + '</a>'
     return e_content
 
 
@@ -203,23 +237,20 @@ def update_user():
     return jsonify(return_dict)
 
 
-@user.route("/resetpwd", methods=['PUT'])
-# @login_required
-def resert_password():
-    uid = request.values.get('uid', '')
-    password = request.values.get('password', '')
+@user.route("/resetpwd/<int:uid>", methods=['PUT'])
+@login_required
+def resert_password(uid):
     if not uid:
         return jsonify({'success': False, 'errmsg': 'uid为空'})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
         if not c_user:
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
-        elif not bcrypt.check_password_hash(c_user.passwd, password):
-            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['PASS_ERROR']})
-
+        c_user.password = bcrypt.generate_password_hash(request.values.get('password'))
     return_dict = {'success': True, 'errorMsg': 'no'}
-    business_logger.info('userid=' + str(c_user.id) + 'has been update')
+    business_logger.info('userid=' + str(c_user.id) + ' password has been reset')
     return jsonify(return_dict)
+
 
 @user.route("/authenticationuser", methods=['PUT'])
 # @login_required
