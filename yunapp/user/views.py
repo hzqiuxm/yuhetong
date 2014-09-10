@@ -66,10 +66,10 @@ def register():
     return jsonify(return_dict)
 
 
-@user.route('/adduser', methods=['POST'])
+@user.route('/addsubuser', methods=['POST'])
 @login_required
-def admin_add_user():
-    if current_user.id == '0':
+def add_sub_user():
+    if current_user.parrent_id != '0':
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['ERROR_PERMISSION_DENIED']})
     args = verify_parameter(request.values)
     if 'success' in args:
@@ -237,18 +237,15 @@ def update_user():
     return jsonify(return_dict)
 
 
-@user.route("/resetpwd/<int:uid>", methods=['PUT'])
+@user.route("/resetpwd/<resetcode>", methods=['PUT'])
 @login_required
-def resert_password(uid):
-    if not uid:
-        return jsonify({'success': False, 'errmsg': 'uid为空'})
-    with engine.with_session() as ss:
-        c_user = ss.query(model.LxUser).filter_by(id=uid).first()
-        if not c_user:
-            return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
-        c_user.password = bcrypt.generate_password_hash(request.values.get('password'))
-    return_dict = {'success': True, 'errorMsg': 'no'}
-    business_logger.info('userid=' + str(c_user.id) + ' password has been reset')
+def resert_password(resetcode):
+    if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == resetcode:
+        current_user.password = 2
+        business_logger.info('user\'s password has been reset,userid=' + str(current_user.id))
+        return_dict = {'success': True, 'errorMsg': '修改密码成功'}
+    else:
+        return_dict = {'success': False, 'errorMsg': constants.ERROR_CODE['RESERT_CODE_ERROR']}
     return jsonify(return_dict)
 
 

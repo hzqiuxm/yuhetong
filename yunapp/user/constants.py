@@ -11,5 +11,6 @@ ERROR_CODE = {
     'UID_EMPTY_ERROR': 'UID为空错误',
     'USERNAME_NOT_EXISTS_ERROR': '不存在该用户',
     'SENT_ACCTIVE_EMAIL_ERROR': '激活邮件发送失败',
-    'ERROR_PERMISSION_DENIED': '权限不足'
+    'ERROR_PERMISSION_DENIED': '权限不足',
+    'RESERT_CODE_ERROR':'重置码不正确'
 }
