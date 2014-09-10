@@ -45,12 +45,13 @@ def add_contract():
     c_name = request.values.get('contract_name', '')
     c_content = request.values.get('contract_content', '')
     c_appendix = request.values.get('appendix', '')
+    c_part_num = request.values.get('part_num', 2, type = int)
+    print c_part_num
     appendix_json = get_appendix_json(c_appendix)
 
-    c_fuuid = generate_file_uuid()
-    c_path = save_contract_file(c_content, c_fuuid)
-
     with engine.with_session() as ss:
+        c_fuuid = generate_file_uuid()
+        c_path = save_contract_file(c_content, c_fuuid)
         new_file = LxFile(fuuid=c_fuuid,
                           type=constants.CONTRACT_FILE_TYPE,
                           name=c_name,
@@ -58,6 +59,7 @@ def add_contract():
         ss.add(new_file)
 
         new_contract = LxContract(
+            part_num = c_part_num,
             owner = g.user,
             name = c_name,
             stage = 1,
@@ -68,7 +70,7 @@ def add_contract():
         )
         ss.add(new_contract)
 
-    return jsonify({'success':True, 'errorMsg':''})
+    return jsonify({'success': True, 'data': new_contract.id})
 
 @contract.route('/<int:cid>', methods=['PUT'])
 def update_contract(cid):
@@ -130,6 +132,8 @@ def del_contract(cid):
     """
 
 def check_new_contract_param(args):
+    # TODO(wenwu) implement the function
+
     return { 'success': True }
 
 # def check_participants(participants_str):

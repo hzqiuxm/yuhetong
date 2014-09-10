@@ -122,21 +122,23 @@ class LxContract(db.Model, LxMixin):
 
     appendix = Column(String(256), nullable=False)
 
+    part_num = Column(Integer, nullable=False)
     version = Column(Integer, nullable=False)
     gmt_expire = Column(TIMESTAMP, nullable=True)
 
-    draft = relationship('LxFile')
+
     draft_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    contract_v1 = relationship('LxFile')
+    draft = relationship('LxFile', foreign_keys='LxContract.draft_fid')
     contract_v1_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    contract_v2 = relationship('LxFile')
+    contract_v1 = relationship('LxFile', foreign_keys='LxContract.contract_v1_fid')
     contract_v2_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    contract_v3 = relationship('LxFile')
+    contract_v2 = relationship('LxFile', foreign_keys='LxContract.contract_v2_fid')
     contract_v3_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    contract_v4 = relationship('LxFile')
+    contract_v3 = relationship('LxFile', foreign_keys='LxContract.contract_v3_fid')
     contract_v4_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    contract_v5 = relationship('LxFile')
+    contract_v4 = relationship('LxFile', foreign_keys='LxContract.contract_v4_fid')
     contract_v5_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    contract_v5 = relationship('LxFile', foreign_keys='LxContract.contract_v5_fid')
     owner = relationship("LxUser")
     owner_id = Column(Integer, ForeignKey('lxuser.id'))
 
@@ -145,7 +147,7 @@ class LxContractParticipation(db.Model, LxMixin):
     __tablename__ = 'lxcontractparticipation'
     cols = ['id', 'contract', 'user', 'stage', 'gmt_create',
             'gmt_modify', 'status']
-    stage = version = Column(Integer, nullable=False)
+    stage = Column(Integer, nullable=False)
     contract = relationship("LxContract")
     contract_id = Column(Integer, ForeignKey('lxcontract.id'))
     user = relationship("LxUser")

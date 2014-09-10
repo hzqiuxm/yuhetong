@@ -22,9 +22,6 @@ from yunapp.web.ctemplates import web_templates
 # from flask.ext.admin.contrib.sqla import ModelView
 from yunapp.orm import model, engine
 
-print sys.getdefaultencoding()
-
-
 logutils.init_log()
 
 my_loader = jinja2.ChoiceLoader([
