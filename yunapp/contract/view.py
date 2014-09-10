@@ -4,6 +4,7 @@ __author__ = 'Seanwu'
 import logging,io,StringIO, json
 
 from flask import Blueprint, jsonify, current_app, request,send_file, g
+from flask.ext.login import current_user
 
 from yunapp.orm.model import LxContract, LxFile, LxUser
 from yunapp.orm import engine
@@ -46,10 +47,10 @@ def add_contract():
     c_content = request.values.get('contract_content', '')
     c_appendix = request.values.get('appendix', '')
     c_part_num = request.values.get('part_num', 2, type = int)
-    print c_part_num
     appendix_json = get_appendix_json(c_appendix)
 
     with engine.with_session() as ss:
+        owner = ss.query(LxUser).get(current_user.id)
         c_fuuid = generate_file_uuid()
         c_path = save_contract_file(c_content, c_fuuid)
         new_file = LxFile(fuuid=c_fuuid,
@@ -60,7 +61,7 @@ def add_contract():
 
         new_contract = LxContract(
             part_num = c_part_num,
-            owner = g.user,
+            owner = owner,
             name = c_name,
             stage = 1,
             version = 1,
