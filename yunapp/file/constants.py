@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from yunapp.config import YOUR_FILE_STORE_FOLDER
-FILE_STORE_FOLDER= YOUR_FILE_STORE_FOLDER
+
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg'])
 STITIC_FILE_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
