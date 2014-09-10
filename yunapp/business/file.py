@@ -37,7 +37,7 @@ def save_contract_file(contract_content, fuuid):
         owner.set('user.id user.name')
         content.set(contract_content)
         contract_path = os.path.join(CONTRACT_STORE_FOLDER, fuuid)
-
+        print contract_path
         contract_file = ET.ElementTree(contract)
         contract_file.write(contract_path)
 
