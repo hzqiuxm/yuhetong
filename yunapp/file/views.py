@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-import os, uuid, logging
+import  logging
 
 from flask import Blueprint, render_template, jsonify, request, send_file
 
 from yunapp.orm import model, engine
 from yunapp.logutils import StructedMsg
 from yunapp.file import constants
+
+from yunapp.business.file import save_file, generate_file_uuid
 
 mod_file = Blueprint('file', __name__)
 app_logger = logging.getLogger('yunapp')
@@ -106,25 +108,6 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in constants.ALLOWED_EXTENSIONS
 
-
-def generate_file_uuid():
-    """ Generate file name use uuid
-    May be replace with other generate method
-    """
-    return uuid.uuid1().hex
-
-
-def save_file(file_upload, fuuid):
-    """ Save file and return file path
-    Currently use local file
-    """
-    try:
-        file_path = os.path.join(constants.FILE_STORE_FOLDER, fuuid)
-        file_upload.save(file_path)
-        return file_path
-    except  Exception, e:
-        print e
-        return None
 
 
 def get_file_type(file_extention):

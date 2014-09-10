@@ -4,7 +4,7 @@ import logging
 
 from flask.ext.login import UserMixin  # UserMixin 封装了 Flask-login里面 用户类的一些基本方法，我们的User类要继承他
 from flask.ext.sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, ForeignKey, func, String, Integer, Text
+from sqlalchemy import Column, ForeignKey, func, String, Integer, Text, TIMESTAMP
 from sqlalchemy.orm import backref, relationship
 from yunapp import config
 from yunapp.yunapps import app
@@ -115,21 +115,51 @@ class LxEmail(db.Model, LxMixin):
 
 class LxContract(db.Model, LxMixin):
     __tablename__ = 'lxcontract'
-    cols = ['id', 'stage', 'name', 'participants', 'eContent', 'gmt_create',
-            'gmt_modify', 'status']
+    cols = ['id', 'stage', 'name', 'participants', 'eContent', 'gmt_expire',
+            'gmt_create', 'gmt_modify', 'status']
     stage = Column(Integer, nullable=False)
     name = Column(String(64), nullable=False)
 
-    participants = Column(String(256), nullable=False)
-    write_perm_users = Column(String(256), nullable=False)
-    read_perm_users = Column(String(256), nullable=False)
-    sign_perm_users = Column(String(256), nullable=False)
+    appendix = Column(String(256), nullable=False)
 
     version = Column(Integer, nullable=False)
-    draft = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    file_id_v1 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    file_id_v2 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    file_id_v3 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    file_id_v4 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
-    file_id_v5 = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    gmt_expire = Column(TIMESTAMP, nullable=True)
+
+    draft = relationship('LxFile')
+    draft_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    contract_v1 = relationship('LxFile')
+    contract_v1_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    contract_v2 = relationship('LxFile')
+    contract_v2_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    contract_v3 = relationship('LxFile')
+    contract_v3_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    contract_v4 = relationship('LxFile')
+    contract_v4_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    contract_v5 = relationship('LxFile')
+    contract_v5_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
+    owner = relationship("LxUser")
     owner_id = Column(Integer, ForeignKey('lxuser.id'))
+
+
+class LxContractParticipation(db.Model, LxMixin):
+    __tablename__ = 'lxcontractparticipation'
+    cols = ['id', 'contract', 'user', 'stage', 'gmt_create',
+            'gmt_modify', 'status']
+    stage = version = Column(Integer, nullable=False)
+    contract = relationship("LxContract")
+    contract_id = Column(Integer, ForeignKey('lxcontract.id'))
+    user = relationship("LxUser")
+    user_id = Column(Integer, ForeignKey('lxuser.id'))
+
+class LxContractAuthorization(db.Model, LxMixin):
+    __tablename__ = 'lxcontractauthorization'
+    cols = ['id', 'contract', 'user', 'type', 'gmt_expire',
+            'gmt_create', 'gmt_modify', 'status']
+
+    version = Column(Integer, nullable=False)
+    gmt_expire = Column(TIMESTAMP, nullable=True)
+
+    contract = relationship("LxContract")
+    contract_id = Column(Integer, ForeignKey('lxcontract.id'))
+    user = relationship("LxUser")
+    user_id = Column(Integer, ForeignKey('lxuser.id'))
