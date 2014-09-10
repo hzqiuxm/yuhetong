@@ -23,6 +23,24 @@ login_manager.session_protection = "strong"
 
 bcrypt = Bcrypt(app)
 
+# TODO(wenwu) Detele before online, init template in db, cannot called by user
+@user.route('/init_test_user', methods=['GET'])
+def init_test_user():
+    with engine.with_session() as ss:
+        new_company = model.LxCompany()
+        new_company.name = time.time()
+        ss.add(new_company)
+        new_user = model.LxUser(username='lxTest@yunhetong.com',
+                                # real_name=args['realname'],
+                                type='0',
+                                passwd=bcrypt.generate_password_hash('lxTest'),
+                                email='lxTest@yunhetong.com',
+                                # phone=args['phone'],
+                                # parent_id=args['parent_user_id'],
+                                company=new_company)
+        ss.add(new_user)
+    return jsonify({'success': True,'errmsg':'no'})
+
 
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
 def load_user(user_id):
@@ -81,10 +99,10 @@ def add_sub_user():
                                 passwd=args['password'],
                                 email=args['email'],
                                 phone=request.values.get('phone', ''),
-                                idCardNo=request.values.get('idCardNo',''),
-                                idCardimg1=request.values.get('idCardimg1',''),
+                                idCardNo=request.values.get('idCardNo', ''),
+                                idCardimg1=request.values.get('idCardimg1', ''),
                                 idCardimg2=request.values.get('idCardimg2', ''),
-                                authorization_img=request.values.get('authorizationimg',''),
+                                authorization_img=request.values.get('authorizationimg', ''),
                                 parent_id=current_user.id,
                                 # phone=args['phone'],
                                 # parent_id=args['parent_user_id'],
@@ -237,15 +255,15 @@ def update_user():
     return jsonify(return_dict)
 
 
-@user.route("/resetpwd/<resetcode>", methods=['PUT'])
+@user.route("/resetpwd/", methods=['PUT'])
 @login_required
-def resert_password(resetcode):
-    if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == resetcode:
-        current_user.password = 2
-        business_logger.info('user\'s password has been reset,userid=' + str(current_user.id))
-        return_dict = {'success': True, 'errorMsg': '修改密码成功'}
+def resert_password():
+    return_dict = {}
+    password = request.values.get('password', '')
+    if password:
+        current_user.password = bcrypt.generate_password_hash(password)
     else:
-        return_dict = {'success': False, 'errorMsg': constants.ERROR_CODE['RESERT_CODE_ERROR']}
+        return_dict = {'success': False, 'errorMsg': constants.ERROR_CODE['PASSWORD_NULL_ERROR']}
     return jsonify(return_dict)
 
 
