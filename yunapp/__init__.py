@@ -48,7 +48,7 @@ app.register_blueprint(mod_contract, url_prefix='/api/contract')
 app.register_blueprint(web_users, url_prefix='/user')
 app.register_blueprint(web_templates, url_prefix='/ctemplate')
 
-# CsrfProtect(app)
+CsrfProtect(app)
 
 @app.route("/sitemap.html", methods=['GET'])
 def site_map():

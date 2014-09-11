@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Seanwu'
 
-import logging,io,StringIO, json
+import logging,io,StringIO, json, string, random, base64
+from passlib.hash import sha256_crypt
 
 from flask import Blueprint, jsonify, current_app, request,send_file, g
 from flask.ext.login import current_user
@@ -13,6 +14,7 @@ from yunapp.contract.utils import Yunhetong_HTMLParser
 from yunapp.contract import constants
 from yunapp.business.file import save_file, generate_file_uuid, \
     save_contract_file, delete_unused_file
+from yunapp import config
 
 contract = Blueprint('contract', __name__)
 app_logger = logging.getLogger('yunapp')
@@ -52,12 +54,20 @@ def add_contract():
     with engine.with_session() as ss:
         owner = ss.query(LxUser).get(current_user.id)
         c_fuuid = generate_file_uuid()
-        c_path = save_contract_file(c_content, c_fuuid)
+        c_path = save_contract_file(current_user.id, c_content, c_name, c_fuuid)
+        draft_uuid = generate_file_uuid()
+        draft_path = save_contract_file(current_user.id, c_content, c_name, draft_uuid)
+
         new_file = LxFile(fuuid=c_fuuid,
                           type=constants.CONTRACT_FILE_TYPE,
                           name=c_name,
                           fpath=c_path)
         ss.add(new_file)
+
+        draft_file = LxFile(fuuid=draft_uuid,
+                          type=constants.DRAFT_FILE_TYPE,
+                          name=c_name,
+                          fpath=draft_path)
 
         new_contract = LxContract(
             part_num = c_part_num,
@@ -66,6 +76,7 @@ def add_contract():
             stage = 1,
             version = 1,
             contract_v1 = new_file,
+            draft = draft_file,
             appendix = appendix_json,
             status = 1
         )
@@ -82,11 +93,11 @@ def update_contract(cid):
     update_dict = dict()
     c_name = request.values.get('contract_name', '')
     if c_name:
-        update_dict.update('name', c_name)    # Update contract name    1
+        update_dict.update({'name': c_name})    # Update contract name    1
     c_appendix = request.values.get('appendix', '')
     if c_appendix:
         appendix_json = get_appendix_json(c_appendix)
-        update_dict.update('appendix', appendix_json) # Update appendix   2
+        update_dict.update({'appendix': appendix_json}) # Update appendix   2
     # c_participants = request.values.get('participants', '')
     # participants_json = check_participants(c_participants)
     # if participants_json is None:
@@ -100,20 +111,25 @@ def update_contract(cid):
         contract_to_update = ss.query(LxContract).get(cid)
 
         now_version = contract_to_update.version
-        if is_new_version.equals('True') and now_version < 5:
-            c_fuuid = generate_file_uuid()       # Update contract file -- New file version  4
-            c_path = save_contract_file(c_content, c_fuuid)
-            new_file = LxFile(fuuid=c_fuuid,
-                          type=constants.CONTRACT_FILE_TYPE,
-                          name=c_name,
-                          fpath=c_path)
-            ss.add(new_file)
-            update_dict.update('version', now_version + 1)
-            update_dict.update('contract_v' + str(now_version), new_file)
-        else:       # Update contract file -- Old file version      4
-            file_to_update = contract_to_update.getattr(LxContract,
-                                                        'contract_v' + str(now_version))
-            save_contract_file(c_content, file_to_update.fuuid)
+        if c_content:
+            draft_to_update = contract_to_update.draft
+            save_contract_file(contract_to_update.owner_id, c_content,
+                                   c_name, draft_to_update.fuuid)
+            if is_new_version == 'True' and now_version < 5:
+                c_fuuid = generate_file_uuid()       # Update contract file -- New file version  4
+                c_path = save_contract_file(contract_to_update.owner_id,
+                                            c_content, c_name, c_fuuid)
+                new_file = LxFile(fuuid=c_fuuid,
+                              type=constants.CONTRACT_FILE_TYPE,
+                              name=c_name,
+                              fpath=c_path)
+                ss.add(new_file)
+                update_dict.update({'version': now_version + 1})
+                update_dict.update({'contract_v' + str(now_version): new_file})
+            else:       # Update contract file -- Old file version      4
+                file_to_update = contract_to_update.__getattribute__('contract_v' + str(now_version))
+                save_contract_file(contract_to_update.owner_id, c_content,
+                                   c_name, file_to_update.fuuid)
         contract_to_update.update(update_dict)
 
     return jsonify({'success':True, 'errorMsg':''})
@@ -124,6 +140,36 @@ def save_draft(cid):
     :param content
     :return contract_id
     """
+    d_content = request.values.get('contract_content', '')
+    if not d_content:
+        return jsonify({'success':False, 'errorMsg':'No content to save'})
+    with engine.with_session() as ss:
+        contract_to_update = ss.query(LxContract).get(cid)
+        draft_to_update = contract_to_update.draft
+        save_contract_file(contract_to_update.owner_id, d_content,
+                               contract_to_update.name, draft_to_update.fuuid)
+    return jsonify({'success':True, 'data': draft_to_update.id})
+
+@contract.route('/owner_confirm_contract/<int:cid>', methods=['GET'])
+def owner_confirm_contract(cid):
+    """ The owner of the contract confirm the contract, and generate a url
+    for others to sign
+    :param cid
+    :return contract_sign_url      include the contract id  and the sign_passwd
+    """
+    with engine.with_session() as ss:
+        contract_to_confirm = ss.query(LxContract).get(cid)
+        confirm_dict = dict()
+        confirm_dict.update({'stage': constants.CONTRACT_STAGE['OWNER_CONFIRM']})
+        random.choice(string.digits + string.ascii_lowercase + string.ascii_uppercase)
+        take_passwd = [random.choice(string.digits + string.ascii_lowercase + string.ascii_uppercase) for i in range(0,8) ]
+        confirm_dict.update({'take_passwd': sha256_crypt(take_passwd)})
+        contract_to_confirm.update(confirm_dict)
+        return_dict = dict()
+        return_dict['sign_url'] = 'http://' + config.SERVER_NAME + \
+            '/api/contract/take_contract/' + base64.encodestring(str(cid)),
+        return_dict['take_passwd'] = take_passwd
+    return jsonify({'success':True, 'data': return_dict})
 
 @contract.route('/<int:cid>', methods=['DELETE'])
 def del_contract(cid):

@@ -122,6 +122,7 @@ class LxContract(db.Model, LxMixin):
 
     appendix = Column(String(256), nullable=False)
 
+    take_passwd = Column(String(256), nullable=False)
     part_num = Column(Integer, nullable=False)
     version = Column(Integer, nullable=False)
     gmt_expire = Column(TIMESTAMP, nullable=True)

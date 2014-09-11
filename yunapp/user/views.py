@@ -119,7 +119,7 @@ def add_sub_user():
 
 
 def get_email_content(username):
-    active_code = hashlib.md5(username + config.MD5_XXXX).hexdigest()
+    active_code = hashlib.md5(username + config.MD5_SUFFIX).hexdigest()
     e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/active/' + active_code + '\">' + 'http://192.168.1.55:8092/user/active/' + active_code + '</a>'
     return e_content
 

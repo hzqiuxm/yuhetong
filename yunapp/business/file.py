@@ -1,7 +1,10 @@
 # -*- coding:utf-8 -*-
 
 import os, uuid
-import xml.etree.cElementTree as ET
+try:
+    import xml.etree.cElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
 
 from yunapp.config import CONTRACT_STORE_FOLDER
 from yunapp.config import YOUR_FILE_STORE_FOLDER
@@ -26,24 +29,25 @@ def generate_file_uuid():
     """
     return uuid.uuid1().hex
 
-def save_contract_file(contract_content, fuuid):
+def save_contract_file(owner_id, contract_content, contract_name, fuuid):
     """ Save file and return file path
     Currently use local file
     """
     try:
         contract = ET.Element("contract")
         owner = ET.SubElement(contract, "owner")
+        name = ET.SubElement(contract, "name")
         content = ET.SubElement(contract, "content")
-        owner.set('user.id user.name')
-        content.set(contract_content)
+        owner.text = str(owner_id)
+        name.text = contract_name
+        content.text = contract_content
         contract_path = os.path.join(CONTRACT_STORE_FOLDER, fuuid)
-        print contract_path
         contract_file = ET.ElementTree(contract)
         contract_file.write(contract_path)
 
         return contract_path
-    except  Exception, e:
-        print e
+    except Exception, e:
+        print str(e)
         return None
 
 def delete_unused_file(fpath):
