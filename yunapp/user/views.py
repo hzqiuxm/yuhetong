@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, jsonify, current_app, request
 from flask.ext.login import LoginManager, login_required, current_user, login_user, logout_user
-from flask.ext.bcrypt import Bcrypt
+
 from yunapp.yunapps import app
 from yunapp.orm import model, engine
 from yunapp import config
@@ -10,7 +10,7 @@ import hashlib, time, re, logging
 from yunapp import utils
 from yunapp.user import constants
 from yunapp.logutils import StructedMsg
-
+from yunapp.yunapps import bcrypt
 
 user = Blueprint('user', __name__)
 app_logger = logging.getLogger('yunapp')
@@ -21,7 +21,7 @@ login_manager.init_app(app)
 login_manager.session_protection = "strong"
 # login_manager.login_view = "users.login"
 
-bcrypt = Bcrypt(app)
+
 
 # TODO(wenwu) Detele before online, init template in db, cannot called by user
 @user.route('/init_test_user', methods=['GET'])

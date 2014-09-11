@@ -15,6 +15,7 @@ from yunapp.contract import constants
 from yunapp.business.file import save_file, generate_file_uuid, \
     save_contract_file, delete_unused_file
 from yunapp import config
+from yunapp.yunapps import bcrypt
 
 contract = Blueprint('contract', __name__)
 app_logger = logging.getLogger('yunapp')
@@ -98,12 +99,7 @@ def update_contract(cid):
     if c_appendix:
         appendix_json = get_appendix_json(c_appendix)
         update_dict.update({'appendix': appendix_json}) # Update appendix   2
-    # c_participants = request.values.get('participants', '')
-    # participants_json = check_participants(c_participants)
-    # if participants_json is None:
-    #     return {'success': False, 'errorMsg':constants.ERROR_CODE['participants_check_error']}
-    # if participants_json:
-    #     update_dict.update('participants', participants_json)  # Update appendix   3
+
     is_new_version = request.values.get('new_version', '')
     c_content = request.values.get('contract_content', '')
 
@@ -159,15 +155,21 @@ def owner_confirm_contract(cid):
     """
     with engine.with_session() as ss:
         contract_to_confirm = ss.query(LxContract).get(cid)
+        if contract_to_confirm.owner.id != current_user.id:
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'NO_AUTH_CUR_CONTRACT']})
         confirm_dict = dict()
-        confirm_dict.update({'stage': constants.CONTRACT_STAGE['OWNER_CONFIRM']})
-        random.choice(string.digits + string.ascii_lowercase + string.ascii_uppercase)
+        confirm_dict['stage'] = constants.CONTRACT_STAGE['OWNER_CONFIRM']
         take_passwd = [random.choice(string.digits + string.ascii_lowercase + string.ascii_uppercase) for i in range(0,8) ]
-        confirm_dict.update({'take_passwd': sha256_crypt(take_passwd)})
-        contract_to_confirm.update(confirm_dict)
+        take_passwd = ''.join(take_passwd)
+        confirm_dict['take_passwd'] = sha256_crypt.encrypt(take_passwd)
+        contract_to_confirm.update(confirm_dict) # Do the update
         return_dict = dict()
-        return_dict['sign_url'] = 'http://' + config.SERVER_NAME + \
-            '/api/contract/take_contract/' + base64.encodestring(str(cid)),
+        # sign_url = 'http://' + config.SERVER_NAME + \
+        #     '/api/contract/take_contract/' + base64.encodestring(str(cid))
+        sign_url = 'http://' + config.SERVER_NAME + \
+            '/contract/take_contract/' + str(cid)
+        return_dict['sign_url'] = sign_url
         return_dict['take_passwd'] = take_passwd
     return jsonify({'success':True, 'data': return_dict})
 
@@ -177,26 +179,54 @@ def del_contract(cid):
     :param cid
     :return contract_id
     """
+    user_passwd  = request.values.get('passwd', '')
+    # Check user password first
+    with engine.with_session() as ss:
+        contract_to_del = ss.query(LxContract).get(cid)
+
+        if not bcrypt.check_password_hash(contract_to_del.owner.passwd,
+                                       user_passwd):
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'WRONG_PASS_WORD']})
+        if contract_to_del.owner.id != current_user.id:
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'NO_AUTH_CUR_CONTRACT']})
+        if contract_to_del.stage > constants.CONTRACT_STAGE['SIGN']:
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'CAN_NOT_DEL_SIGN_CONTRACT']})
+        del_dict = dict('status', -1)
+        contract_to_del.update(del_dict) # Do the delete
+        delete_contract_related(contract_to_del, ss)
+    return jsonify({'success': True, 'data': cid})
+
+@contract.route('/part_read_contract/<int:cid>', methods=['POST'])
+def part_read_contract(cid):
+    """ Participates get the contract content and confirm it after read it
+    :param cid
+    :return contract_id
+    """
+    take_passwd  = request.values.get('take_passwd', '')
+    with engine.with_session() as ss:
+        cur_contract = ss.query(LxContract).get(cid)
+        if not sha256_crypt.verify(take_passwd, cur_contract.take_passwd):
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'NO_AUTH_CUR_CONTRACT']})
+
+@contract.route('/part_take_contract/<int:cid>', methods=['POST'])
+def part_read_contract(cid):
+    """ Participates get the contract content and confirm it after read it
+    :param cid
+    :return contract_id
+    """
+    take_passwd  = request.values.get('take_passwd', '')
+    with engine.with_session() as ss:
+
 
 def check_new_contract_param(args):
     # TODO(wenwu) implement the function
 
     return { 'success': True }
 
-# def check_participants(participants_str):
-#     par_list = participants_str.split(',')
-#     ret_list = list()
-#     for par_item in par_list:
-#         if par_item.isdigit():
-#             par_item = int(par_item)
-#             if LxUser.query.get(par_item):
-#                 ret_list.append(par_item)
-#             else:
-#                 return None
-#         else:
-#             return None
-#     ret_json = json.dumps(ret_list)
-#     return ret_json
 
 def get_appendix_json(appendix_str):
     appendix_list = appendix_str.split(',')
@@ -205,3 +235,26 @@ def get_appendix_json(appendix_str):
         if appendix_item.isdigit():
             ret_list.append(appendix_item)
     return json.dumps(ret_list)
+
+def delete_contract_related(contract_to_del, ss):
+    """ Delete the related files of the contract
+    :param contract_to_del
+    """
+    del_dict = dict('status', -1)
+    if contract_to_del.draft:
+        contract_to_del.draft.update(del_dict)
+    if contract_to_del.contract_v1:
+        contract_to_del.contract_v1.update(del_dict)
+    if contract_to_del.contract_v2:
+        contract_to_del.contract_v2.update(del_dict)
+    if contract_to_del.contract_v3:
+        contract_to_del.contract_v3.update(del_dict)
+    if contract_to_del.contract_v4:
+        contract_to_del.contract_v4.update(del_dict)
+    if contract_to_del.contract_v5:
+        contract_to_del.contract_v5.update(del_dict)
+    appendix = json.loads(contract_to_del.appendix)
+    for append in appendix:
+        append_to_del = ss.query(LxFile).get(int(append))
+        append_to_del.update(del_dict)
+    return { 'success': True }

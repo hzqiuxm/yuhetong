@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 ERROR_CODE = {
-    'participants_check_error': 'Participants ids is not correct.'
+    'participants_check_error': 'Participants ids is not correct.',
+    'NO_AUTH_CUR_CONTRACT': 'You have no auth for the current contract.',
+    'CAN_NOT_DEL_SIGN_CONTRACT': 'You can not del the contract for it is signed.',
+    'WRONG_PASS_WORD': 'User password wrong.',
+    'NO_READ_PERM_CUR_CONTRACT': 'You can not read the current contract.'
 }
 PAGE_SIZE = 20
 CONTRACT_FILE_TYPE = 2
