@@ -153,7 +153,7 @@ def verify_parameter(args):
 @user.route('/active/<activecode>', methods=['POST'])
 @login_required
 def user_active(activecode):
-    if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == activecode:
+    if hashlib.md5(current_user.username + config.MD5_SUFFIX).hexdigest() == activecode:
         with engine.with_session() as ss:
             current_user.status = 2
         business_logger.info(
@@ -211,12 +211,14 @@ def logout():
 @user.route("/del/<int:uid>", methods=['DELETE'])
 # @login_required
 def del_user(uid):
+    print uid
+    print 'password' in request.values
     password = request.values.get('password', '')
+    print password
     if not uid:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['UID_EMPTY_ERROR']})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
-        print password
         if not c_user:
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
         elif not bcrypt.check_password_hash(c_user.passwd, password):
@@ -258,7 +260,7 @@ def update_user():
 @user.route("/sentresetpwdemail", methods=['GET'])
 @login_required
 def sent_resetpwd_email():
-    resert_code = hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest()
+    resert_code = hashlib.md5(current_user.username + config.MD5_SUFFIX).hexdigest()
     e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/resetpwd/' + resert_code + '\">' + 'http://192.168.1.55:8092/user/resetpwd/' + resert_code + '</a>'
     if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=current_user.email,
                        e_subject='重置密码邮件（不用回复）'):

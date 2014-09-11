@@ -30,7 +30,7 @@ def smrz_page():
 
 @web_users.route('/resetpwd/<resetcode>',methods=['GET'])
 def load_reset_password_page(resetcode):
-    if hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest() == resetcode:
+    if hashlib.md5(current_user.username + config.MD5_SUFFIX).hexdigest() == resetcode:
         return render_template('pwdreset.html')
     else:
         return_dict = {'success': False, 'errorMsg': user_constants.ERROR_CODE['RESERT_CODE_ERROR']}
