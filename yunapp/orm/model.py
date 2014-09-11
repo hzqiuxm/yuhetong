@@ -74,7 +74,7 @@ class LxFile(db.Model, LxMixin):
     type = Column(Integer)
     fuuid = Column(String(64), nullable=False, unique=True)
     name = Column(String(64), nullable=False)
-    extension = Column(String(8), nullable=False)
+    extension = Column(String(8), nullable=True)
     fpath = Column(String(256), nullable=False)
 
 
@@ -122,6 +122,7 @@ class LxContract(db.Model, LxMixin):
 
     appendix = Column(String(256), nullable=False)
 
+    take_passwd = Column(String(256), nullable=False)
     part_num = Column(Integer, nullable=False)
     version = Column(Integer, nullable=False)
     gmt_expire = Column(TIMESTAMP, nullable=True)
@@ -139,8 +140,8 @@ class LxContract(db.Model, LxMixin):
     contract_v4 = relationship('LxFile', foreign_keys='LxContract.contract_v4_fid')
     contract_v5_fid = Column(Integer, ForeignKey('lxfile.id'), nullable=True)
     contract_v5 = relationship('LxFile', foreign_keys='LxContract.contract_v5_fid')
-    owner = relationship("LxUser")
     owner_id = Column(Integer, ForeignKey('lxuser.id'))
+    owner = relationship("LxUser", foreign_keys='LxContract.owner_id')
 
 
 class LxContractParticipation(db.Model, LxMixin):
