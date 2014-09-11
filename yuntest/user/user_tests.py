@@ -1,6 +1,8 @@
 import unittest, json, time, hashlib, tempfile
 
-from yunapp import app,config
+from yunapp import app, config
+
+app.config['WTF_CSRF_ENABLED'] = False
 
 
 class TestUser(unittest.TestCase):
@@ -19,12 +21,11 @@ class TestUser(unittest.TestCase):
         app.config['WTF_CSRF_ENABLED'] = False
         cls.app = app.test_client()
 
-        rv = cls.app.post('/user/register', data=dict(
+        rv = cls.app.post('/api/user/register', data=dict(
             username=cls.__test_user['username'],
             password=cls.__test_user['password'],
             email=cls.__test_user['email']
         ), follow_redirects=True)
-        print rv.data
         if 'true' in rv.data:
             c_user = json.loads(rv.data)
             cls.__testuid = int(c_user['uid'])
@@ -39,34 +40,46 @@ class TestUser(unittest.TestCase):
         pass
 
     def register(self, username, password, email):
-        return self.app.post('/user/register', data=dict(
+        return self.app.post('/api/user/register', data=dict(
             username=username,
             password=password,
             email=email
         ), follow_redirects=True)
 
     def login(self, username, password):
-        # print username+'2222223'
-        return self.app.post('/user/login', data=dict(
+        return self.app.post('/api/user/login', data=dict(
             username=username,
             password=password
         ), follow_redirects=True)
 
     def logout(self):
-        return self.app.get('/user/logout', follow_redirects=True)
+        return self.app.get('/api/user/logout', follow_redirects=True)
 
-    def deluser(self, uid):
-        return self.app.delete('/user/del/' + str(uid), data=dict(), follow_redirects=True)
+    def deluser(self, uid, password):
 
-    def update_user(self, uid, type='', real_name='', phone=''):
-        return self.app.put('/user/update', data=dict(
+        return self.app.delete('/api/user/del/' + str(uid), data={'password': password}, follow_redirects=True)
+
+    def update_user(self, uid, password='', type='', real_name='', phone=''):
+        return self.app.put('/api/user/update', data=dict(
             uid=uid,
+            password=password,
             type=type,
             real_name=real_name,
             phone=phone), follow_redirects=True)
 
     def active(self, active_code):
-        return self.app.post('/user/active/' + active_code, follow_redirects=True)
+        return self.app.post('/api/user/active/' + active_code, follow_redirects=True)
+
+    def add_sub_user(self):
+        test_data = dict(username=str(int(time.time())) + 'a@qq.com', type='0', password='test', email='ttt@test.com',
+                         phone='123456789', idCardNo='330327200505050033', idCardimg1='12', idCardimg2='13',
+                         authorizationimg='14')
+        return self.app.post('/api/user/addsubuser', data=test_data, follow_redirects=True)
+
+    def resert_password(self):
+        self.login(TestUser.__test_user['username'], TestUser.__test_user['password'])
+        return self.app.put('/api/user/resetpwd', data=dict(password='test'), follow_redirects=True)
+
 
     def test_active(self):
         # test error activecode
@@ -74,12 +87,21 @@ class TestUser(unittest.TestCase):
         rv = self.active('asdfasafd')
         assert 'false' in rv.data
         # test success case
-        activecode = hashlib.md5(TestUser.__test_user['username']+config.MD5_XXXX).hexdigest()
+        activecode = hashlib.md5(TestUser.__test_user['username'] + config.MD5_XXXX).hexdigest()
         rv = self.active(activecode)
         assert 'true' in rv.data
 
+    def test_resertpassword(self):
+        self.login(TestUser.__test_user['username'], TestUser.__test_user['password'])
+        rv = self.resert_password()
+        assert 'true' in rv.data
 
-    def test_register(self):
+    def test_addsubuser(self):
+        self.login(TestUser.__test_user['username'], TestUser.__test_user['password'])
+        rv = self.add_sub_user()
+        assert 'true' in rv.data
+
+    def tesat_register(self):
         # test no username
         rv = self.register('', 'test200', 'wuxuewen@163.com')
         assert 'false' in rv.data
@@ -122,7 +144,7 @@ class TestUser(unittest.TestCase):
     def test_updateuser(self):
         # test success cond
         self.login(TestUser.__test_user['username'], TestUser.__test_user['password'])
-        rv = self.update_user(uid=TestUser.__testuid,
+        rv = self.update_user(uid=TestUser.__testuid, password=TestUser.__test_user['password'],
                               real_name=self.__test_user['real_name'],
                               # email='test@test.com',
                               type=0,
@@ -132,12 +154,18 @@ class TestUser(unittest.TestCase):
 
     def test_deluser(self):
         # test no uid
-        rv = self.deluser('')
+        # rv = self.deluser('','test')
+        # print rv.data
+        # assert 'false' in rv.data
         # test useless uid
-        rv = self.deluser(2553)
+        rv = self.deluser(2553, 'test')
+        assert 'false' in rv.data
+        # test no password
+        rv = self.deluser(TestUser.__testuid, '')
         assert 'false' in rv.data
         # test success cond
-        rv = self.deluser(TestUser.__testuid)
+        rv = self.deluser(TestUser.__testuid, 'test')
+        print rv.data
         assert 'true' in rv.data
 
 

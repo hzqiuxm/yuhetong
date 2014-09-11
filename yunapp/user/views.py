@@ -39,7 +39,7 @@ def init_test_user():
                                 # parent_id=args['parent_user_id'],
                                 company=new_company)
         ss.add(new_user)
-    return jsonify({'success': True,'errmsg':'no'})
+    return jsonify({'success': True, 'errmsg': 'no'})
 
 
 @login_manager.user_loader  # Flask-login通过这个回调函数加载用户
@@ -87,7 +87,7 @@ def register():
 @user.route('/addsubuser', methods=['POST'])
 @login_required
 def add_sub_user():
-    if current_user.parrent_id != '0':
+    if current_user.parent_id is not None:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['ERROR_PERMISSION_DENIED']})
     args = verify_parameter(request.values)
     if 'success' in args:
@@ -208,15 +208,15 @@ def logout():
     return jsonify(return_dict)
 
 
-@user.route("/del", methods=['DELETE'])
+@user.route("/del/<int:uid>", methods=['DELETE'])
 # @login_required
-def del_user():
-    uid = request.values.get('uid', '')
+def del_user(uid):
     password = request.values.get('password', '')
     if not uid:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['UID_EMPTY_ERROR']})
     with engine.with_session() as ss:
         c_user = ss.query(model.LxUser).filter_by(id=uid).first()
+        print password
         if not c_user:
             return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['USERNAME_NOT_EXISTS_ERROR']})
         elif not bcrypt.check_password_hash(c_user.passwd, password):
@@ -255,13 +255,26 @@ def update_user():
     return jsonify(return_dict)
 
 
-@user.route("/resetpwd/", methods=['PUT'])
+@user.route("/sentresetpwdemail", methods=['GET'])
+@login_required
+def sent_resetpwd_email():
+    resert_code = hashlib.md5(current_user.username + config.MD5_XXXX).hexdigest()
+    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏打开<a href=\"http://192.168.1.55:8092/user/resetpwd/' + resert_code + '\">' + 'http://192.168.1.55:8092/user/resetpwd/' + resert_code + '</a>'
+    if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net', e_to=current_user.email,
+                       e_subject='重置密码邮件（不用回复）'):
+        return_dict = {'success': True, 'uid': current_user.id}
+    else:
+        return_dict = {'success': False, 'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
+    return jsonify(return_dict)
+
+
+@user.route("/resetpwd", methods=['PUT'])
 @login_required
 def resert_password():
-    return_dict = {}
     password = request.values.get('password', '')
     if password:
         current_user.password = bcrypt.generate_password_hash(password)
+        return_dict = {'success': True, 'errorMsg': ''}
     else:
         return_dict = {'success': False, 'errorMsg': constants.ERROR_CODE['PASSWORD_NULL_ERROR']}
     return jsonify(return_dict)
