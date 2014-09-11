@@ -57,7 +57,7 @@ class TestUser(unittest.TestCase):
 
     def deluser(self, uid, password):
         print password
-        return self.app.delete('/api/user/del/' + str(uid), data={'password': password}, follow_redirects=True)
+        return self.app.delete('/api/user/del/' + str(uid)+'?password='+password, follow_redirects=True)
 
     def update_user(self, uid, password='', type='', real_name='', phone=''):
         return self.app.put('/api/user/update', data=dict(
@@ -101,7 +101,7 @@ class TestUser(unittest.TestCase):
         rv = self.add_sub_user()
         assert 'true' in rv.data
 
-    def tesat_register(self):
+    def test_register(self):
         # test no username
         rv = self.register('', 'test200', 'wuxuewen@163.com')
         assert 'false' in rv.data

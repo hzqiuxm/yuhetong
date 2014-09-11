@@ -25,26 +25,28 @@
 							<input type="text" name="key1" />
 							值 ：
 							<input type="text" name="valuel" />
+                            <a href="javascript:void(0)" onclick="delnode(this)">删除</a>
 						</li>
 						<li>
 							键 ：
 							<input type="text" name="key2"  />
 							值 ：
 							<input type="text" name="value2" />
+                            <a href="javascript:void(0)" onclick="delnode(this)">删除</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					提交方法：
-                    <a href="javascript:void(0)"  onclick="atest('POST')" >POST</a>
-                    <a href="javascript:void(0)" onclick="atest('GET')" >GET</a>
-                    <a href="javascript:void(0)" onclick="atest('DELETE')" >DELETE</a>
-                    <a href="javascript:void(0)" onclick="atest('PUT')" >PUT</a>
-				</li>
+<input type="radio" name="method" checked="checked" onclick="change('POST')" />POST
+<input type="radio" name="method" onclick="change('GET')" />GET
+<input type="radio" name="method" onclick="change('PUT')" />PUT
+                    <input type="radio" name="method" onclick="change('DELETE')" />DELETE
+                </li>
 			</ul>
 		</form>
 	</div>
-	<a onclick="atest()" href="javascript:void(0)">Ajax测试</a>
+	<a onclick="ajaxtest()" href="javascript:void(0)">Ajax测试</a>
     <br/>
     <a onclick="testlogin()" href="javascript:void(0)">登录test用户</a>
     <div id="sentdata"></div>
@@ -52,11 +54,22 @@
 	<div id="errordiv"></div>
 </body>
 	<script type="text/javascript">
-    function addparm(){
-    	var an ='<li>键 : <input type="text"  /> 值 ：<input type="text" /></li>'
-    	document.getElementById("par").innerHTML+=an;
+     var methods='POST'
+     function change(bbb){
+         methods=bbb;
+     }
 
+    function delnode(thisnode){
+        $(thisnode.parentNode).remove();
     }
+
+    function addparm(){
+        var $an=$('<li>键 : <input type="text"  /> 值 ：<input type="text" /><a href="javascript:void(0)" onclick="delnode(this)">删除</a></li>');
+    	//document.getElementById("par").innerHTML+=an;
+        $('#par').append($an);
+    }
+
+
     function getdataobj(){
     	var par =$('#par').find('li input');
     	var dataobj={}
@@ -65,23 +78,38 @@
     	}
     	return dataobj;
     }
-    function atest(method) {
+    function ajaxtest() {
     	var dataobj=getdataobj();
     	var iurl="http://"+$('#iurl').val();
+        var csrftoken = "{{ csrf_token() }}";
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                }
+            }
+        });
         $.ajax({
             url: iurl,
-            type: method,
+            type: methods,
             dataType: 'Json',
             data: dataobj,
             success: function(data){        //data参数表示服务器传回来的数据
             				var res="";
-            				res+="数据发送成功...<br/>"
+                    	    var par =$('#par').find('li input');
+    	                    var datastr='{'
+    	                    for(var i=0;i<par.length;i+=2){
+                                    datastr+=$(par[i]).val()+' : '
+                                    datastr+=$(par[i+1]).val()+' , '
+    	                        }
+                            datastr+=' }'
+            				res+="数据"+datastr+"发送成功...<br/>"
             				res+=JSON.stringify(data);
             				$('#resultdiv').html(res);
                         },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                             // 通常 textStatus 和 errorThrown 之中
- 							$('#errordiv').text(textStatus + errorThrown)
+ 							$('#resultdiv').text(textStatus + errorThrown)
                             //alert(textStatus + errorThrown);// 只有一个会包含信息
                             // this;  调用本次AJAX请 求时传递的options参数
                         },
@@ -96,7 +124,7 @@
         var user = 'test';
         var passwd = 'passwd';
         $.ajax({
-            url: 'http://yunhetong.com:8090/user/login',
+            url: '{{ request.url_root }}user/login',
             type: 'POST',
             dataType: 'Json',
             data: {

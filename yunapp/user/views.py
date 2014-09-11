@@ -211,10 +211,7 @@ def logout():
 @user.route("/del/<int:uid>", methods=['DELETE'])
 # @login_required
 def del_user(uid):
-    print uid
-    print 'password' in request.values
     password = request.values.get('password', '')
-    print password
     if not uid:
         return jsonify({'success': False, 'errmsg': constants.ERROR_CODE['UID_EMPTY_ERROR']})
     with engine.with_session() as ss:
