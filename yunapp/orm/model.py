@@ -115,8 +115,8 @@ class LxEmail(db.Model, LxMixin):
 
 class LxContract(db.Model, LxMixin):
     __tablename__ = 'lxcontract'
-    cols = ['id', 'stage', 'name', 'participants', 'eContent', 'gmt_expire',
-            'gmt_create', 'gmt_modify', 'status']
+    cols = ['id', 'stage', 'name', 'appendix', 'part_num', 'version', 'gmt_expire',
+            'take_passwd', 'gmt_create', 'gmt_modify', 'status']
     stage = Column(Integer, nullable=False)
     name = Column(String(64), nullable=False)
 
@@ -149,6 +149,7 @@ class LxContractParticipation(db.Model, LxMixin):
     cols = ['id', 'contract', 'user', 'stage', 'gmt_create',
             'gmt_modify', 'status']
     stage = Column(Integer, nullable=False)
+    is_owner = Column(Integer, nullable=False, default=0)
     contract = relationship("LxContract")
     contract_id = Column(Integer, ForeignKey('lxcontract.id'))
     user = relationship("LxUser")
@@ -156,13 +157,19 @@ class LxContractParticipation(db.Model, LxMixin):
 
 class LxContractAuthorization(db.Model, LxMixin):
     __tablename__ = 'lxcontractauthorization'
-    cols = ['id', 'contract', 'user', 'type', 'gmt_expire',
-            'gmt_create', 'gmt_modify', 'status']
+    cols = ['id', 'contract', 'user', 'read_perm', 'write_perm', 'sign_perm',
+            'gmt_expire', 'gmt_create', 'gmt_modify', 'status']
 
-    version = Column(Integer, nullable=False)
+    read_perm = Column(Integer, nullable=False, default=0)
+    write_perm = Column(Integer, nullable=False, default=0)
+    sign_perm = Column(Integer, nullable=False, default=0)
+    auth_passwd = Column(String(256), nullable=True)
     gmt_expire = Column(TIMESTAMP, nullable=True)
 
     contract = relationship("LxContract")
     contract_id = Column(Integer, ForeignKey('lxcontract.id'))
-    user = relationship("LxUser")
-    user_id = Column(Integer, ForeignKey('lxuser.id'))
+    user = relationship("LxUser", foreign_keys='LxContractAuthorization.user_id')
+    user_id = Column(Integer, ForeignKey('lxuser.id'), nullable=True)
+    auth_own_user = relationship("LxUser",
+                             foreign_keys='LxContractAuthorization.auth_own_user_id')
+    auth_own_user_id = Column(Integer, ForeignKey('lxuser.id'))

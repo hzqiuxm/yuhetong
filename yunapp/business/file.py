@@ -50,5 +50,14 @@ def save_contract_file(owner_id, contract_content, contract_name, fuuid):
         print str(e)
         return None
 
+def get_contract_content(fpath):
+    try:
+        tree = ET.parse(fpath)
+        contract = tree.getroot()
+        return contract[2].text
+    except Exception, e:
+        print str(e)
+        return None
+
 def delete_unused_file(fpath):
     pass

@@ -7,7 +7,7 @@ from sqlalchemy import  Column, ForeignKey, func, String, \
 
 class LxMixin(object):
     id = Column(Integer, primary_key=True,autoincrement=True)
-    status = Column(Integer)
+    status = Column(Integer, nullable=False, default=1)
     gmt_modify = Column(TIMESTAMP, nullable=False, default=sql.func.current_timestamp())
     gmt_create = Column(TIMESTAMP, nullable=False, default=sql.func.current_timestamp())
     __table_args__ = {'mysql_charset': 'utf8', 'mysql_engine': 'InnoDB'}

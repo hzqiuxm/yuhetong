@@ -123,12 +123,20 @@
     function testlogin(){
         var user = 'test';
         var passwd = 'passwd';
+        var csrftoken = "{{ csrf_token() }}";
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                }
+            }
+        });
         $.ajax({
-            url: '{{ request.url_root }}user/login',
+            url: '{{ request.url_root }}api/user/login',
             type: 'POST',
             dataType: 'Json',
             data: {
-                'username': 'lxTest',
+                'username': 'lxTest@yunhetong.com',
                 'password': 'lxTest'
             },
             success: function(data){        //data参数表示服务器传回来的数据
