@@ -14,6 +14,7 @@ template = Blueprint('template', __name__)
 app_logger = logging.getLogger('yunapp')
 biz_logger = logging.getLogger('business')
 
+
 # TODO(wenwu) Detele before online, init template in db, cannot called by user
 @template.route('/init_template_type', methods=['GET'])
 def init_template_type():
@@ -35,8 +36,10 @@ def init_template_type():
                         status=t_dict.get('status')
                     )
                     ss.add(new_temp_type)
-                    biz_logger.info(StructedMsg('add level 0 template' +
-                                                t_dict.get('name'), model=__name__))
+                    biz_logger.info(
+                        StructedMsg(
+                            'add level 0 template' + t_dict.get('name')
+                            , model=__name__))
                 else:
                     parent_temp_type = LxTempType.query.filter_by(
                         name=t_dict.get('parent'), status=1
@@ -48,8 +51,10 @@ def init_template_type():
                         parent_id=parent_temp_type.id
                     )
                     ss.add(new_temp_type)
-                    biz_logger.info(StructedMsg('add level ' + str(t_dict.get(
-                        'level')) + ' template' + t_dict.get('name'), model=__name__))
+                    biz_logger.info(
+                        StructedMsg(
+                            'add level ' + str(t_dict.get('level'))
+                            + ' template' + t_dict.get('name'), model=__name__))
         return jsonify({'success': True})
 
 
@@ -73,7 +78,7 @@ def get_temptype_content(line):
 # @login_required
 def get_template_types():
     """ Get the template types from the system
-    :param parent_type_id
+    :params parent_type_id
     """
     # Get input params
     # ptype_id = request.values.get('parent_type_id', '')
@@ -85,7 +90,9 @@ def get_template_types():
     # if ptype_id:
     #     f_dict['parent_id'] = ptype_id
 
-    t_types = LxTempType.query.filter_by(**f_dict).order_by(LxTempType.id.desc())
+    t_types = LxTempType.query.filter_by(
+        **f_dict
+    ).order_by(LxTempType.id.desc())
     # t_types = t_types.paginate(page_num, constants.PAGE_SIZE, False)
 
     re_dict = dict()
@@ -116,7 +123,7 @@ def get_template_types():
 @template.route('/check_template_name', methods=['GET'])
 def check_template_name():
     """ Check the template_name is exist or not
-    :param template_name
+    :params template_name
     :return True: not exist can be used; False: exist can not be used
     """
     t_name = request.values.get('template_name', '')
@@ -133,7 +140,7 @@ def check_template_name():
 @template.route('/templates', methods=['POST'])
 def add_template():
     """ Add a template
-    :param template_name, template_type_id, template_content
+    :params template_name, template_type_id, template_content
     :return new_template_id
     """
     param_check_result = check_new_template_param(request.values)
@@ -161,7 +168,7 @@ def add_template():
 @template.route('/template/<int:tid>', methods=['GET'])
 def get_template(tid):
     """ Get a template by id
-    :param template_type_id
+    :params template_type_id
     :return the particular template
     """
     with engine.with_session() as ss:
@@ -182,7 +189,7 @@ def get_template(tid):
 def get_templates():
     """ Get templates by template_type_id or name key word
         search_key use a like search
-    :param template_type_id, search_key
+    :params template_type_id, search_key
     :return templ_list
     """
     page_num = get_int_page_num(request.values.get('page_num', '1'))
@@ -230,7 +237,7 @@ def get_templates():
 @template.route('/<int:tid>', methods=['DELETE'])
 def del_template(tid):
     """ Delete templates by template_type_id
-    :param template_type_id
+    :params template_type_id
     :return templ.id
     """
     with engine.with_session() as ss:
@@ -245,7 +252,7 @@ def del_template(tid):
 @template.route('/<int:tid>', methods=['PUT'])
 def update_template(tid):
     """ Update templates by template_type_id
-    :param template_type_id
+    :params template_type_id
     :return templ.id
     """
     with engine.with_session() as ss:
@@ -261,8 +268,9 @@ def update_template(tid):
             t_type = ss.query(LxTempType).filter_by(
                 id=t_type_id, status=1).first()
             if t_type is None:
-                return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
-                    'NO_SUCH_TEMPLATE_TYPE']})
+                return jsonify(
+                    {'success': False,
+                     'errorMsg': constants.ERROR_CODE['NO_SUCH_TEMPLATE_TYPE']})
             update_dict['type'] = t_type
         if 'template_content' in request.values:
             update_dict['content'] = request.values.get('template_content', '')
@@ -272,7 +280,7 @@ def update_template(tid):
 
 def check_new_template_param(arg_values):
     """ Delete templates by template_type_id
-    :param arg_values
+    :params arg_values
     :return True or False
     """
     t_name = arg_values.get('template_name', '')

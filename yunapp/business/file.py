@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
-import os, uuid
+import os
+import uuid
 try:
     import xml.etree.cElementTree as ET
 except ImportError:
@@ -19,15 +20,17 @@ def save_file(file_upload, fuuid):
         file_path = os.path.join(FILE_STORE_FOLDER, fuuid)
         file_upload.save(file_path)
         return file_path
-    except  Exception, e:
+    except Exception, e:
         print e
         return None
+
 
 def generate_file_uuid():
     """ Generate file name use uuid
     May be replace with other generate method
     """
     return uuid.uuid1().hex
+
 
 def save_contract_file(owner_id, contract_content, contract_name, fuuid):
     """ Save file and return file path
@@ -50,6 +53,7 @@ def save_contract_file(owner_id, contract_content, contract_name, fuuid):
         print str(e)
         return None
 
+
 def get_contract_content(fpath):
     try:
         tree = ET.parse(fpath)
@@ -59,5 +63,6 @@ def get_contract_content(fpath):
         print str(e)
         return None
 
-def delete_unused_file(fpath):
+
+def delete_unused_file():
     pass
