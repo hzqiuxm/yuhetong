@@ -2,10 +2,10 @@ import unittest, json, sys
 from yunapp import app
 app.config['WTF_CSRF_ENABLED'] = False
 
+
 class TestTemplate(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
-
 
     def tearDown(self):
         pass
@@ -33,7 +33,8 @@ class TestTemplate(unittest.TestCase):
         """ Delete template by template_id
         :return {'success': True/False, 'data': temp.id}
         """
-        rv = self.app.delete('/ctemplate/' + str(template_id), follow_redirects=True)
+        rv = self.app.delete('/ctemplate/' + str(template_id),
+                             follow_redirects=True)
         if rv.status_code != 200:
             print 'delete template status_code error' + rv.status_code
             return None
@@ -43,7 +44,7 @@ class TestTemplate(unittest.TestCase):
         """ Update template and return the result json
         :return {'success': True/False, 'data': temp.id}
         """
-        rv = self.app.put('/ctemplate/' + str(template_id),data=dict(
+        rv = self.app.put('/ctemplate/' + str(template_id), data=dict(
             template_name = 'test_template_updated'
         ), follow_redirects=True)
         if rv.status_code != 200:
@@ -144,21 +145,21 @@ class TestTemplate(unittest.TestCase):
         if del_result is None:
             raise AssertionError
 
-    # def test_template_get_list(self):
-    #      # Add a template
-    #     print sys._getframe().f_code.co_name
-    #     add_result = self.add_template()
-    #     if add_result is None:
-    #         raise AssertionError
-    #     # Get  templates
-    #     get_result = self.get_templates()
-    #     if get_result is None:
-    #         raise AssertionError
-    #     self.assertEqual(get_result.get('success'), True)
-    #     # Delete the template
-    #     del_result = self.del_template(add_result.get('data'))
-    #     if del_result is None:
-    #         raise AssertionError
+    def test_template_get_list(self):
+         # Add a template
+        print sys._getframe().f_code.co_name
+        add_result = self.add_template()
+        if add_result is None:
+            raise AssertionError
+        # Get  templates
+        get_result = self.get_templates()
+        if get_result is None:
+            raise AssertionError
+        self.assertEqual(get_result.get('success'), True)
+        # Delete the template
+        del_result = self.del_template(add_result.get('data'))
+        if del_result is None:
+            raise AssertionError
 
 if __name__ == '__main__':
     unittest.main()

@@ -50,7 +50,9 @@ def with_session(transaction=False):
 
 
 def get_session(host='master', port=None, name=None, echo=False, **kwargs):
-    logger.debug('get_session(), host is %s, port is %s, echo is %s, kwargs are %s', host, port, echo, kwargs)
+    logger.debug(
+        'get_session(), host is %s, port is %s, echo is %s, kwargs are %s',
+        host, port, echo, kwargs)
     global db_engine, session_maker
 
     if not db_engine or not session_maker:

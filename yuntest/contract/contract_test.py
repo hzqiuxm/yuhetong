@@ -19,7 +19,8 @@ class TestContract(unittest.TestCase):
         return self.app.post('/contract/aaa.docx', data=dict(data=data))
 
     # def test_doc_create(self):
-    #     rv = self.doc_create('<h1>aaaa<h1><p>bbbbbb<span>ccc</span>bbbb</p><li>ddddd</li>')
+    #     rv = self.doc_create('<h1>aaaa<h1>
+    #       <p>bbbbbb<span>ccc</span>bbbb</p><li>ddddd</li>')
     #     test_document = Document(rv.stream)
     #     pls = test_document.paragraphs
     #     pass

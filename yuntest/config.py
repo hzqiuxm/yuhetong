@@ -16,7 +16,7 @@ LOG_FILE = 'yunapp.log'
 MD5_XXXX='asfkjASF3#@$%$sdFGasd235'
 
 def get_db_config():
-    db_config = {}
+    db_config = dict()
     db_config['db_name'] = DB_NAME
     db_config['db_user'] = DB_USER
     db_config['db_host'] = DB_HOST

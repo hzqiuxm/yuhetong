@@ -11,7 +11,7 @@ from sqlalchemy import func
 from yunapp.orm.model import LxContract, LxFile, LxUser, \
     LxContractParticipation, LxContractAuthorization
 from yunapp.orm import engine
-from yunapp.contract.utils import Yunhetong_HTMLParser
+from yunapp.contract.utils import YunhetongHTMLParser
 from yunapp.contract import constants
 from yunapp.business import file as file_biz
 from yunapp import config

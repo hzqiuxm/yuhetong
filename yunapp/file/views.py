@@ -21,7 +21,7 @@ def upload():
     """
     file_upload = request.files['user_file']
     file_name = request.args.get('user_file_name')
-    attr=request.values.get('attr','0')
+    attr = request.values.get('attr', '0')
     if not file_name:
         file_name = 'empty_name'
     if file_upload and allowed_file(file_upload.filename):
@@ -39,8 +39,10 @@ def upload():
                                     extension=file_extention)
             ss.add(new_file)
         # return jsonify({'fid':new_file.id, 'fname': file_name})
-        return_data = {'fid':new_file.id,'fuuid': new_file.fuuid, 'type': new_file.type, 'name': new_file.name, 'fpath': new_file.fpath,
-                       'extension': new_file.extension,'attr':attr}
+        return_data = {'fid': new_file.id, 'fuuid': new_file.fuuid,
+                       'type': new_file.type, 'name': new_file.name,
+                       'fpath': new_file.fpath,
+                       'extension': new_file.extension, 'attr': attr}
         return render_template('utils/fileupload.html', **return_data)
     else:
         return jsonify({'fid': '', 'errMsg': constants.ERROR_CODE[
@@ -107,7 +109,6 @@ def allowed_file(filename):
     """
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in constants.ALLOWED_EXTENSIONS
-
 
 
 def get_file_type(file_extention):

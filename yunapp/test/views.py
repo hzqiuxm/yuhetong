@@ -18,6 +18,7 @@ test = Blueprint('test', __name__)
 UPLOAD_FOLDER = '/home/seanwu/uploads/'
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 # create a subclass and override the handler methods
 class MyHTMLParser(HTMLParser):
     p = None

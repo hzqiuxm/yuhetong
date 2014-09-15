@@ -8,6 +8,7 @@ web_templates = Blueprint('web_templates', __name__)
 def template_detail():
     return render_template('contract_temp/template_detail.html')
 
+
 @web_templates.route('/template_list', methods=['GET'])
 def template_list():
     return render_template('contract_temp/template_list.html')

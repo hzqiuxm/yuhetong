@@ -44,7 +44,6 @@ class LxUser(db.Model, UserMixin, LxMixin):
     # many to one relationship
 
 
-
 class LxCompany(db.Model, LxMixin):
     __tablename__ = 'lxcompany'
     cols = ['id', 'type', 'name', 'organizationNo', 'organizationimg', 'business_license_No',
@@ -113,6 +112,7 @@ class LxEmail(db.Model, LxMixin):
     eSubject = Column(String(100), nullable=False)
     eContent = Column(Text, nullable=False)
 
+
 class LxContract(db.Model, LxMixin):
     __tablename__ = 'lxcontract'
     cols = ['id', 'stage', 'name', 'appendix', 'part_num', 'version', 'gmt_expire',
@@ -154,6 +154,7 @@ class LxContractParticipation(db.Model, LxMixin):
     contract_id = Column(Integer, ForeignKey('lxcontract.id'))
     user = relationship("LxUser")
     user_id = Column(Integer, ForeignKey('lxuser.id'))
+
 
 class LxContractAuthorization(db.Model, LxMixin):
     __tablename__ = 'lxcontractauthorization'

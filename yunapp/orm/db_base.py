@@ -5,23 +5,27 @@ from sqlalchemy import orm, sql, and_, or_
 from sqlalchemy import  Column, ForeignKey, func, String, \
     Integer, TIMESTAMP, Text
 
+
 class LxMixin(object):
     id = Column(Integer, primary_key=True,autoincrement=True)
     status = Column(Integer, nullable=False, default=1)
-    gmt_modify = Column(TIMESTAMP, nullable=False, default=sql.func.current_timestamp())
-    gmt_create = Column(TIMESTAMP, nullable=False, default=sql.func.current_timestamp())
+    gmt_modify = Column(TIMESTAMP, nullable=False,
+                        default=sql.func.current_timestamp())
+    gmt_create = Column(TIMESTAMP, nullable=False,
+                        default=sql.func.current_timestamp())
     __table_args__ = {'mysql_charset': 'utf8', 'mysql_engine': 'InnoDB'}
 
     def __init__(self, **kargs):
         self.set(**kargs)
 
     def set(self, **kargs):
-        '''
+        """
         update attributes of self,用在一次设置多个属性的调用场合
-        '''
+        """
         for k, v in kargs.iteritems():
             setattr(self, k, v)
 
+    @staticmethod
     def format_obj(self, target):
         if isinstance(target, datetime.datetime):
             return datetime.datetime.strftime(target, '%Y-%m-%d %H:%M:%S')
@@ -31,6 +35,7 @@ class LxMixin(object):
             return json.dumps(target)
         else:
             return target
+
     def check_col(self, col_name):
         return col_name in self.cols
 
@@ -38,7 +43,8 @@ class LxMixin(object):
         """Return object data in easily serializeable format"""
         item = dict()
         if keys is not None:
-            """Explicit declare the keys of the object data to serializeable format"""
+            # Explicit declare the keys of the object
+            # data to serializeable format
             for key in keys:
                 item[key] = self.format_obj(getattr(self, key, None))
         else:
@@ -47,6 +53,7 @@ class LxMixin(object):
                     item[key] = self.format_obj(getattr(self, key, None))
         return item
 
+    @staticmethod
     def validate(self, attrs):
         return True
 

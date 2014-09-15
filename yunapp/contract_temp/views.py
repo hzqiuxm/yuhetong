@@ -291,5 +291,3 @@ def check_new_template_param(arg_values):
             'PARAM_NOT_ENOUGH']}
     return {'success': True}
     #TODO check other param
-
-

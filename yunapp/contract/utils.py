@@ -3,7 +3,8 @@ __author__ = 'Seanwu'
 from HTMLParser import HTMLParser
 from docx import Document
 
-class Yunhetong_HTMLParser(HTMLParser):
+
+class YunhetongHTMLParser(HTMLParser):
     p = None
 
     def __init__(self, doc_file):

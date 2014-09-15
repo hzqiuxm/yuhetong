@@ -29,8 +29,9 @@ def show_site_map(rules, prefix=None):
     if prefix is None:
         prefix = ''
     for url, method, name in links:
-        s.append('<tr><td>[%s]</td><td><a href="%s" target="_blank">%s</a>' \
-                 '</td><td>%s</td></tr>' % (method, prefix + url, cgi.escape(url), name))
+        s.append('<tr><td>[%s]</td><td><a href="%s" target="_blank">%s</a>'
+                 '</td><td>%s</td></tr>'
+                 % (method, prefix + url, cgi.escape(url), name))
 
     s.append('</table>')
     return ''.join(s)
@@ -58,7 +59,8 @@ def sent_mail(e_content, e_from, e_to, e_subject):
     # msg.attach(part2)
     msg.attach(part1)
     s = smtplib.SMTP('smtp.mailgun.org', 587)
-    s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org', '9ef4b057eb214a991e5e24fc1b4814e2')
+    s.login('postmaster@sandboxc264adea79684d24b0fa4e884e7167de.mailgun.org',
+            '9ef4b057eb214a991e5e24fc1b4814e2')
     s.sendmail(msg['From'], msg['To'], msg.as_string())
     with engine.with_session() as ss:
         new_email = model.LxEmail(eTo=msg['To'],
@@ -67,8 +69,10 @@ def sent_mail(e_content, e_from, e_to, e_subject):
                                   eContent=e_content)
         ss.add(new_email)
     s.quit()
-    # business_logger.info('/n send email: /n To'+e_to+'/n From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
+    # business_logger.info('/n send email: /n To'+e_to+'/n
+    # From'+e_from+'/n content'+e_content+'/n subject:'+e_subject)
     return True
+
 
 def get_int_page_num(page_num):
     if page_num.isdigit():
