@@ -54,7 +54,7 @@ class LxMixin(object):
         return item
 
     @staticmethod
-    def validate(self, attrs):
+    def validate(attrs):
         return True
 
     def update(self, attrs):

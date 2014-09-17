@@ -115,6 +115,7 @@ def update_contract(cid):
     is_new_version = request.values.get('new_version', '')
     c_content = request.values.get('contract_content', '')
 
+
     with engine.with_session() as ss:
         contract_to_update = ss.query(LxContract).get(cid)
 
@@ -234,10 +235,10 @@ def del_contract(cid):
         if contract_to_del.owner.id != current_user.id:
             return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
                 'NO_AUTH_CUR_CONTRACT']})
-        if contract_to_del.stage > constants.CONTRACT_STAGE['NEW']:
+        if contract_to_del.stage > constants.CONTRACT_STAGE['NEW_CONTRACT']:
             return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
                 'CAN_NOT_DEL_NOT_NEW_CONTRACT']})
-        del_dict = dict('status', -1)
+        del_dict = dict(status=-1)
         contract_to_del.update(del_dict)  # Do the delete
         delete_contract_related(contract_to_del, ss)
     return jsonify({'success': True, 'data': cid})
@@ -249,7 +250,7 @@ def part_read_contract(cid):
     :param cid
     :return contract_id
     """
-    take_pass = request.values.get('take_pass', '')
+    take_pass = request.values.get('take_passwd', '')
     with engine.with_session() as ss:
         cur_contract = ss.query(LxContract).get(cid)
         if not sha256_crypt.verify(take_pass, cur_contract.take_passwd):
@@ -292,7 +293,7 @@ def part_take_contract(cid):
         ).filter_by(
             contract_id=cid
         )
-        if len(participation) == cur_contract.part_num:
+        if participation.count() == cur_contract.part_num:
             # If all participation take the contract the stage change to
             cur_contract.update(
                 {'stage': constants.CONTRACT_STAGE['PARTICIPANTS_TAKE']}
@@ -550,7 +551,7 @@ def sign_contract(cid):
         return jsonify({'success': True, 'data': cur_sign_num})
 
 
-def check_new_contract_param():
+def check_new_contract_param(check_data):
     # TODO(wenwu) implement the function
 
     return {'success': True}
@@ -569,7 +570,7 @@ def delete_contract_related(contract_to_del, ss):
     """ Delete the related files of the contract
     :param contract_to_del
     """
-    del_dict = dict('status', -1)
+    del_dict = dict(status=-1)
     if contract_to_del.draft:
         contract_to_del.draft.update(del_dict)
     if contract_to_del.contract_v1:

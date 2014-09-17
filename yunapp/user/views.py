@@ -7,10 +7,10 @@ from yunapp.yunapps import app
 from yunapp.orm import model, engine
 from yunapp import config
 import hashlib, time, re, logging
+from yunapp import utils
 from yunapp.user import constants
 from yunapp.logutils import StructedMsg
 from yunapp.yunapps import bcrypt
-from yunapp.app_tasks.cel_tasks import send_mail
 
 user = Blueprint('user', __name__)
 app_logger = logging.getLogger('yunapp')
@@ -75,17 +75,15 @@ def register():
                                 company=new_company)
         ss.add(new_user)
     e_content = get_email_content(args['username'])
-    try:
-        send_mail(e_content=e_content, e_subject='这是一封激活邮件',
-                  e_to=new_user.email )
-    except:
+    if utils.sent_mail(
+            e_content=e_content, e_from='seanwu@yunhetong.net',
+            e_to=new_user.email, e_subject='这是一封激活邮件'):
+        return_dict = {'success': True, 'uid': new_user.id}
+        login_user(new_user)
+    else:
         return_dict = {
             'success': False,
             'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
-    else:
-        return_dict = {'success': True, 'uid': new_user.id}
-        login_user(new_user)
-
     # business_logger.info('new user '+new_user.username+'register,
     # userid='+new_user.id)
     return jsonify(return_dict)
@@ -120,15 +118,13 @@ def add_sub_user():
         ss.add(new_user)
         current_user.children.append(new_user)
     e_content = get_email_content(args['username'])
-    try:
-        send_mail(e_content=e_content, e_subject='这是一封激活邮件',
-                  e_to=new_user.email, )
-    except:
+    if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net',
+                       e_to=new_user.email, e_subject='这是一封激活邮件'):
+        return_dict = {'success': True, 'uid': new_user.id}
+    else:
         return_dict = {
             'success': False,
             'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
-    else:
-        return_dict = {'success': True, 'uid': new_user.id}
     # business_logger.info('new user '+new_user.username+'register,
     # userid='+new_user.id)
     return jsonify(return_dict)
@@ -304,21 +300,18 @@ def update_user():
 def sent_resetpwd_email():
     resert_code = hashlib.md5(current_user.username
                               + config.MD5_SUFFIX).hexdigest()
-    e_content = '这是一份激活邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏' \
+    e_content = '这是一份重置密码邮件，不用回，如果下面的超链接无法打开，请将地址复制到地址栏' \
                 '打开<a href=\"http://192.168.1.55:8092/user/resetpwd/' \
                 + resert_code + '\">' + 'http://192.168.1.55:8092/user/resetpwd/'\
                 + resert_code + '</a>'
-    try:
-        send_mail.delay(e_content=e_content,
-                        e_to=current_user.email,
-                        e_subject='重置密码邮件（不用回复）')
-    except:
+    if utils.sent_mail(e_content=e_content, e_from='seanwu@yunhetong.net',
+                       e_to=current_user.email,
+                       e_subject='重置密码邮件（不用回复）'):
+        return_dict = {'success': True, 'uid': current_user.id}
+    else:
         return_dict = {
             'success': False,
             'errmsg': constants.ERROR_CODE['SENT_ACCTIVE_EMAIL_ERROR']}
-    else:
-        return_dict = {'success': True, 'uid': current_user.id}
-
     return jsonify(return_dict)
 
 
