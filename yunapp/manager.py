@@ -22,7 +22,8 @@ def init_temptype():
 
 @manager.command
 def init_user():
-    r = requests.get('http://' + config.SERVER_NAME + '/api/user/init_test_user')
+    r = requests.get('http://' + config.SERVER_NAME +
+                     '/api/user/init_test_user')
 
     print r.status_code
 

@@ -26,7 +26,7 @@ class TestContract(unittest.TestCase):
     #     pass
 
     def test_delete(self):
-        rv = self.app.delete('api/contract/2?x=xx', data = {'x': 'xx'})
+        rv = self.app.delete('api/contract/2?x=xx', data={'x': 'xx'})
         print rv
 
 if __name__ == '__main__':
