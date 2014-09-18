@@ -6,6 +6,11 @@ from flask import Flask
 app = Flask(__name__)
 app.debug = True
 
+@app.route('/')
+def hello_world():
+    print 'bbb'
+    return 'Hello World'
+
 if __name__ == '__main__':
     print 'aaaa'
     app.run(host='0.0.0.0', port=5060)
@@ -15,11 +20,6 @@ if __name__ == '__main__':
 # def contract_test():
 #     return render_template('covhtml/index.html')
 
-
-@app.route('/')
-def hello_world():
-    print 'bbb'
-    return 'Hello World'
 
 
 # @app.errorhandler(404)
