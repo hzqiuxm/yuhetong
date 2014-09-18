@@ -357,6 +357,7 @@ def auth_contract(cid):
         if long_term_auth and (not sub_user.parent_id == current_user.id):
             return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
                 'ONLY_AUTH_TO_SUB_USER']})
+        print cur_contract.owner.id
         owner_auth = (cur_contract.owner.id == current_user.id)
         partner_auth = False
         for partner in partners:
@@ -400,7 +401,7 @@ def auth_contract(cid):
             ss.add(new_auth)
     re_dict = dict()
     re_dict['auth_passwd'] = auth_passwd
-    auth_url = 'http://' + config.SERVER_NAME + '/contract/take_auth/' \
+    auth_url = 'http://' + config.SERVER_NAME + '/api/contract/take_auth/' \
                + str(new_auth.id)
     re_dict['auth_url'] = auth_url
     return jsonify({'success': True, 'data': re_dict})
@@ -416,6 +417,9 @@ def take_auth(aid):
     auth_passwd = request.values.get('auth_passwd', '')
     with engine.with_session() as ss:
         cur_auth = ss.query(LxContractAuthorization).get(aid)
+        if not cur_auth:
+            return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
+                'AUTH_NOT_EXISTS']})
         if not sha256_crypt.verify(auth_passwd, cur_auth.auth_passwd):
             return jsonify({'success': False, 'errorMsg': constants.ERROR_CODE[
                 'AUTH_PASSWD_ERROR']})

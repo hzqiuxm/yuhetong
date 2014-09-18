@@ -5,6 +5,7 @@ ERROR_CODE = {
     'CAN_NOT_DEL_NOT_NEW_CONTRACT': 'You can not del the contract not new stage.',
     'WRONG_PASS_WORD': 'User password wrong.',
     'NO_READ_PERM_CUR_CONTRACT': 'You can not read the current contract.',
+    'AUTH_NOT_EXISTS':'this auth is not exists',
     'CONTRACT_STAGE_ERROR': 'Contract stage error',
     'CONTRACT_AUTH_TYPE_ERROR': 'No such auth type or you can not auth this type',
     'LONG_AUTH_ONLY_TO_SUB_USER': 'LONG_AUTH_ONLY_TO_SUB_USER',

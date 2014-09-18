@@ -16,6 +16,7 @@ class TestContract(unittest.TestCase):
 
     __take_passwd__ = ''
     __contract_id__ = ''
+    __auth_passwd__ = ''
 
     @classmethod
     def setUpClass(cls):
@@ -75,51 +76,81 @@ class TestContract(unittest.TestCase):
         return self.app.get('/api/contract/owner_confirm_contract/' + cid, data=data)
 
     def del_contract(self, cid, passwrod):
-        return self.app.delete('/api/contract/' + cid+'?passwd='+passwrod)
+        return self.app.delete('/api/contract/' + cid + '?passwd=' + passwrod)
 
     def part_read_contract(self, cid, take_passwd):
         return self.app.post('/api/contract/part_read_contract/' + cid, data=dict(take_passwd=take_passwd))
 
     def part_take_contract(self, cid, take_passwd):
-        return self.app.post('/api/contract/part_take_contract/' + cid,data=dict(take_passwd=take_passwd))
+        return self.app.post('/api/contract/part_take_contract/' + cid, data=dict(take_passwd=take_passwd))
 
     def part_reject_contract(self, cid, take_passwd):
         return self.app.post('/api/contract/part_reject_contract/' + cid, data=dict(take_passwd=take_passwd))
 
     def auth_contract(self, cid, data):
-        return self.app.post('/api/contract/contract/' + cid, data=data)
+        return self.app.post('/api/contract/auth_contract/' + cid, data=data)
 
-    def take_auth(self, cid, data):
-        return self.app.post('/api/contract/take_auth/' + cid, data=data)
+    def take_auth(self, auth_url, auth_passwd):
+        print auth_url
+        return self.app.post(auth_url, data=dict(auth_passwd=auth_passwd))
 
-    def get_contract(self,cid):
+    def get_contract(self, cid):
         return self.app.get('/api/contract/' + cid)
 
     def get_contracts(self):
         return self.app.get('/api/contract/')
 
-    def sign_contract(self,cid):
-        return self.app.get('/api/contract/sign_contract/' + cid)
+    def sign_contract(self, cid):
+        return self.app.post('/api/contract/sign_contract/' + cid)
 
     def test_other(self):
         data = {}
-        #test comfirm contract
+        # test comfirm contract
         rv = self.owner_confirm_contract('28', data)
         assert 'true' in rv.data
         contrace = json.loads(rv.data)
         self.__take_passwd__ = contrace['data']['take_passwd']
 
-        #test  read contract
+        # test  read contract
         rv = self.part_read_contract('28', take_passwd=self.__take_passwd__)
         assert 'true' in rv.data
 
-        #test  read contract
+        # test  read contract
         rv = self.part_take_contract('28', take_passwd=self.__take_passwd__)
         print rv.data
         assert 'true' in rv.data
 
-        #test  read contract
+        # test  read contract
         rv = self.part_reject_contract('28', take_passwd=self.__take_passwd__)
+        assert 'true' in rv.data
+
+        #test produce auth_contract
+        auth_data = dict()
+        auth_data['read_perm'] = 0
+        auth_data['write_perm'] = 0
+        auth_data['sign_perm'] = 1
+        auth_data['expire_days'] = 10
+        auth_data['sub_user_id'] = ''
+        rv = self.auth_contract('28', auth_data)
+        assert 'true' in rv.data
+        auth = json.loads(rv.data)
+        self.__auth_passwd__ = auth['data']['auth_passwd']
+        auth_url = auth['data']['auth_url']
+
+        #test receive auth
+        rv = self.take_auth(auth_url, auth_passwd=self.__auth_passwd__)
+        assert 'true' in rv.data
+
+        #test get contract
+        rv = self.get_contract('28')
+        assert 'true' in rv.data
+
+        #test get contracts
+        rv = self.get_contracts()
+        assert 'true' in rv.data
+
+        #test sign contracts
+        rv = self.sign_contract('28')
         assert 'true' in rv.data
 
 
