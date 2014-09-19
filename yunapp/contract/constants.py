@@ -2,6 +2,7 @@
 ERROR_CODE = {
     'participants_check_error': 'Participants ids is not correct.',
     'NO_AUTH_CUR_CONTRACT': 'You have no auth for the current contract.',
+    'CONTRACT_NAME_NULL_ERROR': 'contract name is null',
     'CAN_NOT_DEL_NOT_NEW_CONTRACT': 'You can not del the contract not new stage.',
     'WRONG_PASS_WORD': 'User password wrong.',
     'NO_READ_PERM_CUR_CONTRACT': 'You can not read the current contract.',

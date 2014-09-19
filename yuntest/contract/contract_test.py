@@ -105,6 +105,17 @@ class TestContract(unittest.TestCase):
 
     def test_other(self):
         data = {}
+        #test user error
+        self.app.post('/api/user/login', data=dict(
+            username='lxTest2@yunhetong.com',
+            password='lxTest'
+        ), follow_redirects=True)
+        rv = self.owner_confirm_contract('28', data)
+        assert 'false' in rv.data
+        self.app.post('/api/user/login', data=dict(
+            username='lxTest@yunhetong.com',
+            password='lxTest'
+        ), follow_redirects=True)
         # test comfirm contract
         rv = self.owner_confirm_contract('28', data)
         assert 'true' in rv.data
@@ -124,7 +135,7 @@ class TestContract(unittest.TestCase):
         rv = self.part_reject_contract('28', take_passwd=self.__take_passwd__)
         assert 'true' in rv.data
 
-        #test produce auth_contract
+        # test produce auth_contract
         auth_data = dict()
         auth_data['read_perm'] = 0
         auth_data['write_perm'] = 0
@@ -159,11 +170,14 @@ class TestContract(unittest.TestCase):
         '''
             add contract
         '''
-        data['contract_name'] = 'newname'
         data['contract_content'] = 'this is a test new content'
         data['appendix'] = '1,2,3'
         data['part_num'] = '2'
+        # test no contract name
+        rv = self.add_contract(data)
+        assert 'false' in rv.data
         # test successful case
+        data['contract_name'] = 'newname'
         rv = self.add_contract(data)
         assert 'true' in rv.data
         contrace = json.loads(rv.data)
@@ -172,6 +186,11 @@ class TestContract(unittest.TestCase):
         '''
             save draft
         '''
+        #test no contract_content
+        data['contract_content']=''
+        rv = self.save_draft(self.__contract_id__, data)
+        print rv.data
+        assert 'false' in rv.data
         data['contract_content'] = 'this is a draft~~ this is a draft~~'
         # test successful case
         rv = self.save_draft(self.__contract_id__, data)

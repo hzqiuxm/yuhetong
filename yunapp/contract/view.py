@@ -555,9 +555,11 @@ def sign_contract(cid):
         return jsonify({'success': True, 'data': cur_sign_num})
 
 
-def check_new_contract_param(check_data):
+def check_new_contract_param(args):
     # TODO(wenwu) implement the function
-
+    if not 'contract_name' in args.keys():
+        return {'success': False,
+                'errmsg': constants.ERROR_CODE['CONTRACT_NAME_NULL_ERROR']}
     return {'success': True}
 
 
