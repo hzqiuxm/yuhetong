@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+
+    <script type="text/javascript">
+        var csrftoken = $('meta[name=csrf-token]').attr('content');
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                }
+            }
+        });
+
+        var pageNum = 1;
+        var lxtempType = 0;
+
+        function buildTable(pageNum,lxtempType){
+            var args;
+            args = 1 <= arguments.length ? arguments : [];
+            $.ajax({
+                "url":"http://yunhetong.com:8091/api/ctemplate/",
+                "data":{"page_num":pageNum,"template_type_id":lxtempType},
+                "type":"get",
+                "success":function(data){
+                    var data = data.data;
+                    var rows = $(".listTable tr");
+                    $(".listTable td a").html("");
+                    $("a.deleteButton").bind("click",deleteItem);
+                    buildPageName(data.total_page,1);
+                    for(var i = 0 ; i < data.list.length; i++){
+                        $(rows[i]).attr("id","td" + data.list[i].id);
+                        $("td.itemName ",rows[i]).html("<a href='template_detail?id=" + data.list[i].id + "'>" + data.list[i].name + "</a>");
+                        $("a.deleteButton ",rows[i]).html("删除").attr("itemid",data.list[i].id);
+                        $("a.editerButton ",rows[i]).html("修改").attr("href","template_detail?id=" + data.list[i].id);
+                    }
+                }
+            })
+        }
+
+        function buildPageName(num,index){
+            var list = $(".pageList");
+            var str = '<li><a href="javascript:void(0);" class="first" pageNum=1 ><<</a></li>';
+            var startNum = 1;
+            var endNum = num;
+            if(num > 7 && index <= 3){
+                endNum = 7;   
+            }
+            if(num > 7 && index > 3){
+                startNum = index - 3;
+                endNum = index + 3;      
+            }
+            if(num > 7 && (num - index) < 3){
+                startNum = num - 7;
+                endNum = num;
+            }
+            for(var i = startNum ; i <= endNum ; i++ ){
+                str += '<li><a href="javascript:void(0);" ';
+                if(i == index ){
+                    str += " class='select' pageNum="+i+" >" + i 
+                }else{
+                    str += " >" + i 
+                }
+                str += '</a></li>';
+            }
+            str += '<li><a href="javascript:void(0);" class="end" pageNum='+num+' >>></a></li>';
+            list.html(str); 
+            $(".pageList li a").bind("click",function(){
+                buildTable($(this).attr("pageNum"),lxtempType);
+            })
+        }
+
+        function deleteItem(){
+            var num = $(this).attr("itemid");
+            $.ajax({
+                "url":"http://yunhetong.com:8091/api/ctemplate/"+$(this).attr("itemid"),
+                "data":"?csrftoken=" + csrftoken,
+                "type":"delete",
+                "success":function(data){
+                    if(data.success == true){
+                        var dom = $("#td"+num);
+                        $("a",dom).text("").unbind("click");
+                        buildTable(pageNum,lxtempType);
+                    }
+                }
+            })
+        }
+
+        function buildlxtempTypeList(){
+            $.ajax({
+                "url":"http://yunhetong.com:8091/api/ctemplate/template_types",
+                "type":"get",
+                "success":function(data){
+                    var list  = data.data.list;
+                    var str = "<optgroup label='全部'><option value='0' >全部类型</option></optgroup>";
+                    var strTemp = "";
+                    for(var i = 0 ; i < list.length ; i++){
+                        strTemp = "";
+                        strTemp = "<optgroup label='" + list[i].name + "'>";
+                            for(var j = 0 ; j < list[i].children.length ; j++){
+                                strTemp +=  "<option value='" + list[i].children[j].id + "'>" + list[i].children[j].name + "</option>"
+                            }
+                        strTemp +=  "</optgroup>";
+                         str += strTemp;
+                    }
+                    $("#lxtempTypeId").html(str);
+                    $(".select2-select-00").select2();
+                }
+            })
+        }
+
+        $(document).ready(function(){
+                buildlxtempTypeList();
+                buildTable(pageNum,lxtempType);
+                $("#lxtempTypeId").change(function(){
+                    lxtempType = $(this).val();
+                    pageNum =1 ;
+                    buildTable(pageNum,lxtempType);
+                })
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <body>
+        {% include 'header.html' %}
+        <div id="container" class="fixed-header">
+            {% include 'sider.html' %}
+            <div id="content">
+                <div class="listTopBar lxtempType" style="width: 500px; padding-top: 20px; height: 60px;" > 
+                    <label class="col-md-2 control-label" for="lxtempTypeId">
+                        合同类型</label>
+                    <div class="col-md-10">
+                        <select id="lxtempTypeId" class="select2-select-00 col-md-12 full-width-fix" >
+                        </select>
+                    </div>
+                </div>
+<script type="text/javascript">
+
+</script>
+            <div class="listColDiv" >
+                <table class="listTable" >
+                    <tbody>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="itemName" ><a href="javascript:void(0);" >模板名称20行</a></td>
+                            <td class="buttonList" >
+                                <a href="javascript:void(0);" class="deleteButton" >删除</a>
+                                <a href="javascript:void(0);" class="editerButton" >修改</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="infoBar" style="height: 60px;" >
+                    <ul class="pageList"  >
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </body>
+{% endblock %}

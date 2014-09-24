@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<<<<<<< HEAD
+<script type="text/javascript">
+
+        $(document).ready(function(){
+                alert(12);
+                App.init();
+                Plugins.init();
+                FormComponents.init();
+                var editor, mobileToolbar, toolbar;
+                toolbar = ['title', 'bold','center', 'italic', 'underline',  'color', '|', 'ol', 'ul', 'blockquote', 'table',  'hr', ];
+                mobileToolbar = ["bold", "underline", "strikethrough", "color", "ul", "ol"];
+                editor = new Simditor({
+                  textarea: $('#lxtempType'),
+                  placeholder: '这里输入文字...',
+                  toolbar: toolbar
+                });
+                editor.on('valuechanged', function(){
+                    //alert(editor.getValue());
+                    editor.sync();
+                });
+                $(".select2-select-00").select2();
+        });
+    </script>
+=======
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/lvxun/list.css')}}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-1.10.2.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='js/lvxun/template_list.js')}}"></script>
+>>>>>>> 33667711749e935f22e15fc85472683eaf317a66
+{% endblock %}
+{% block content %}
+<div id="container">
+    <div id="sidebar" class="sidebar-fixed">
+        <div id="sidebar-content">
+            <form class="sidebar-search">
+                <div class="input-box">
+                    <button type="submit" class="submit">
+                        <i class="icon-search"></i>
+                    </button>
+                    <span>
+                        <input type="text" placeholder="搜索合同">
+                    </span>
+                </div>
+            </form>
+            <ul id="nav">
+                <li class="current"><a href="index.html"><i class="icon-dashboard"></i>首页</a>
+                <li class="current"><a href="index.html"><i class="icon-dashboard"></i>法律咨询</a>
+                </li>
+                <li><a href="javascript:void(0);"><i class="icon-desktop"></i>合同管理 </a>
+                    <ul class="sub-menu">
+                        <li><a href="ui_general.html"><i class="icon-angle-right"></i>合同制作</a></li>
+                        <li><a href="ui_buttons.html"><i class="icon-angle-right"></i>合同模板</a></li>
+                        <li><a href="ui_buttons.html"><i class="icon-angle-right"></i>合同修改</a></li>
+                        <li><a href="ui_buttons.html"><i class="icon-angle-right"></i>合同签约</a></li>
+                        <li><a href="ui_buttons.html"><i class="icon-angle-right"></i>合同仓库</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0);"><i class="icon-edit"></i>授权管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="form_components.html"><i class="icon-angle-right"></i>法律顾问</a>
+                        </li>
+                        <li><a href="form_layouts.html"><i class="icon-angle-right"></i>签约授权</a>
+                        </li>
+                        <li><a href="form_layouts.html"><i class="icon-angle-right"></i>临时授权</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="sidebar-title">
+                <span>消息列表</span>
+            </div>
+            <ul class="notifications demo-slide-in">
+                <li style="display: none;">
+                    <div class="col-left">
+                        <span class="label label-danger"><i class="icon-warning-sign"></i></span>
+                    </div>
+                    <div class="col-right with-margin">
+                        <span class="message">南方水泥对《关于滨江区第五号地块的转让定价合同》进行了修改，请确认后继续进行签约</span>
+                    </div>
+                </li>
+                <li style="display: none;">
+                    <div class="col-left">
+                        <span class="label label-info"><i class="icon-envelope"></i></span>
+                    </div>
+                    <div class="col-right with-margin">
+                        <span class="message">您委托律讯网的“合同修改”委托已经完成，请点击查看</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-left">
+                        <span class="label label-success"><i class="icon-plus"></i></span>
+                    </div>
+                    <div class="col-right with-margin">
+                        <span class="message">您收倒了“钱江水泥厂”《关于滨江区第五号地块的建设合同》，请点击查看</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="sidebar-widget align-center">
+                <div class="btn-group" data-toggle="buttons" id="theme-switcher">
+                    <label class="btn active">
+                        <input type="radio" name="theme-switcher" data-theme="bright"><i class="icon-sun"></i>
+                        浅色调
+                    </label>
+                    <label class="btn">
+                        <input type="radio" name="theme-switcher" data-theme="dark"><i class="icon-moon"></i>
+                        深色调
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="divider" class="resizeable"></div>
+    </div>
+    <div id="content">
+        <div class="right_side">
+            <div class="search">
+                <label>类型1
+                    <select class="serviceType">
+                        <option value="1">劳动人事</option>
+                        <option value="2">企业治理</option>
+                        <option value="3">知识产权</option>
+                        <option value="4">公司经营</option>
+                    </select>
+                </label>
+                <label>类型2
+                    <select style="display:inline" class="ldrs">
+                        <option>劳动合同</option>
+                        <option>劳务合同</option>
+                        <option>派遣合同</option>
+                        <option>培训合同</option>
+                        <option>劳动争议总裁申请书</option>
+                    </select>
+
+                    <select style="display:none" class="qyzl">
+                        <option>公司设立</option>
+                        <option>合伙协议</option>
+                        <option>投资协议</option>
+                        <option>分立/合并</option>
+                        <option>股权设置</option>
+                    </select>
+
+                    <select style="display:none" class="zscq">
+                        <option>商标</option>
+                        <option>专利</option>
+                        <option>著作权</option>
+                        <option>商业机密</option>
+                    </select>
+
+                    <select style="display:none" class="gsjy">
+                        <option>租赁/融资租赁合同</option>
+                        <option>文化艺术合同</option>
+                        <option>买卖合同</option>
+                        <option>承包合同</option>
+                        <option>贸易合同</option>
+                        <option>建设工程合同</option>
+                        <option>运输、仓储、保管合同</option>
+                        <option>生产、加工、维修合同</option>
+                        <option>技术合同</option>
+                        <option>服务合同</option>
+                    </select>
+                </label>
+                <label>
+                    查找
+                    <input type="text" name="refer">
+                    <input type="submit" value="提交">
+                </label>
+            </div>
+            <div class="menu">
+                <ul class="textList">
+
+                        {% for temp_item in data.list %}
+                        <li>
+                            <span><a href="javascript:void(0);">{{temp_item.name}}</a></span>
+                        <div class="optionDiv">
+                            <a href="javascript:void(0);">修改</a>
+                            <a href="javascript:void(0);">删除</a>
+                        </div>
+                        </li>
+                        {% endfor %}
+
+
+                </ul>
+        {{url_for('template.get_template_types')}}
+                <div style="height:30px;">
+                    <ul class="pageList">
+                        <li><a href="javascript:void(0);" class="page_num">< <</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">上一页</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">1</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">2</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">3</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">4</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">5</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">6</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">下一页</a></li>
+                        <li><a href="javascript:void(0);" class="page_num">> ></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

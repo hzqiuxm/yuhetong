@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+        var URL_ROOT ="{{ request.url_root }}";
+    </script>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Dashboard | Melon - Flat &amp; Responsive Admin Template</title>
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/jquery-ui/jquery.ui.1.10.2.ie.css') }}"/><![endif]-->
+    <link href="{{ url_for('static', filename='css/main.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/plugins.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/responsive.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/icons.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome/font-awesome.min.css')}}">
+    <!--[if IE 7]><link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome/font-awesome-ie7.min.css')}}"><![endif]-->
+    <!--[if IE 8]><link href="{{ url_for('static', filename='/css/ie8.css')}}" rel="stylesheet" type="text/css"/><![endif]-->
+    <link href="{{ url_for('static',filename='css/fonts.css')}}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery-1.10.2.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/lodash.compat.min.js')}}"></script>
+
+    <!--[if lt IE 9]><script src="{{ url_for('static', filename='js/libs/html5shiv.js')}}"></script><![endif]-->
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/touchpunch/jquery.ui.touch-punch.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/event.swipe/jquery.event.move.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/event.swipe/jquery.event.swipe.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/breakpoints.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/respond/respond.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/cookie/jquery.cookie.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/slimscroll/jquery.slimscroll.horizontal.min.js')}}"></script>
+
+    <!--[if lt IE 9]><script type="text/javascript" src="{{ url_for('static', filename='plugins/flot/excanvas.min.js')}}"></script><![endif]-->
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/flot/jquery.flot.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/flot/jquery.flot.resize.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/flot/jquery.flot.time.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/flot/jquery.flot.growraf.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/easy-pie-chart/jquery.easy-pie-chart.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/daterangepicker/moment.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/daterangepicker/daterangepicker.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/blockui/jquery.blockUI.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/fullcalendar/fullcalendar.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/noty/jquery.noty.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/noty/layouts/top.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/noty/themes/default.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/uniform/jquery.uniform.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/select2/select2.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plugins.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plugins.form-components.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+
+    {% block content %}{% endblock %}
+
