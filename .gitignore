@@ -1,2 +1,9 @@
 *.pyc
 /venv
+/test
+alembic.ini
+/yunapp/migration
+/yunapp/config.py
+/.idea
+/yunapp/log
+/yunapp/log_config.ini
