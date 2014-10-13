@@ -2,6 +2,7 @@
 /venv
 /test
 alembic.ini
+yunapp/run.py
 /yunapp/migration
 /yunapp/config.py
 /.idea
