@@ -1,0 +1,928 @@
+2014-08-19 10:01:35,940 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:1090/
+2014-08-19 10:01:35,941 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:02:29,936 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-19 10:02:29,937 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:02:32,602 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:32] "GET /test/ajaxtest.html HTTP/1.1" 500 -
+2014-08-19 10:02:32,733 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:32] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-19 10:02:32,736 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:32] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-19 10:02:32,741 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:32] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-19 10:02:32,744 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:32] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:02:33,075 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:33] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:02:33,090 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:33] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-19 10:02:33,095 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:33] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-19 10:02:33,097 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:02:33] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:04:04,276 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:04] "GET / HTTP/1.1" 404 -
+2014-08-19 10:04:04,475 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:04] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-19 10:04:06,689 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:06] "GET / HTTP/1.1" 404 -
+2014-08-19 10:04:11,977 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:11] "GET /test/ajaxtest.html HTTP/1.1" 500 -
+2014-08-19 10:04:11,998 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:11] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-19 10:04:12,000 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-19 10:04:12,002 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-19 10:04:12,126 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:04:12,128 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-19 10:04:12,142 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-19 10:04:12,184 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:04:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:05:21,248 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-19 10:05:31,001 : werkzeug: INFO _internal: 87:   * Detected change in 'yunapp/run.py', reloading
+2014-08-19 10:05:31,030 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:05:33,993 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5003/
+2014-08-19 10:05:46,384 : werkzeug: INFO _internal: 87:   * Detected change in 'yunapp/run.py', reloading
+2014-08-19 10:05:46,421 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:05:47,853 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:06:24,173 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:06:24,173 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:06:30,496 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:06:30] "GET /test/ajaxtest.html HTTP/1.1" 200 -
+2014-08-19 10:06:30,689 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:06:30] "GET /test/ajaxtest.html HTTP/1.1" 200 -
+2014-08-19 10:06:30,736 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:06:30] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-19 10:06:43,066 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:06:43,067 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:06:46,613 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:06:46] "GET /test/ajaxtest.html HTTP/1.1" 200 -
+2014-08-19 10:06:53,077 : werkzeug: INFO _internal: 87:  192.168.1.69 - - [19/Aug/2014 10:06:53] "GET /sitemap.html HTTP/1.1" 200 -
+2014-08-19 10:07:01,429 : werkzeug: INFO _internal: 87:   * Detected change in 'run.py', reloading
+2014-08-19 10:07:01,452 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:07:19,096 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:07:27,592 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:27] "GET /test/ajaxtest.html HTTP/1.1" 200 -
+2014-08-19 10:07:27,898 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:27] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-19 10:07:27,905 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:27] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-19 10:07:41,569 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:07:43,191 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:07:47,277 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:07:47,277 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:07:51,683 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html HTTP/1.1" 500 -
+2014-08-19 10:07:51,783 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-19 10:07:51,785 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-19 10:07:51,790 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-19 10:07:51,795 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:07:51,881 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:07:51,894 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-19 10:07:51,899 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-19 10:07:51,902 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:07:51] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-19 10:08:26,994 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-19 10:08:26,994 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-19 10:08:29,347 : werkzeug: INFO _internal: 87:  192.168.1.64 - - [19/Aug/2014 10:08:29] "GET /test/ajaxtest.html HTTP/1.1" 200 -
+2014-08-20 10:44:30,593 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-20 10:44:30,594 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-20 10:45:05,763 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:05] "GET /test/ajaxtest.html HTTP/1.1" 500 -
+2014-08-20 10:45:05,886 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:05] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-20 10:45:05,895 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:05] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-20 10:45:05,900 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:05] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-20 10:45:05,903 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:05] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-20 10:45:06,305 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:06] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-20 10:45:06,315 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:06] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-20 10:45:06,320 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:06] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-20 10:45:06,322 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [20/Aug/2014 10:45:06] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-20 10:46:10,404 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5005/
+2014-08-20 10:46:10,404 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:32:06,875 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-21 16:32:06,879 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:32:15,384 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:32:15] "GET /test/t.html HTTP/1.1" 200 -
+2014-08-21 16:32:16,047 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:32:16] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-21 16:32:16,125 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:32:16] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-21 16:32:31,669 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:32:31] "GET /test/doctest HTTP/1.1" 200 -
+2014-08-21 16:36:01,421 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:36:01,450 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:38:11,110 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-21 16:38:11,111 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:38:24,502 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:24] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:38:24,638 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:24] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:38:24,647 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:24] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:38:24,656 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:24] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:38:24,658 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:24] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:38:24,696 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:24] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:38:25,182 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:25] "GET /test/doctest?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-21 16:38:25,192 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:25] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:38:25,195 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:38:25] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:39:17,067 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:39:17,097 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:39:19,318 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:39:19,427 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:39:19,433 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:39:19,439 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:39:19,479 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:39:19,581 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:39:19,646 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:39:19,649 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:39:19] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:40:26,103 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:40:26,135 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:40:31,005 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:31] "GET /test/doctest HTTP/1.1" 200 -
+2014-08-21 16:40:49,615 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:40:49,643 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:40:51,187 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:40:51,310 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:40:51,313 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:40:51,323 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:40:51,325 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:40:51,384 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:40:51,514 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:40:51,516 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:40:51] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:41:30,319 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:41:30,353 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:41:35,635 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:41:35,658 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:41:36,230 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:41:36,352 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:41:36,354 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:41:36,361 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:41:36,365 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:41:36,433 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:41:36,562 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:41:36,564 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:41:36] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:43:57,583 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:43:57,618 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:44:25,181 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:44:25,212 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:44:29,439 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:44:29,553 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:44:29,554 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:44:29,559 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:44:29,561 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:44:29,633 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:44:29,763 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:44:29,765 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:44:29] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:51:47,739 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:51:47,773 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:51:55,083 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:51:55,113 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:52:04,440 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:52:04,472 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:52:23,920 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:52:23,952 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:52:27,001 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:52:27,115 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:52:27,115 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:52:27,118 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:52:27,125 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:52:27,192 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:52:27,319 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:52:27,321 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:27] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:52:40,384 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:52:40,415 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:52:42,414 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:42] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:52:43,131 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:52:43,134 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:52:43,142 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:52:43,144 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:52:43,431 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:52:43,553 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:52:43,555 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:52:43] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:55:14,417 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:55:14,452 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:55:15,688 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:55:15,715 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:55:26,043 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:55:26,073 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:55:33,368 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:55:33,406 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:55:34,641 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:55:34,672 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:55:37,310 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:55:37,436 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:55:37,438 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:55:37,449 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:55:37,493 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:55:37,634 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:55:37,652 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:55:37,665 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:55:37] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:55:59,147 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:55:59,177 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:56:01,318 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest HTTP/1.1" 500 -
+2014-08-21 16:56:01,449 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 16:56:01,454 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 16:56:01,458 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 16:56:01,477 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:56:01,598 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:56:01,661 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 16:56:01,673 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:01] "GET /test/doctest?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 16:56:41,921 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:56:41,954 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:56:44,146 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:56:44] "GET /test/doctest HTTP/1.1" 200 -
+2014-08-21 16:57:58,081 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 16:57:58,117 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 16:58:01,585 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 16:58:01] "GET /test/doctest HTTP/1.1" 200 -
+2014-08-21 17:05:12,228 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:05:12,259 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:05:25,616 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:05:25,639 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:05:52,196 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:05:52,220 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:06:08,005 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:06:08] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 17:07:24,545 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:07:24,590 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:15:31,444 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:15:31,474 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:20:56,461 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:20:56,493 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:21:02,978 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:21:02] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 17:31:14,401 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:31:14,433 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:31:19,721 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:31:19,752 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:31:38,185 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:31:38,215 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:31:41,234 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:31:41,360 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:31:41,363 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:31:41,368 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:31:41,377 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:31:41,475 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:31:41,603 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-21 17:31:41,614 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:31:41,616 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:31:41] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:32:26,963 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:32:26,995 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:32:31,797 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:32:31,862 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:32:31,865 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:32:31,871 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:32:31,873 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:32:31,898 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:32:31,981 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:32:31,983 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:32:31] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:40:21,649 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:40:21,678 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:42:05,015 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:42:05,039 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:42:13,343 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:42:13,375 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:42:18,221 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:42:18,297 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:42:18,300 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:42:18,305 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:42:18,308 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:42:18,427 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:42:18,448 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:42:18,451 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:42:18] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:43:23,343 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:43:23,375 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:43:25,255 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:43:25,312 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:43:25,314 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:43:25,318 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:43:25,321 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:43:25,342 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:43:25,419 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:43:25,421 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:43:25] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:47:20,224 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:47:20,256 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:47:27,465 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:47:27] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 17:47:52,879 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:47:52,914 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:48:12,361 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:48:12,392 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:49:50,801 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:49:50,833 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:49:54,496 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:49:54,576 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:49:54,578 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:49:54,583 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:49:54,586 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:49:54,640 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:49:54,684 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:49:54,686 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:49:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:50:10,279 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:50:10,313 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:50:11,436 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:50:11,507 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:50:11,510 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:50:11,515 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:50:11,518 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:50:11,599 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:50:11,620 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:50:11,622 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:50:11] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:50:20,649 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:50:20,678 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:50:42,120 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:50:42,152 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:50:46,415 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:50:46,439 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:50:55,766 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:50:55,795 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:51:12,216 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:51:12,240 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:51:14,052 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:51:14,111 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:51:14,113 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:51:14,119 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:51:14,120 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:14,151 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:14,230 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:14,232 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:14] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:51:16,573 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:51:16,626 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:51:16,629 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:51:16,633 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:51:16,635 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:16,656 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:16,729 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:16,731 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:16] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:51:21,562 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:51:21,596 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:51:22,029 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:51:22,116 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:51:22,119 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:51:22,123 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:51:22,126 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:22,224 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:22,298 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:22,300 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:22] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:51:47,095 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:51:47,121 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:51:49,537 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:51:49,607 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:51:49,609 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:51:49,615 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:51:49,617 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:49,673 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:49,725 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:51:49,728 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:51:49] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:52:38,893 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:52:38,920 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:52:47,243 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:52:47,274 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:52:55,594 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:52:55,619 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:52:57,639 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 17:52:57,706 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 17:52:57,708 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 17:52:57,714 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 17:52:57,717 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:52:57,811 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:52:57,826 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 17:52:57,828 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 17:52:57] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 17:59:45,361 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:59:45,395 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 17:59:56,735 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 17:59:56,759 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 18:00:05,125 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:00:05] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 18:00:39,455 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 18:00:39,481 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 18:00:46,323 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:00:46] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 18:01:23,246 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 18:01:23,287 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 18:01:29,782 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:29] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 18:01:39,347 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:39] "GET /test/doctest/aaaa.docx HTTP/1.1" 200 -
+2014-08-21 18:01:52,852 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 18:01:52,893 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 18:01:54,229 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 18:01:54,321 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 18:01:54,324 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 18:01:54,328 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 18:01:54,330 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:01:54,357 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:01:54,448 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:01:54,450 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:01:54] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 18:02:19,401 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-21 18:02:19,434 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-21 18:02:21,051 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx HTTP/1.1" 500 -
+2014-08-21 18:02:21,110 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-21 18:02:21,113 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-21 18:02:21,118 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-21 18:02:21,120 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:02:21,204 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:02:21,220 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-21 18:02:21,222 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:02:21] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:08:38,843 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:08:38] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-21 18:08:38,853 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [21/Aug/2014 18:08:38] "GET /test/doctest/aaaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:37:44,500 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 09:37:44,500 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:37:53,190 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx HTTP/1.1" 500 -
+2014-08-22 09:37:53,263 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 09:37:53,266 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 09:37:53,270 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 09:37:53,273 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:37:53,391 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:37:53,411 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-22 09:37:53,416 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 09:37:53,419 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:37:53] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:38:44,381 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:38:44,412 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:38:47,580 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:38:47] "GET /test/doctest/aaa.docx HTTP/1.1" 200 -
+2014-08-22 09:39:41,254 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:39:41,279 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:39:46,562 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:39:46,592 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:39:50,549 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx HTTP/1.1" 500 -
+2014-08-22 09:39:50,608 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 09:39:50,610 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 09:39:50,620 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 09:39:50,622 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:39:50,663 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:39:50,737 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 09:39:50,739 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:39:50] "GET /test/doctest/aaa.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 09:40:30,333 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:40:30,369 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:40:33,122 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 09:40:33] "GET /test/doctest/aaa.docx HTTP/1.1" 200 -
+2014-08-22 09:43:14,423 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:43:14,454 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:43:39,941 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:43:39,971 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 09:43:47,273 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 09:43:47,297 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:07:04,888 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 14:07:04,888 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:07:15,220 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 14:07:15,252 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:07:27,621 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 14:07:27,652 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:07:33,945 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 14:07:33,973 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:07:52,425 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 14:07:52,453 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:08:52,341 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 14:08:52,372 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 14:09:30,055 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 14:09:30,090 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:21:05,769 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 15:21:05,769 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:21:42,923 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:21:42] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:23:52,905 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:23:52,934 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:23:59,901 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:23:59] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:24:43,726 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:24:43,754 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:25:07,006 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:25:07] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:27:14,881 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:27:14,912 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:27:22,423 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:27:22] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:29:14,468 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:29:14,495 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:29:20,207 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:29:20] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:30:12,367 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:30:12,406 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:30:44,025 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:30:44] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:39:00,995 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:39:01,019 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:39:16,448 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:39:16,475 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:40:23,515 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:40:23,539 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:40:51,115 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:40:51,150 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:41:58,081 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:41:58,112 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:42:45,845 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:42:45,874 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:43:03,313 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:43:03,349 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:43:06,549 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx HTTP/1.1" 500 -
+2014-08-22 15:43:06,678 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 15:43:06,687 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 15:43:06,692 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 15:43:06,695 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 15:43:06,887 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 15:43:06,932 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-22 15:43:06,938 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 15:43:06,941 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:06] "GET /test/doctest/bbb.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 15:43:31,936 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:43:31,960 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:43:33,186 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:43:33] "GET /test/doctest/bbb.docx HTTP/1.1" 200 -
+2014-08-22 15:44:14,748 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:44:14] "GET /test/doctest/ccc.docx HTTP/1.1" 200 -
+2014-08-22 15:44:55,804 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:44:55] "GET /test/doctest/ccc.docx HTTP/1.1" 200 -
+2014-08-22 15:45:47,136 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 15:45:47,136 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:46:24,827 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:46:24,866 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:46:32,187 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:46:32,215 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:47:04,844 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:47:04] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:48:15,601 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:48:15,632 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:48:46,260 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:48:46,292 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:48:48,739 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 15:48:48,810 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 15:48:48,813 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 15:48:48,816 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 15:48:48,817 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 15:48:48,911 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 15:48:48,993 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-22 15:48:48,999 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:48] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 15:48:49,001 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:49] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 15:48:58,675 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:48:58,701 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:48:59,563 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:48:59] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:49:19,118 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 15:49:19,118 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:49:21,343 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:49:21] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:51:57,275 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:51:57,310 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:51:58,305 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:51:58] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:52:28,901 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:52:28,932 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:52:41,328 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:52:41,355 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:52:45,637 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 15:52:45,637 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:52:47,863 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:52:47] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:53:06,184 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:53:06] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:53:47,421 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 15:53:47] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 15:54:21,961 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:54:21,993 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:54:29,323 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:54:29,354 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 15:58:22,493 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 15:58:22,529 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:12:27,926 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:12:27,955 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:17:02,939 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:17:02,940 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:17:12,311 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:17:12,385 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:17:12,387 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:17:12,392 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:17:12,395 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:17:12,502 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:17:12,519 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:17:12,521 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:17:12] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:19:01,522 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:19:01,554 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:19:20,001 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:19:20,033 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:19:25,336 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:19:25,370 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:19:31,336 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:19:31,509 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:19:31,512 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:19:31,516 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:19:31,519 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:19:31,569 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:19:31,636 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:19:31,639 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:19:31] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:22:19,713 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:22:19,750 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:22:24,637 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:22:24,694 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:22:24,695 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:22:24,699 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:22:24,699 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:22:24,721 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:22:24,805 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:22:24,807 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:22:24] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:25:31,195 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:25:31,220 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:25:56,660 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:25:56,660 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:26:02,451 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:26:02,510 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:26:02,512 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:26:02,517 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:26:02,520 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:26:02,600 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:26:02,614 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:26:02,617 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:26:02] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:30:31,230 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:30:31,258 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:30:38,991 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:38] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:30:39,046 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:30:39,048 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:30:39,053 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:30:39,055 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:30:39,111 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:30:39,161 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:30:39,163 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:30:39] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:30:47,692 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:30:47,719 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:30:58,094 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:30:58,130 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:31:01,653 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:31:01,709 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:31:01,712 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:31:01,715 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:31:01,716 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:01,725 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:01,810 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:01,813 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:01] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:31:02,951 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:02] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:31:03,021 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:31:03,023 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:31:03,028 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:31:03,031 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:03,105 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:03,154 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:03,156 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:03] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:31:04,859 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:04] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:31:04,908 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:04] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:31:04,910 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:04] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:31:04,915 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:04] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:31:04,918 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:04] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:05,007 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:05,019 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:31:05,021 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:06,400 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:31:06,446 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:31:06,450 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:31:06,455 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:31:06,458 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:06,518 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:06,579 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:06,581 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:06] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:31:20,458 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:31:20,459 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:31:22,796 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:31:22,848 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:31:22,850 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:31:22,854 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:31:22,855 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:22,874 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:22,952 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:31:22,954 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:31:22] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:35:16,407 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:35:16,448 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:35:20,739 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:35:20,772 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:35:36,570 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:35:36,622 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:35:36,625 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:35:36,629 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:35:36,631 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:36,683 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:36,728 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:36,730 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:36] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:35:38,682 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:35:38,726 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:35:38,728 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:35:38,734 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:35:38,737 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:38,762 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:38,843 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:38,845 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:38] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:35:43,060 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:35:43,060 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:35:45,554 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:35:45,609 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:35:45,612 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:35:45,617 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:35:45,619 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:45,692 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:35:45,714 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:35:45,716 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:35:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:36:39,981 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:36:40,014 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:36:41,600 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:36:41,600 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:36:45,314 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:45] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:36:45,377 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:36:45,380 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:36:45,385 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:36:45,388 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:36:45,606 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:45] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:36:46,060 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:46] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:36:46,062 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:36:46] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:37:23,363 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:37:23,396 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:43:47,104 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:43:47,134 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:49:39,540 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:49:39,572 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:49:43,817 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:49:43,817 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:49:51,218 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:51] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:49:51,294 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:51] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:49:51,295 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:51] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:49:51,297 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:51] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:49:51,298 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:51] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:49:51,304 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:51] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:49:52,005 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:52] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:49:52,007 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:49:52] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:50:24,122 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:50:24,123 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:50:41,583 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 16:50:41,614 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:50:42,722 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:42] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 16:50:55,861 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:55] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:50:55,921 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:55] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:50:55,924 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:55] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:50:55,928 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:55] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:50:55,930 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:55] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:50:55,991 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:55] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:50:56,038 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:56] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:50:56,040 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:50:56] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:51:00,642 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:51:00,683 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:51:00,685 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:51:00,695 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:51:00,699 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:51:00,808 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:51:00,828 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 16:51:00,830 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:51:00] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:53:15,982 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:53:15] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=source&frm=139927266319696&s=pI8IMjeTsBdepKvoD7Vn HTTP/1.1" 200 -
+2014-08-22 16:54:16,540 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 16:54:16,540 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 16:54:19,663 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:19] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 16:54:29,640 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 16:54:29,701 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 16:54:29,703 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 16:54:29,708 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 16:54:29,711 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:54:29,768 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:54:29,821 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 16:54:29,824 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 16:54:29] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 17:14:34,230 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:14:34,270 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:14:39,570 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:14:39,597 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:16:08,855 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:16:08,890 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:17:17,760 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 17:17:17,760 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:17:26,181 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 17:17:26,235 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 17:17:26,236 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 17:17:26,240 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 17:17:26,240 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 17:17:26,295 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 17:17:26,333 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 17:17:26,334 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:17:26] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 17:18:58,104 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:18:58,135 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:19:05,178 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx HTTP/1.1" 500 -
+2014-08-22 17:19:05,230 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-22 17:19:05,233 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-22 17:19:05,236 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-22 17:19:05,236 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 17:19:05,269 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 17:19:05,323 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-22 17:19:05,325 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:05] "GET /test/doctest/ddd.docx?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-22 17:19:27,743 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:19:27,774 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:19:29,924 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:29] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:19:36,763 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:36] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:19:42,862 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:19:42] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:20:08,645 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:20:08] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:20:49,664 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 17:20:49,665 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:20:52,829 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:20:52] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:21:03,166 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:21:03] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:22:15,962 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:22:15,993 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:23:09,058 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 17:23:09,059 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:23:10,766 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:23:10] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:23:32,284 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:23:32] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:23:41,724 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:23:41] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:27:40,708 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-22 17:27:40,708 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-22 17:27:44,988 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:27:44] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:27:54,764 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:27:54] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:28:04,936 : werkzeug: INFO _internal: 87:  192.168.1.71 - - [22/Aug/2014 17:28:04] "GET /test/doctest/ddd.docx HTTP/1.1" 200 -
+2014-08-22 17:29:01,834 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-22 17:29:01,866 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 10:58:45,774 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 10:58:45,774 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 10:59:44,941 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 10:59:44] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:08:52,268 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:08:52,308 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:09:03,672 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:09:03,708 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:09:11,080 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:09:11] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:16:04,003 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:16:04,034 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:16:06,341 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:16:06,373 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:16:12,081 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:16:12] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:18:14,459 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:18:14] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:22:38,242 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:22:38,277 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:23:42,821 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:23:42] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:33:37,338 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:33:37,374 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:35:20,844 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:35:20] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:35:30,396 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:35:30] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:36:01,381 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:36:01] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:47:43,484 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:47:43,533 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:47:45,793 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:47:45,830 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:47:48,844 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:47:48] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:48:42,768 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:48:42,797 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:48:46,062 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:48:46] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:49:52,874 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:49:52,911 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:49:55,646 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:49:55] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:50:46,723 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:50:46,767 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:50:50,388 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:50:50] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:53:31,836 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:53:31,873 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:53:36,463 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:53:36] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:54:13,630 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:54:13,670 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:54:15,920 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:54:15,952 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:54:20,545 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:54:20] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:54:33,396 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:54:33,432 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:54:36,742 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:54:36] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:55:36,797 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:55:36] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:57:57,148 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:57:57,180 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:57:59,963 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:57:59] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:58:17,615 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:58:17,642 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:58:20,045 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:58:20] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:59:26,683 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 11:59:26,716 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 11:59:30,220 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:59:30] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 11:59:44,319 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 11:59:44] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:00:31,715 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:00:31,743 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:00:34,925 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:00:34] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:00:45,134 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:00:45,172 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:02:50,862 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:02:50,893 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:02:55,919 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:02:55] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:05:00,543 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:05:00,576 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:05:03,441 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:05:03] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:05:23,063 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:05:23,096 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:06:11,921 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:06:11,953 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:06:14,082 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:06:14] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:06:23,680 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:06:23] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:06:59,730 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:06:59,761 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:07:07,421 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:07:07] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:07:16,717 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:07:16] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:08:16,872 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:08:16,912 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:08:18,280 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:08:18] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:08:39,430 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:08:39,459 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:08:41,983 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:08:41] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:08:59,697 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:08:59] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:09:48,556 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:09:48,594 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:10:05,021 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:10:05,053 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:10:12,999 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 12:10:12,999 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:10:15,402 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:10:15] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:14:53,310 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:14:53,338 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:14:57,611 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:14:57,647 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:15:00,163 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:15:00] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:15:30,275 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:15:30,300 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:15:32,004 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:15:32] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:19:11,990 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:19:12,020 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:19:54,735 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:19:54,759 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:20:27,542 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 12:20:27,542 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:20:30,461 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:20:30] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:20:55,075 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:20:55,103 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:21:45,942 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:21:45,973 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:21:48,222 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:21:48,253 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:22:06,689 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:22:06,727 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:22:19,108 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:22:19,135 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:22:22,400 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:22:22,432 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:22:24,579 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:22:24] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 12:22:45,937 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/test/views.py', reloading
+2014-08-25 12:22:45,972 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 12:22:52,706 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 12:22:52] "GET /test/doctest/a.docx HTTP/1.1" 200 -
+2014-08-25 14:30:57,607 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 14:30:57,607 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 14:31:12,871 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:12] "GET /test/ajaxtest.html HTTP/1.1" 500 -
+2014-08-25 14:31:12,955 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2014-08-25 14:31:12,964 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2014-08-25 14:31:12,969 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2014-08-25 14:31:12,972 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:12] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-25 14:31:13,023 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:13] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-25 14:31:13,182 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:13] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2014-08-25 14:31:13,187 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:13] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2014-08-25 14:31:13,190 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:13] "GET /test/ajaxtest.html?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+2014-08-25 14:31:20,750 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:20] "GET /test/t.html HTTP/1.1" 200 -
+2014-08-25 14:31:21,051 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:21] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-25 14:31:21,056 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:31:21] "GET /favicon.ico HTTP/1.1" 404 -
+2014-08-25 14:38:44,602 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 14:38:44,602 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 14:42:14,367 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 14:42:14,367 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 14:42:26,721 : werkzeug: INFO _internal: 87:   * Running on http://0.0.0.0:5002/
+2014-08-25 14:42:26,722 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 14:43:50,450 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 14:43:50] "POST /contract/aaa.docx HTTP/1.1" 500 -
+2014-08-25 15:04:42,471 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 15:04:42] "POST /contract/aaa.docx HTTP/1.1" 500 -
+2014-08-25 15:05:19,274 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/contract/view.py', reloading
+2014-08-25 15:05:19,311 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 15:05:24,599 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/contract/view.py', reloading
+2014-08-25 15:05:24,631 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 15:05:29,924 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/contract/view.py', reloading
+2014-08-25 15:05:29,953 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 15:05:31,460 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 15:05:31] "POST /contract/aaa.docx HTTP/1.1" 200 -
+2014-08-25 15:06:35,964 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/contract/view.py', reloading
+2014-08-25 15:06:35,995 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 15:06:38,002 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 15:06:38] "POST /contract/aaa.docx HTTP/1.1" 200 -
+2014-08-25 15:06:46,344 : werkzeug: INFO _internal: 87:   * Detected change in '/home/seanwu/yunhetong/yunapp/contract/view.py', reloading
+2014-08-25 15:06:46,375 : werkzeug: INFO _internal: 87:   * Restarting with reloader
+2014-08-25 15:06:48,283 : werkzeug: INFO _internal: 87:  192.168.1.79 - - [25/Aug/2014 15:06:48] "POST /contract/aaa.docx HTTP/1.1" 200 -
