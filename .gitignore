@@ -7,3 +7,4 @@ alembic.ini
 /.idea
 /yunapp/log
 /yunapp/log_config.ini
+*.swp
