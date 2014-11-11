@@ -16,12 +16,12 @@ DB_USER = 'root'
 DB_HOST = '127.0.0.1'
 DB_PASSWD = 'Hello1234'
 
-LOG_DIR = '/home/wenwu/yunhetong/yunapp/log'
+LOG_DIR = '/var/log/yunapp'
 LOG_LEVEL = 'DEBUG'
 LOG_FILE = 'yunapp.log'
 
 MD5_SUFFIX='asfkjASF3#@$%$sdFGasd235'
-SERVER_NAME = 'yunhetong2.com:8090'
+SERVER_NAME = 'my.yunhetong.com'
 
 def get_db_config():
     db_config = {}
