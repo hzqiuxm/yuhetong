@@ -6,5 +6,5 @@ yunapp/run.py
 /yunapp/migration
 /yunapp/config.py
 /.idea
-/yunapp/log
+/log
 #/yunapp/log_config.ini
