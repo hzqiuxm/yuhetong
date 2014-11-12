@@ -1,10 +1,10 @@
 *.pyc
+*.swp
 /venv
 /test
 alembic.ini
 yunapp/run.py
 /yunapp/migration
-/yunapp/config.py
 /.idea
 /log
 #/yunapp/log_config.ini
