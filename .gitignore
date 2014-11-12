@@ -8,3 +8,4 @@ yunapp/run.py
 /.idea
 /log
 #/yunapp/log_config.ini
+.DS_Store
