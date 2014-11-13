@@ -28,7 +28,7 @@ logutils.init_log()
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,
     jinja2.FileSystemLoader(
-        app.root_path + '/templates'),
+        app.root_path + '/web/templates'),
 ])
 app.jinja_loader = my_loader
 
