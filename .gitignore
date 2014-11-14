@@ -8,5 +8,6 @@ yunapp/run.py
 /.idea
 /log
 #/yunapp/log_config.ini
-.DS_Store
+*.DS_Store
 Desktop.ini
+node_modules/
