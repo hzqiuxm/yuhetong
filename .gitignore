@@ -11,3 +11,4 @@ yunapp/run.py
 *.DS_Store
 Desktop.ini
 node_modules/
+yunapp/web/static/jsmin/
