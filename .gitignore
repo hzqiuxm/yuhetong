@@ -1,2 +1,14 @@
 *.pyc
+*.swp
 /venv
+/test
+alembic.ini
+yunapp/run.py
+/yunapp/migration
+/.idea
+/log
+#/yunapp/log_config.ini
+*.DS_Store
+Desktop.ini
+node_modules/
+yunapp/web/static/jsmin/

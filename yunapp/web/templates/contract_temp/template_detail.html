@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}template_detail{% endblock %}
+{% block head %}
+    {{ super() }}
+        <link href="{{ url_for('static',filename='css/simditor/font-awesome.css')}}" rel="stylesheet" type="text/css" />
+    
+    <link href="{{ url_for('static',filename='css/simditor/simditor.css')}}" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/simditor/simditor-all.js')}}"></script>
+
+    <script type="text/javascript">
+
+        function buildlxtempTypeList(){
+            $.ajax({
+                "url":"http://yunhetong.com:8091/api/ctemplate/template_types",
+                "type":"get",
+                "success":function(data){
+                    var list  = data.data.list;
+                    var str = "";
+                    var strTemp = "";
+                    for(var i = 0 ; i < list.length ; i++){
+                        strTemp = "";
+                        strTemp = "<optgroup label='" + list[i].name + "'>";
+                            for(var j = 0 ; j < list[i].children.length ; j++){
+                                strTemp +=  "<option value='" + list[i].children[j].id + "'>" + list[i].children[j].name + "</option>"
+                            }
+                        strTemp +=  "</optgroup>";
+                         str += strTemp;
+                    }
+                    $("#lxtempTypeId").html(str);
+                    $(".select2-select-00").select2();
+                }
+            })
+        }
+
+        $(document).ready(function(){
+                App.init();
+                Plugins.init();
+                FormComponents.init();
+                var lxtempType = {{requset.value.ParmName}} ;
+                var editor, mobileToolbar, toolbar;
+                toolbar = ['title', 'bold','center', 'italic', 'underline',  'color', '|', 'ol', 'ul', 'blockquote', 'table',  'hr', ];
+                mobileToolbar = ["bold", "underline", "strikethrough", "color", "ul", "ol"];
+                editor = new Simditor({
+                  textarea: $('#lxtempType'),
+                  placeholder: '这里输入文字...',
+                  toolbar: toolbar
+                });
+                editor.on('valuechanged', function(){
+                    editor.sync();
+                });
+                buildlxtempTypeList();
+        });
+    </script>
+{% endblock %}
+{% block content %}
+
+
+    <body>
+        {% include 'header.html' %}
+        <div id="container">
+            {% include 'sider.html' %}
+            <div id="content">
+                <div class="container">
+                 <div class="stateBar" style=" height: 40px; margin-top: 40px;" >
+                    <div class="form-group lxtempType" style="width: 500px;" >
+                                    <label class="col-md-2 control-label" for="lxtempTypeId">
+                                        合同类型</label>
+                                    <div class="col-md-10">
+                                        <select id="lxtempTypeId" class="select2-select-00 col-md-12 full-width-fix">
+                                        </select>
+                                    </div>
+                                </div>
+                        <div>
+                            <div><button>提交模板</button></div>
+                        </div>
+                </div>
+
+                <div class="editer" >
+                    <textarea textarea id="lxtempType" placeholder="这里输入内容" autofocus ></textarea>
+                </div>
+                <script language="javascript">
+
+
+                </script>
+            </div>
+        </div>
+
+    </body>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <body>
+
+        {% include 'header.html' %}
+        <div id="container">
+            {% include 'sider.html' %}
+            <div id="content">
+                {{csrf_token()}}
+            </div>
+        </div>
+    </body>
+{% endblock %}
