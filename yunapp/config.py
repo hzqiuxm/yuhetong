@@ -8,8 +8,8 @@ REDIS_DB = 0
 REDIS_PORT = 6379
 REDIS_PASS = 'Hello1234'
 
-YOUR_FILE_STORE_FOLDER = '/home/wenwu/filestore'
-CONTRACT_STORE_FOLDER = '/home/wenwu/filestore'
+YOUR_FILE_STORE_FOLDER = '/home/vagrant/filestore'
+CONTRACT_STORE_FOLDER = '/mft/mfs/contract'
 
 DB_NAME = 'seanwuTest'
 DB_USER = 'root'
